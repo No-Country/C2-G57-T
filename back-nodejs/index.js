@@ -1,6 +1,15 @@
+const express = require('express');
+iniciarMongoose = require('./app/mongodb/dbInit');
+const app =  express()
+const port = 3003;
+//habilitar ruta
+const userRouters = require('./app/rutas/login');
 
-const Server = require("./models/server");
+app.use(userRouters);
 
-const server = new Server();
+//iniciar bdd mongoose.
+iniciarMongoose()
 
-server.serverStart();
+app.listen(port,( )=>{
+    console.log('la aplicacion esta en linea');
+})
