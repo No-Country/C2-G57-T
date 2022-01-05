@@ -9,7 +9,8 @@ class Server {
         this.port = process.env.PORT || 5000;
         this.app = express();
         this.paths = {
-            users: "/api/users"
+            users: "/api/users",
+            auth: "/api/auth",
         }
         // Conectar DB
         iniciarMongoose()
@@ -29,6 +30,7 @@ class Server {
 
     routes(){
         this.app.use(this.paths.users, require("../routes/users"));
+        this.app.use(this.paths.auth, require("../routes/auth"));
     }
 
 
