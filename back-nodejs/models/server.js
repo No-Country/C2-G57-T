@@ -2,7 +2,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-
+const iniciarMongoose = require('../mongo/dbInit');
 class Server {
 
     constructor(){
@@ -12,7 +12,7 @@ class Server {
             users: "/api/users"
         }
         // Conectar DB
-
+        iniciarMongoose()
         // Middlewares
         this.middlewares();
         // Rutas
