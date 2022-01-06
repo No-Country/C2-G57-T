@@ -1,5 +1,5 @@
-import 'package:ecommercemobile/home.dart';
-import 'package:ecommercemobile/login.dart';
+import 'package:ecommercemobile/screens/screens.dart';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());

@@ -1,5 +1,4 @@
-import 'package:ecommercemobile/widgets/login_widget.dart';
-import 'package:ecommercemobile/widgets/register_widget.dart';
+import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -62,7 +61,7 @@ class _LoginState extends State<Login> {
                         ),
                       ],
                     ),
-                    activar ? RegisterWidget() : LoginWidget(),
+                    activar ? RegisterWidgetProvider() : LoginWidget(),
                   ],
                 ),
               ),

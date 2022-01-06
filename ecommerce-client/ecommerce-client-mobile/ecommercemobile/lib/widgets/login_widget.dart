@@ -1,3 +1,4 @@
+import 'package:ecommercemobile/widgets/register_widget.dart';
 import 'package:flutter/material.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -15,18 +16,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     return Container(
       child: Column(
         children: [
-          TextField(
-            decoration: InputDecoration(
-              hintText: "Email",
-              contentPadding: EdgeInsets.all(30),
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              hintText: "Contraseña",
-              contentPadding: EdgeInsets.all(30),
-            ),
-          ),
+          TexfieldPersonalizado(titulo: 'Email'),
+          TexfieldPersonalizado(titulo: "Contraseña"),
           ListTile(
             leading: Checkbox(
                 activeColor: Colors.grey,

@@ -8,13 +8,13 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[200],
-      drawer: Drawer(),
+      drawer: const Drawer(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.purple[200],
         centerTitle: true,
-        title: Text("Logo de la marca\nSlogan"),
-        actions: [Icon(Icons.search), Icon(Icons.shopping_cart_outlined)],
+        title: const Text("Logo de la marca\nSlogan"),
+        actions: const [Icon(Icons.search), Icon(Icons.shopping_cart_outlined)],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -34,23 +34,23 @@ class Home extends StatelessWidget {
                 control: SwiperControl(),
               ),
             ),
-            SizedBox(height: 10),
-            ContainerPersonalizado(
+            const SizedBox(height: 10),
+            const ContainerPersonalizado(
               titulo: '"Imagen de la categoria"',
             ),
-            SizedBox(height: 10),
-            ContainerPersonalizado(
+            const SizedBox(height: 10),
+            const ContainerPersonalizado(
               titulo: '"Imagen de la categoria"',
             ),
-            SizedBox(height: 10),
-            ContainerPersonalizado(
+            const SizedBox(height: 10),
+            const ContainerPersonalizado(
               titulo: '"Imagen de la categoria"',
             ),
-            SizedBox(height: 10),
-            ContainerRedesSociales(),
-            SizedBox(height: 10),
-            ContainerRedesSociales(),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
+            const ContainerRedesSociales(),
+            const SizedBox(height: 10),
+            const ContainerRedesSociales(),
+            const SizedBox(height: 10),
             Container(
               width: double.infinity,
               color: Colors.purple[800],
@@ -62,20 +62,20 @@ class Home extends StatelessWidget {
                       height: 50,
                       width: 180,
                       color: Colors.grey,
-                      child: Center(child: Text("Info de Footer")),
+                      child: const Center(child: Text("Info de Footer")),
                     ),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                         height: 50,
                         width: 180,
                         color: Colors.grey,
                         child: Center(child: Text("Info de Footer"))),
-                    SizedBox(height: 10),
+                    const SizedBox(height: 10),
                     Container(
                         height: 20,
                         width: 250,
                         color: Colors.grey,
-                        child: Center(child: Text("Info de Contacto")))
+                        child: const Center(child: Text("Info de Contacto")))
                   ],
                 ),
               ),
@@ -101,14 +101,14 @@ class ContainerRedesSociales extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Imagen de Moda",
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Icon(Icons.photo_camera),
+            const Icon(Icons.photo_camera),
             Container(
               child: Padding(
                 padding: const EdgeInsets.all(15.0),
@@ -146,13 +146,13 @@ class ContainerPersonalizado extends StatelessWidget {
               titulo,
               style: TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Container(
               color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
+              child: const Padding(
+                padding: EdgeInsets.all(15.0),
                 child: Text(
                   "Link a Categoria",
                   style: TextStyle(fontSize: 20),
