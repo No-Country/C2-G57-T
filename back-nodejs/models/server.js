@@ -2,17 +2,18 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-
+const iniciarMongoose = require('../mongo/dbInit');
 class Server {
 
     constructor(){
         this.port = process.env.PORT || 5000;
         this.app = express();
         this.paths = {
-
+            users: "/api/users",
+            auth: "/api/auth",
         }
         // Conectar DB
-
+        iniciarMongoose()
         // Middlewares
         this.middlewares();
         // Rutas
@@ -28,7 +29,8 @@ class Server {
     }
 
     routes(){
-        this.app.use("/", (req, res)=>{ res.json({msg: "hola mundo xd"}) })
+        this.app.use(this.paths.users, require("../routes/users"));
+        this.app.use(this.paths.auth, require("../routes/auth"));
     }
 
 
