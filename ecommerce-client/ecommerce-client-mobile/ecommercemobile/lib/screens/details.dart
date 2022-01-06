@@ -1,3 +1,4 @@
+import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
 class Detail extends StatefulWidget {
@@ -12,7 +13,7 @@ class _DetailState extends State<Detail> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[200],
-      drawer: const Drawer(),
+      drawer: Drawer(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.purple[200],
@@ -20,59 +21,134 @@ class _DetailState extends State<Detail> {
         title: const Text("Logo de la marca\nSlogan"),
         actions: const [Icon(Icons.search), Icon(Icons.shopping_cart_outlined)],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-            height: 600,
-            width: double.infinity,
-            color: Colors.grey,
-          ),
-          SizedBox(height: 30),
-          Expanded(
-            child: Row(
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              height: 250,
+              width: 345,
+              color: Colors.grey,
+            ),
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  height: 100,
-                  width: 100,
+                  height: 80,
+                  width: 80,
                   color: Colors.grey,
                 ),
                 Container(
-                  height: 100,
-                  width: 100,
+                  height: 80,
+                  width: 80,
                   color: Colors.grey,
                 ),
                 Container(
-                  height: 100,
-                  width: 100,
+                  height: 80,
+                  width: 80,
                   color: Colors.grey,
                 )
               ],
             ),
-          ),
-          Text("Nombre del Producto"),
-          Text("Precio"),
-          Text("Colores"),
-          Row(
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Container(
-                  color: Colors.black,
+            Text("Nombre del Producto"),
+            Text("Precio"),
+            Text("Colores"),
+            Row(
+              children: [
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(20)),
                 ),
+                SizedBox(
+                  width: 15,
+                ),
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                ),
+              ],
+            ),
+            Text("Talles"),
+            Row(
+              children: [
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                    child: Text("L"),
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                    child: Text("XL"),
+                  ),
+                ),
+                SizedBox(
+                  width: 15,
+                ),
+                Container(
+                  height: 20,
+                  width: 20,
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20)),
+                  child: Center(
+                    child: Text(
+                      "XXL",
+                      style: TextStyle(fontSize: 10),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Text("Cantidad"),
+            Container(
+              height: 20,
+              width: 60,
+              decoration:
+                  BoxDecoration(border: Border.all(color: Colors.black)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text("-"),
+                  Text("1"),
+                  Text("+"),
+                ],
               ),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Container(
-                  color: Colors.grey,
-                ),
-              )
-            ],
-          ),
-          Text("Talles"),
-        ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 120.0),
+              child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.pink),
+                  ),
+                  onPressed: () {},
+                  icon: Icon(Icons.shopping_cart_outlined),
+                  label: Text("COMPRAR")),
+            ),
+          ],
+        ),
       ),
+      bottomNavigationBar: FooterPersonalizado(),
     );
   }
 }
