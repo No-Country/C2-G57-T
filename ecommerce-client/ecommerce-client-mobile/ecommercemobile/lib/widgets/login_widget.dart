@@ -26,10 +26,12 @@ class _LoginWidgetState extends State<LoginWidget> {
       child: Column(
         children: [
           TexfieldPersonalizado(
+            icono: Icons.alternate_email,
             titulo: 'Email',
             controller: emailController2,
           ),
           TexfieldPersonalizado(
+            icono: Icons.lock,
             titulo: "Contraseña",
             controller: contrasenia2,
           ),

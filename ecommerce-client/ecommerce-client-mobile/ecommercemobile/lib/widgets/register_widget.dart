@@ -65,11 +65,13 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 return "No es un correro";
               },
               decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.alternate_email_outlined),
                 hintText: "Email",
                 contentPadding: EdgeInsets.all(30),
               ),
             ),
             TexfieldPersonalizado(
+              icono: Icons.accessibility_rounded,
               controller: nombreController,
               titulo: 'Nombre de usuario',
             ),
@@ -84,6 +86,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 return "La contraseña debe tener mas de 6 caracteres";
               },
               decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.lock),
                 hintText: "Contraseña",
                 contentPadding: EdgeInsets.all(30),
               ),
@@ -97,19 +100,23 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 return "La contraseña no es igual, repita la misma";
               },
               decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.lock),
                 hintText: "Repetir Contraseña",
                 contentPadding: EdgeInsets.all(30),
               ),
             ),
             TexfieldPersonalizado(
+              icono: Icons.maps_home_work_outlined,
               controller: ciudadContoller,
               titulo: 'Ciudad',
             ),
             TexfieldPersonalizado(
+              icono: Icons.add_circle_sharp,
               controller: direccionController,
               titulo: 'Direccion',
             ),
             TexfieldPersonalizado(
+              icono: Icons.email,
               controller: codigopostalController,
               titulo: 'Codigo Postal',
             ),
@@ -140,17 +147,22 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               ),
             ),
             ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.grey),
+                style: ElevatedButton.styleFrom(
+                    primary: loginFormProvider.esValido()
+                        ? Colors.grey
+                        : Colors.blue),
                 onPressed: () {
-                  loginFormProvider.esValido();
-                  print(emailController.text +
-                      nombreController.text +
-                      contraseniaController.text +
-                      ciudadContoller.text +
-                      direccionController.text);
-                  FocusScope.of(context).unfocus();
+                  if (loginFormProvider.esValido()) {
+                    print(
+                        """ email: ${emailController.text} - nombre: ${nombreController.text} - contraseña: ${contraseniaController.text} 
+                      - ciudad: ${ciudadContoller.text} - direccion ${direccionController.text}   """);
+                    FocusScope.of(context).unfocus();
+                    Navigator.of(context).pushReplacementNamed("home");
+                    Future.delayed(Duration(seconds: 5));
+                  }
                 },
-                child: Text("Registrarme"))
+                child: Text(
+                    loginFormProvider.esValido() ? "Espere" : "Registrarme"))
           ],
         ),
       ),
@@ -163,16 +175,19 @@ class TexfieldPersonalizado extends StatelessWidget {
     Key? key,
     required this.titulo,
     required this.controller,
+    required this.icono,
   }) : super(key: key);
 
   final String titulo;
   final TextEditingController controller;
+  final IconData icono;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
+        prefixIcon: Icon(icono),
         hintText: titulo,
         contentPadding: EdgeInsets.all(30),
       ),
