@@ -19,21 +19,37 @@ const postUser = async(req, res)=>{
    
 };
 
+const putUser = async(req, res) => {
+
+    const {id} = req.params;
+    const {password, ...resto} = req.body;
+
+    // TODO validar contra BD
+    if(password){
+        // Encriptar la contraseña
+        const salt = bcrypt.genSaltSync(10);
+        resto.password = bcrypt.hashSync( password, salt );
+    }
+
+    const user = await User.findByIdAndUpdate(id, resto);
+
+    res.json(user); 
+};
+
 
 const deleteUser = async(req, res)=>{
 
     const {id} = req.params;
-    res.json({
-        msg: "delete user",
-        id
-    })
 
+    // Eliminacion física
+    const user = await User.findByIdAndDelete(id);
+
+    res.json(user);
 }
-
-
 
 module.exports = {
     postUser,
+    putUser,
     deleteUser
 }
 
