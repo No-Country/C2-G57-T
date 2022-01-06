@@ -29,30 +29,35 @@ class _LoginState extends State<Login> {
                   children: [
                     Row(
                       children: [
-                        Container(
-                          child: TextButton(
+                        Expanded(
+                          child: Container(
+                            color: activar ? Colors.grey : Colors.white,
+                            child: TextButton(
+                                onPressed: () {
+                                  activar = false;
+                                  setState(() {});
+                                },
+                                child: Text("Ingresar",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30,
+                                    ))),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            color: activar ? Colors.white : Colors.grey,
+                            child: TextButton(
                               onPressed: () {
-                                activar = false;
+                                activar = true;
                                 setState(() {});
                               },
-                              child: Text("Ingresar",
+                              child: Text("Registro",
                                   style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 30,
-                                  ))),
-                        ),
-                        Container(
-                          height: 50,
-                          child: TextButton(
-                            onPressed: () {
-                              activar = true;
-                              setState(() {});
-                            },
-                            child: Text("Registro",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 30,
-                                )),
+                                  )),
+                            ),
                           ),
                         ),
                       ],
