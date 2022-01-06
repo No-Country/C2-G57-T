@@ -10,14 +10,29 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   bool activar = true;
+  late TextEditingController emailController2;
+  late TextEditingController contrasenia2;
+
+  @override
+  void initState() {
+    emailController2 = TextEditingController();
+    contrasenia2 = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Column(
         children: [
-          TexfieldPersonalizado(titulo: 'Email'),
-          TexfieldPersonalizado(titulo: "Contraseña"),
+          TexfieldPersonalizado(
+            titulo: 'Email',
+            controller: emailController2,
+          ),
+          TexfieldPersonalizado(
+            titulo: "Contraseña",
+            controller: contrasenia2,
+          ),
           ListTile(
             leading: Checkbox(
                 activeColor: Colors.grey,
