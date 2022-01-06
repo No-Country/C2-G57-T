@@ -1,5 +1,8 @@
+
+import { Navigation } from "./routes/Navigation";
+
 function App() {
-  return <h1>Mujeres Reales</h1>;
+  return <Navigation />;
 }
 
 export default App;

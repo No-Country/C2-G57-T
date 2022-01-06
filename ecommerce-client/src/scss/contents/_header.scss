@@ -1,0 +1,14 @@
+.header {
+  background-color: violet;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.fas {
+  color: #fff;
+  font-size: 2rem;
+}
