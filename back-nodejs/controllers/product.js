@@ -1,4 +1,4 @@
-const product = require("../models/product");
+
 const Product = require("../models/product");
 
 const saveProduct = async(req, res) => {
@@ -7,15 +7,14 @@ const saveProduct = async(req, res) => {
     const product = new Product({ name, price, description, img });
     try {
         await product.save();
-        res.json({
-            product
-        });
+        res.status(201).json(product);
     } catch (error) {
         res.json({
             msg: "Product name already registered"
         });
     }
-}
+};
+
 const listProduct = async(req, res) => {
 
     const product = await Product.find({});
@@ -27,10 +26,8 @@ const listProduct = async(req, res) => {
 const updateProduct = async(req, res) => {
     const { id } = req.params;
     let productUpdate = req.body;
-    console.log(productUpdate);
-
-    console.log(id);
-    await product.updateOne({ _id: id }, {
+    
+    const product = await Product.updateOne({ _id: id }, {
         $set: {
             name: productUpdate.name,
             price: productUpdate.price,
@@ -38,18 +35,17 @@ const updateProduct = async(req, res) => {
             img: productUpdate.img
         }
     });
-    res.json({
-        productUpdate
-    })
+    res.status(200).json(product);
 
-}
+};
+
 const deleteProduct = async(req, res) => {
 
     const { id } = req.params;
 
     const product = await Product.findByIdAndDelete(id);
 
-    res.json(product);
+    res.status(200).json(product);
 }
 const listProductName = async(req, res) => {
     let name = req.query.name;
