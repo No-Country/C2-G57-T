@@ -1,3 +1,5 @@
+@use "mixins" as m;
+
 html {
   box-sizing: border-box;
 }
@@ -7,16 +9,30 @@ html {
   box-sizing: inherit;
 }
 
-.container {  
+.container {
   padding: 2rem;
   width: 95%;
   margin: 0 auto;
 }
-.container__page{
-  max-width: 1400px;
+
+.container__page {
+  max-width: 540px;
+  // max-width: 1400px;
   width: 95%;
   margin: 0 auto;
+
+  @include m.tablet {
+    max-width: 720px;
+  }
+
+  @include m.desktop {
+    max-width: 960px;
+  }
+  @include m.bigDesktop {
+    max-width: 1140px;
+  }
 }
-h1{
+
+h1 {
   text-align: center;
 }
