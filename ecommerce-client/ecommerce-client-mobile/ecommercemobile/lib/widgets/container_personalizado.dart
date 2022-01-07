@@ -10,7 +10,7 @@ class ContainerPersonalizado extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200,
+      height: 400,
       width: double.infinity,
       color: Colors.grey,
       child: Center(
@@ -24,16 +24,18 @@ class ContainerPersonalizado extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              color: Colors.white,
-              child: const Padding(
-                padding: EdgeInsets.all(15.0),
-                child: Text(
-                  "Link a Categoria",
-                  style: TextStyle(fontSize: 20),
-                ),
-              ),
-            )
+            // Container(
+            //   color: Colors.white,
+            //   child: const Padding(
+            //     padding: EdgeInsets.all(15.0),
+            //     child: Text(
+            //       "Link a Categoria",
+            //       style: TextStyle(fontSize: 20),
+            //     ),
+            //   ),
+            // )
+
+            //FadeInImage(placeholder: placeholder, image: image)
           ],
         ),
       ),

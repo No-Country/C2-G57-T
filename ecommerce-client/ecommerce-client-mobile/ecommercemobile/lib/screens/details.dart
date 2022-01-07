@@ -9,6 +9,8 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
+  final int valor = 1;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -31,74 +33,55 @@ class _DetailState extends State<Detail> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ImagenPrincipal(),
-              ImagenesSecundarias(),
+              ImagenPrincipal(
+                color: Colors.pink,
+              ),
+              //ImagenesSecundarias(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    height: 80,
+                    width: 80,
+                    color: Colors.yellow,
+                  ),
+                  Container(
+                    height: 80,
+                    width: 80,
+                    color: Colors.green,
+                  ),
+                  Container(
+                    height: 80,
+                    width: 80,
+                    color: Colors.red,
+                  )
+                ],
+              ),
               Text("Nombre del Producto"),
               Text("Precio"),
               Text("Colores"),
               Row(
                 children: [
-                  Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(20)),
+                  BotonColorTalle(
+                    color: Colors.black,
                   ),
                   SizedBox(
                     width: 15,
                   ),
-                  Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
-                  ),
+                  BotonColorTalle(),
                 ],
               ),
               Text("Talles"),
               Row(
                 children: [
-                  Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text("L"),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text("XL"),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 20,
-                    width: 20,
-                    decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        "XXL",
-                        style: TextStyle(fontSize: 10),
-                      ),
-                    ),
-                  )
+                  BotonColorTalle(
+                      child: Text("L", style: TextStyle(fontSize: 11))),
+                  SizedBox(width: 15),
+                  BotonColorTalle(
+                      child: Text("XL", style: TextStyle(fontSize: 11))),
+                  SizedBox(width: 15),
+                  BotonColorTalle(
+                      child: Text("XXL", style: TextStyle(fontSize: 11))),
                 ],
               ),
               Text("Cantidad"),
@@ -204,6 +187,27 @@ class _DetailState extends State<Detail> {
   }
 }
 
+class BotonColorTalle extends StatelessWidget {
+  const BotonColorTalle({
+    Key? key,
+    this.color = Colors.white,
+    this.child,
+  }) : super(key: key);
+
+  final Color color;
+  final Widget? child;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 20,
+      width: 20,
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(20)),
+      child: Center(child: child),
+    );
+  }
+}
+
 class ImagenesSecundarias extends StatelessWidget {
   const ImagenesSecundarias({
     Key? key,
@@ -217,17 +221,17 @@ class ImagenesSecundarias extends StatelessWidget {
         Container(
           height: 80,
           width: 80,
-          color: Colors.grey,
+          color: Colors.yellow,
         ),
         Container(
           height: 80,
           width: 80,
-          color: Colors.grey,
+          color: Colors.green,
         ),
         Container(
           height: 80,
           width: 80,
-          color: Colors.grey,
+          color: Colors.red,
         )
       ],
     );
@@ -237,14 +241,17 @@ class ImagenesSecundarias extends StatelessWidget {
 class ImagenPrincipal extends StatelessWidget {
   const ImagenPrincipal({
     Key? key,
+    required this.color,
   }) : super(key: key);
+
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 250,
       width: 345,
-      color: Colors.grey,
+      color: color,
     );
   }
 }

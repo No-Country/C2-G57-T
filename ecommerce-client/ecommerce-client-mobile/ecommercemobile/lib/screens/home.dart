@@ -41,44 +41,23 @@ class _HomeState extends State<Home> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () => Navigator.pushNamed(context, "detail"),
-                      child: Image.network(
-                        "https://via.placeholder.com/350x150",
+                      child: Image.asset(
+                        "assets/${index + 1}.jpg",
                         fit: BoxFit.fill,
                       ),
                     );
                   },
-                  itemCount: 7,
+                  itemCount: 3,
                   pagination: SwiperPagination(),
                   control: SwiperControl(),
                 ),
               ),
               SizedBox(height: 5),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, "grid");
-                },
-                child: const ContainerPersonalizado(
-                  titulo: '"Imagen de la categoria"',
-                ),
-              ),
+              ImagenCategoria(categoria: 'Remera', imagenAssets: '7'),
               SizedBox(height: 5),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, "grid");
-                },
-                child: const ContainerPersonalizado(
-                  titulo: '"Imagen de la categoria"',
-                ),
-              ),
+              ImagenCategoria(categoria: "Pantalon", imagenAssets: "4"),
               const SizedBox(height: 5),
-              GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, "grid");
-                },
-                child: const ContainerPersonalizado(
-                  titulo: '"Imagen de la categoria"',
-                ),
-              ),
+              ImagenCategoria(categoria: "Accesorio", imagenAssets: "1"),
               const SizedBox(height: 10),
               const ContainerRedesSociales(),
               const SizedBox(height: 10),
@@ -88,6 +67,47 @@ class _HomeState extends State<Home> {
           ),
         ),
         bottomNavigationBar: FooterPersonalizado(),
+      ),
+    );
+  }
+}
+
+class ImagenCategoria extends StatelessWidget {
+  const ImagenCategoria(
+      {Key? key, required this.categoria, required this.imagenAssets})
+      : super(key: key);
+
+  final String categoria;
+  final String imagenAssets;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, "grid");
+      },
+      child: Center(
+        child: Container(
+          height: 200,
+          width: double.infinity,
+          child: Stack(alignment: Alignment.bottomCenter, children: [
+            FadeInImage(
+              placeholder: AssetImage("assets/loading.gif"),
+              image: AssetImage("assets/${imagenAssets}.jpg"),
+              fit: BoxFit.cover,
+            ),
+            Container(
+              height: 30,
+              width: double.infinity,
+              color: Colors.black87,
+              child: Center(
+                child: Text(
+                  categoria,
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            )
+          ]),
+        ),
       ),
     );
   }

@@ -34,6 +34,10 @@ class GridScreen extends StatelessWidget {
                     height: 150,
                     width: 150,
                     color: Colors.grey,
+                    child: FadeInImage(
+                      placeholder: AssetImage("assets/loading.gif"),
+                      image: AssetImage("assets/${index + 1}.jpg"),
+                    ),
                   ),
                   Text("Nombre del Producto"),
                   Text("Precio")
