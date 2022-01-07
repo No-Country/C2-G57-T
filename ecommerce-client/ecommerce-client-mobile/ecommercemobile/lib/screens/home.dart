@@ -53,16 +53,31 @@ class _HomeState extends State<Home> {
                 ),
               ),
               SizedBox(height: 5),
-              const ContainerPersonalizado(
-                titulo: '"Imagen de la categoria"',
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "grid");
+                },
+                child: const ContainerPersonalizado(
+                  titulo: '"Imagen de la categoria"',
+                ),
               ),
               SizedBox(height: 5),
-              const ContainerPersonalizado(
-                titulo: '"Imagen de la categoria"',
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "grid");
+                },
+                child: const ContainerPersonalizado(
+                  titulo: '"Imagen de la categoria"',
+                ),
               ),
               const SizedBox(height: 5),
-              const ContainerPersonalizado(
-                titulo: '"Imagen de la categoria"',
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, "grid");
+                },
+                child: const ContainerPersonalizado(
+                  titulo: '"Imagen de la categoria"',
+                ),
               ),
               const SizedBox(height: 10),
               const ContainerRedesSociales(),
