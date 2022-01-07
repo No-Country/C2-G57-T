@@ -10,11 +10,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Material App',
       debugShowCheckedModeBanner: false,
-      initialRoute: "detail",
+      initialRoute: "pay",
       routes: {
         "login": (_) => Login(),
         "home": (_) => Home(),
-        "detail": (_) => Detail()
+        "detail": (_) => Detail(),
+        "shop": (_) => Shop(),
+        "grid": (_) => GridScreen(),
+        "pay": (_) => Pay()
       },
     );
   }
