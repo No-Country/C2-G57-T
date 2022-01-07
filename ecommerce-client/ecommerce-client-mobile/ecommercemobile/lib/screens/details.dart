@@ -13,7 +13,7 @@ class _DetailState extends State<Detail> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.purple[200],
-      drawer: Drawer(),
+      drawer: DrawerPersonalizado(),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.purple[200],
@@ -27,31 +27,8 @@ class _DetailState extends State<Detail> {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              height: 250,
-              width: 345,
-              color: Colors.grey,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Container(
-                  height: 80,
-                  width: 80,
-                  color: Colors.grey,
-                ),
-                Container(
-                  height: 80,
-                  width: 80,
-                  color: Colors.grey,
-                ),
-                Container(
-                  height: 80,
-                  width: 80,
-                  color: Colors.grey,
-                )
-              ],
-            ),
+            ImagenPrincipal(),
+            ImagenesSecundarias(),
             Text("Nombre del Producto"),
             Text("Precio"),
             Text("Colores"),
@@ -141,7 +118,10 @@ class _DetailState extends State<Detail> {
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.pink),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    setState(() {});
+                    mostradDialogoCompra(context);
+                  },
                   icon: Icon(Icons.shopping_cart_outlined),
                   label: Text("COMPRAR")),
             ),
@@ -149,6 +129,112 @@ class _DetailState extends State<Detail> {
         ),
       ),
       bottomNavigationBar: FooterPersonalizado(),
+    );
+  }
+
+  Future<dynamic> mostradDialogoCompra(BuildContext context) {
+    return showDialog(
+      barrierDismissible: true,
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: double.infinity,
+          width: double.infinity,
+          color: Colors.black12,
+          child: AlertDialog(
+            content: Container(
+              height: 250,
+              width: 370,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 230),
+                    child: IconButton(
+                      icon: Icon(Icons.cancel_outlined),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        height: 100,
+                        width: 100,
+                        color: Colors.grey,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Añadiste al carrito:"),
+                          Text("Nombre del producto"),
+                          Text("Color:Negro"),
+                          Text("Color:Negro"),
+                          Text("Total: 00000")
+                        ],
+                      )
+                    ],
+                  ),
+                  ElevatedButton.icon(
+                      onPressed: () {},
+                      icon: Icon(Icons.shopping_cart_outlined),
+                      label: Text("Finalizar compra")),
+                  ElevatedButton(
+                      onPressed: () {}, child: Text("Seguir Comprando\t\t\t"))
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class ImagenesSecundarias extends StatelessWidget {
+  const ImagenesSecundarias({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Container(
+          height: 80,
+          width: 80,
+          color: Colors.grey,
+        ),
+        Container(
+          height: 80,
+          width: 80,
+          color: Colors.grey,
+        ),
+        Container(
+          height: 80,
+          width: 80,
+          color: Colors.grey,
+        )
+      ],
+    );
+  }
+}
+
+class ImagenPrincipal extends StatelessWidget {
+  const ImagenPrincipal({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 250,
+      width: 345,
+      color: Colors.grey,
     );
   }
 }
