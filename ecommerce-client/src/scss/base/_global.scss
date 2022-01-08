@@ -37,8 +37,11 @@ html {
 h1 {
   text-align: center;
 }
-.banner__error{
-  background-color: v.$danger;
-  text-align: center;
-  padding: .5rem;
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

@@ -4,7 +4,7 @@ const bcrypt = require("bcrypt");
 
 const postUser = async(req, res)=>{
 
-    
+    console.log('res', req.body )
     const {name, email, password} = req.body;
     const user = new User({name, email, password});
     
@@ -14,7 +14,7 @@ const postUser = async(req, res)=>{
     
     
     // Guardar en BD
-    // await user.save();
+    await user.save();
     res.json({               
         user        
     });

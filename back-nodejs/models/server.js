@@ -8,14 +8,6 @@ class Server {
         this.port = process.env.PORT || 5000;
         this.app = express();
         this.paths = {
-<<<<<<< HEAD
-            users: "/api/users",
-            auth: "/api/auth",
-        }
-        // Conectar DB
-        // iniciarMongoose()
-        // Middlewares
-=======
                 users: "/api/users",
                 auth: "/api/auth",
                 products: "/api/products"
@@ -23,8 +15,8 @@ class Server {
             }
             // Conectar DB
         iniciarMongoose()
+        
             // Middlewares
->>>>>>> 490e7256d02de75f036494b7ffd756fa48391c82
         this.middlewares();
         // Rutas
         this.routes();

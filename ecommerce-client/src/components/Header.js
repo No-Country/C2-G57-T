@@ -1,24 +1,26 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 
+// images
+import logo from '../images/logo.png';
+
 const Header = () => {
   const [showSidebar, setShowSidebar] = useState(false);
 
   return (
     <>
       <header className='header'>
-        <div className='container header__container'>
-          <i
-            className='fas fa-bars'
-            onClick={() => setShowSidebar(!showSidebar)}
-          ></i>
-
-          <div>
-            <h1>Aca Logo!!!!</h1>
+        <div className="button-burguer" onClick={ () => setShowSidebar(!showSidebar) }>
+          <i class="fas fa-bars"></i>
+        </div>
+        <img src={logo} alt="logo" />
+        <div className="icons-header">
+          <div className="icon-search">
+            <i class="fas fa-search"></i>
           </div>
-
-          <i className='fas fa-search'></i>
-          <i className='fas fa-shopping-cart'></i>
+          <div className="icon-cart">
+            <i class="fas fa-shopping-cart"></i>
+          </div>
         </div>
       </header>
 

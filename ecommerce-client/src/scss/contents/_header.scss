@@ -1,14 +1,61 @@
+@use "../base/variables" as v;
+
 .header {
-  background-color: violet;
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background: v.$violet;
+  z-index: 99;
 
-  &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .button-burguer {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: .8rem;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      background: rgba($color: #fff, $alpha: .5);
+    }
   }
+
+  img {
+    width: 150px;
+    height: 40px;
+    object-fit: contain;
+  }
+
+  .icons-header {
+    display: flex;
+
+    .icon-search, .icon-cart {
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+      border-radius: .8rem;
+      cursor: pointer;
+      transition: all .3s ease-in-out;
+
+      &:hover {
+        background: rgba($color: #fff, $alpha: .5);
+      }
+    }
+  }
+
+  i {
+    font-size: .9rem;
+    color: v.$blanco;
+  }
+
 }
 
-.fas {
-  color: #fff;
-  font-size: 2rem;
-}
+

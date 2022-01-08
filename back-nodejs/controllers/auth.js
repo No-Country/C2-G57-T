@@ -3,11 +3,17 @@ const bcrypt = require("bcrypt");
 const { generarJWT } = require("../helpers/generar-jwt");
 
 const login = async (req, res) => {
+
+  console.log('req', req.body )
+
   const { email, password } = req.body;
 
   try {
     // Validaciones en la DB
     const user = await User.findOne({ email });
+
+    console.log('user', user )
+
     if (!user) {
       return res.status(400).json({
         msg: "User or password incorrect",

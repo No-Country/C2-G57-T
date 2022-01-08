@@ -1,13 +1,61 @@
-.sidebar {
-  background-color: red;
-  height: 50vh;
-  width: 20rem;
-  position: absolute;
+@use "../base/variables" as v;
 
-  & ul a {
-    font-size: 2rem;
-    list-style: none;
-    text-decoration: none;
-    color: #fff;
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1rem;
+  width: 300px;
+  height: 100%;
+  background-color: v.$grisClaro;
+  padding: 20px;
+  z-index: 99;
+
+  .icon-user {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    // border-radius: 50%;
+    background: v.$secundario;
+    color: v.$blanco;
+  }
+
+  ul {
+    padding-inline-start: 0;
+
+    li {
+      font-size: .8rem;
+      border-bottom: 1px solid v.$grisSecond;
+      color: v.$negro;
+      cursor: pointer;
+
+      a {
+        color: v.$negro
+      }
+
+      i {
+        font-size: .6rem;
+      }
+    }
+
+    .collapse {
+      background: v.$rosaClaro;
+
+      ul {
+        padding-inline-start: 10px;
+
+        li {
+          color: v.$secundario;
+
+          a {
+            color: v.$secundario
+          }
+        }
+      }
+    }
   }
 }

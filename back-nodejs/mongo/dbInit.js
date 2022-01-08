@@ -3,14 +3,17 @@ const mongoose = require("mongoose");
 
 //punto de entrada(sirve para conectarnos).
 //Es necesario tener instalado mongoodb en la computadora.
-const DB_URI = process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGO_URL;
+
+
+
 
 //exportar la conexión.
 module.exports = () => {
   const connect = () => {
     mongoose.connect(
       //"url" de nuestra db.
-      DB_URI,
+      MONGO_URL,
       {
         keepAlive: true,
         useNewUrlParser: true,
