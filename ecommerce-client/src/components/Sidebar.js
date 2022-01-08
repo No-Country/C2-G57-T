@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 const Sidebar = () => {
   return (
     <div className='sidebar'>
+      <div className="icon-user-container">
       <div className="icon-user">
         <i class="far fa-user"></i>
+      </div>
+        <p>Usuario</p>
+
       </div>
       <ul>
         <li><Link to={'/'}>HOME</Link></li>
