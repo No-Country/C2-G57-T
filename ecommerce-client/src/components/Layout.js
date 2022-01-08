@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
       <Outlet />
       {children}
 
-      <footer style={{ marginTop: "40rem" }}>
+      <footer>
         <h1>footer</h1>
       </footer>
     </>

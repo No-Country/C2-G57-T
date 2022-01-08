@@ -16,10 +16,10 @@ html {
 }
 
 .container__page {
-  max-width: 540px;
-  // max-width: 1400px;
+  max-width: 540px;  
   width: 95%;
   margin: 0 auto;
+  height: 50rem;
 
   @include m.tablet {
     max-width: 720px;
