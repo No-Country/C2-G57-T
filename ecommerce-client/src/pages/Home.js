@@ -25,10 +25,10 @@ const Home = () => {
         </div>
         <div className="sections-home">
           <CardRedes img={redes01}>
-            <i class="fab fa-instagram"></i>
+            <i className="fab fa-instagram"></i>
           </CardRedes>
           <CardRedes img={redes02}>
-            <i class="fab fa-facebook"></i>
+            <i className="fab fa-facebook"></i>
           </CardRedes>
         </div>
       </div>
