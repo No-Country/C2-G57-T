@@ -6,17 +6,17 @@ const Sidebar = () => {
     <div className='sidebar'>
       <div className="icon-user-container">
       <div className="icon-user">
-        <i class="far fa-user"></i>
+        <i className="far fa-user"></i>
       </div>
         <p>Usuario</p>
 
       </div>
       <ul>
         <li><Link to={'/'}>HOME</Link></li>
-        <li data-bs-toggle="collapse" href="#collapse-indumentaria" role="button" aria-expanded="false" aria-controls="collapse-indumentaria">INDUMENTARIA <i class="fas fa-chevron-right"></i></li>
+        <li data-bs-toggle="collapse" href="#collapse-indumentaria" role="button" aria-expanded="false" aria-controls="collapse-indumentaria">INDUMENTARIA <i className="fas fa-chevron-right"></i></li>
         <div className="collapse" id="collapse-indumentaria">
           <ul>
-            <li data-bs-toggle="collapse" href="#collapse-remeras" role="button" aria-expanded="false" aria-controls="collapse-remeras">REMERAS <i class="fas fa-chevron-right"></i></li>
+            <li data-bs-toggle="collapse" href="#collapse-remeras" role="button" aria-expanded="false" aria-controls="collapse-remeras">REMERAS <i className="fas fa-chevron-right"></i></li>
             <div class="collapse" id="collapse-remeras">
               <ul>
                 <li>
@@ -30,7 +30,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </div>
-            <li data-bs-toggle="collapse" href="#collapse-faldas" role="button" aria-expanded="false" aria-controls="collapse-faldas">FALDAS <i class="fas fa-chevron-right"></i></li>
+            <li data-bs-toggle="collapse" href="#collapse-faldas" role="button" aria-expanded="false" aria-controls="collapse-faldas">FALDAS <i className="fas fa-chevron-right"></i></li>
             <div class="collapse" id="collapse-faldas">
               <ul>
                 <li>
@@ -41,7 +41,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </div>
-            <li data-bs-toggle="collapse" href="#collapse-vestidos" role="button" aria-expanded="false" aria-controls="collapse-vestidos">VESTIDOS <i class="fas fa-chevron-right"></i></li>
+            <li data-bs-toggle="collapse" href="#collapse-vestidos" role="button" aria-expanded="false" aria-controls="collapse-vestidos">VESTIDOS <i className="fas fa-chevron-right"></i></li>
             <div class="collapse" id="collapse-vestidos">
               <ul>
                 <li>
@@ -52,7 +52,7 @@ const Sidebar = () => {
                 </li>
               </ul>
             </div>
-            <li data-bs-toggle="collapse" href="#collapse-pantalones" role="button" aria-expanded="false" aria-controls="collapse-pantalones">PANTALONES <i class="fas fa-chevron-right"></i></li>
+            <li data-bs-toggle="collapse" href="#collapse-pantalones" role="button" aria-expanded="false" aria-controls="collapse-pantalones">PANTALONES <i className="fas fa-chevron-right"></i></li>
             <div class="collapse" id="collapse-pantalones">
               <ul>
                 <li>
@@ -65,7 +65,7 @@ const Sidebar = () => {
             </div>
           </ul>
         </div>
-        <li data-bs-toggle="collapse" href="#collapse-accesorios" role="button" aria-expanded="false" aria-controls="collapse-accesorios">ACCESORIOS <i class="fas fa-chevron-right"></i></li>
+        <li data-bs-toggle="collapse" href="#collapse-accesorios" role="button" aria-expanded="false" aria-controls="collapse-accesorios">ACCESORIOS <i className="fas fa-chevron-right"></i></li>
         <div class="collapse" id="collapse-accesorios">
               <ul>
                 <li>

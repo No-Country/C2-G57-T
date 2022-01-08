@@ -11,15 +11,15 @@ const Header = () => {
     <>
       <header className='header'>
         <div className="button-burguer" onClick={ () => setShowSidebar(!showSidebar) }>
-          <i class="fas fa-bars"></i>
+          <i className="fas fa-bars"></i>
         </div>
         <img src={logo} alt="logo" />
         <div className="icons-header">
           <div className="icon-search">
-            <i class="fas fa-search"></i>
+            <i className="fas fa-search"></i>
           </div>
           <div className="icon-cart">
-            <i class="fas fa-shopping-cart"></i>
+            <i className="fas fa-shopping-cart"></i>
           </div>
         </div>
       </header>
