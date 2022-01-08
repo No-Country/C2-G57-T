@@ -16,7 +16,7 @@ html {
 }
 
 .container__page {
-  max-width: 540px;
+  // max-width: 540px;
   // max-width: 1400px;
   width: 95%;
   margin: 0 auto;
@@ -35,4 +35,12 @@ html {
 
 h1 {
   text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

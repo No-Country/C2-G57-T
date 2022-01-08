@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
+import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
@@ -11,9 +12,7 @@ const Layout = ({ children }) => {
       <Outlet />
       {children}
 
-      <footer style={{ marginTop: "40rem" }}>
-        <h1>footer</h1>
-      </footer>
+      <Footer />
     </>
   );
 };
