@@ -7,6 +7,12 @@ import Login from "../pages/Login";
 import Dress from "./../pages/Dress";
 
 export const Navigation = () => {
+
+
+  //pedir endpoint para mantener el usuario
+
+
+
   return (
     <BrowserRouter>
       <Routes>

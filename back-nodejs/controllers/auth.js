@@ -6,6 +6,8 @@ const login = async (req, res) => {
 
   console.log('req', req.body )
 
+
+
   const { email, password } = req.body;
 
   try {

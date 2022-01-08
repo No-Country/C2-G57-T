@@ -10,13 +10,13 @@ const router = Router();
 
 router.post(
   "/",
-//   [
-//     check("name", "Name is required").notEmpty(),
-//     check("email", "Email is required").notEmpty(),
-//     check("password", "Password is required").notEmpty(),
-//     check("email").custom(emailExists),
-//     validations,
-//   ],
+  [
+    check("name", "Name is required").notEmpty(),
+    check("email", "Email is required").notEmpty(),
+    check("password", "Password is required").notEmpty(),
+    check("email").custom(emailExists),
+    validations,
+  ],
   postUser
 );
 

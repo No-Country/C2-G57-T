@@ -1,25 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
+import { UserData } from "../authContext/AuthContext";
 import { useForm } from "./../hooks/useForm";
 
 const RegisterInputs = () => {
   const { values, handleInputChange, reset } = useForm({
-    email: "",
-    user: "",
-    password: "",
-    repeatPassword: "",
-    city: "",
-    address: "",
-    cp: "",
+    email: "c@c.com",
+    name: "Pedro",
+    password: "123123",
+    repeatPassword: "123123",
+    // city: "",
+    // address: "",
+    // cp: "",
   });
+
+  const { error, userRegister } = useContext(UserData);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("valuesregister", values);
+
+    userRegister(values);
     reset();
   };
 
   return (
     <form className='login__containerInput' onSubmit={handleSubmit}>
+      {error.show && <p className='banner__error'>{error.msg}</p>}
       <input
         name='email'
         placeholder='Email'
@@ -28,11 +33,11 @@ const RegisterInputs = () => {
         value={values.email}
       />
       <input
-        name='user'
+        name='name'
         placeholder='Nombre de Usuario'
         onChange={handleInputChange}
         type='text'
-        value={values.user}
+        value={values.name}
       />
       <input
         name='password'
@@ -48,7 +53,7 @@ const RegisterInputs = () => {
         type='password'
         value={values.repeatPassword}
       />
-      <input
+      {/* <input
         name='city'
         placeholder='Ciudad'
         onChange={handleInputChange}
@@ -68,7 +73,7 @@ const RegisterInputs = () => {
         onChange={handleInputChange}
         type='text'
         value={values.cp}
-      />
+      /> */}
 
       <div className='checkboxContainer--register'>
         <div className='checkboxContainer__campo'>
