@@ -1,14 +1,13 @@
-.sidebar{
-    background-color: red;
-    height: 50vh;
-    width: 20rem;
-    position: absolute;
+.sidebar {
+  background-color: red;
+  height: 50vh;
+  width: 20rem;
+  position: absolute;
 
-    & ul a{
-        font-size: 2rem;
-        list-style: none;
-        text-decoration: none;
-        color: #fff;
-    }
-
+  & ul a {
+    font-size: 2rem;
+    list-style: none;
+    text-decoration: none;
+    color: #fff;
+  }
 }

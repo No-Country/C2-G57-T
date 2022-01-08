@@ -13,7 +13,7 @@ class Server {
             auth: "/api/auth",
         }
         // Conectar DB
-        iniciarMongoose()
+        // iniciarMongoose()
         // Middlewares
         this.middlewares();
         // Rutas
