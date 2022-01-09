@@ -151,6 +151,9 @@ const Sidebar = () => {
           <Link to={"#"}>CONTACTO</Link>
         </li>
         <li>
+          <Link to={"/registerproducts"}>INGRESAR PRODUCTOS A LA TIENDA</Link>
+        </li>
+        <li>
           <Link to={"/login"}>
             INGRESAR / <span onClick={handleLogOut}>CERRAR SESION</span>
           </Link>

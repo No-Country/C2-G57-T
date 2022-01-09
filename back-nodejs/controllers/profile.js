@@ -5,6 +5,10 @@ const { generarJWT } = require("../helpers/generar-jwt");
 
 
 const updateUserProfile = AsyncHandler(async (req, res)=>{
+
+    console.log(req.body)
+
+
 const user = await Profile.findById(req.name._id);
 if(user){
     

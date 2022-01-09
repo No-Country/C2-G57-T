@@ -15,7 +15,6 @@ class Server {
             }
             // Conectar DB
         iniciarMongoose()
-        
             // Middlewares
         this.middlewares();
         // Rutas

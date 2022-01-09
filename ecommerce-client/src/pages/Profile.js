@@ -20,6 +20,7 @@ export const Profile = () => {
     e.preventDefault();
 
     console.log("values", values);
+    reset();
   };
 
   return (

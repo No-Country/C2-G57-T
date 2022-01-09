@@ -10,6 +10,7 @@ export const UserData = createContext({
 export const AuthContext = ({ children }) => {
   const initialState = {
     token: localStorage.getItem("token"),
+    logged: false,
     status: false,
     user: null,
     email: null,
@@ -48,6 +49,7 @@ export const AuthContext = ({ children }) => {
   const userLogin = async (data) => {
     try {
       const resp = await clientAxios.post("api/auth/login", data);
+      console.log('resp', resp )
       dispatch({
         type: LOGIN_SUCCESS,
         payload: resp.data,
@@ -72,6 +74,8 @@ export const AuthContext = ({ children }) => {
       type: LOGOUT_SUCCESS,
     });
   };
+
+  console.log('sta',state )
 
   return (
     <UserData.Provider

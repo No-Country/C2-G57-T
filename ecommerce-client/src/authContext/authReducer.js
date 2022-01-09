@@ -8,6 +8,7 @@ export const authReducer = (state, action) => {
         ...state,
         token: action.payload.token,
         status: true,
+        logged: true,
         user: action.payload.user.name,
         email: action.payload.user.email,
       };
@@ -16,6 +17,7 @@ export const authReducer = (state, action) => {
       return {
         ...state,
         token: null,
+        logged: false,
         status: false,
         user: null,
         email: null,

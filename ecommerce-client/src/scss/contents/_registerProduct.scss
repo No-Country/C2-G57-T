@@ -1,0 +1,12 @@
+.registerProductContainer{
+    // height: 80vh;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 2rem;
+    
+}
+
+.registerProductInputContainer{
+    display: flex;
+    flex-direction: column;
+}
