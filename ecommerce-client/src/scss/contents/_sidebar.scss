@@ -30,8 +30,20 @@
     line-height: 40px;
     // border-radius: 50%;
     background: v.$secundario;
-    color: v.$blanco;
-    
+    color: v.$blanco;    
+  }
+  .button-profile{
+    margin-left: 1rem;
+    border: none;
+    padding: .5rem;
+    background: v.$primario;
+
+    &:hover{
+      cursor: pointer;
+      background-color: darken($color: v.$primario, $amount: 10);
+    }
+
+
   }
 
   ul {

@@ -1,0 +1,37 @@
+.profile {
+
+    &__page{
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 2rem 0 0 0;
+    }
+
+
+  &__container {
+    border: 2px solid black;
+    padding: 1rem;
+
+    .profile__fieldContainer {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #e1e1e1;
+      &:nth-child(3) {
+        border: none;
+      }
+      p {
+        font-size: 1.2rem;
+        font-weight: bold;
+      }
+      input {
+        margin: 0rem 0 1rem 0;
+        padding: .5rem;
+      }
+    }
+  }
+}
+
+.profile__inputSubmit{
+  width: 100%;
+  padding: .5rem;
+  text-transform: uppercase;
+}

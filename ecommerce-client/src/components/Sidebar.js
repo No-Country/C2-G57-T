@@ -15,7 +15,16 @@ const Sidebar = () => {
         <div className='icon-user'>
           <i className='far fa-user'></i>
         </div>
-        {state.user ? <p>{state.user}</p> : <p>Usuario</p>}
+        {state.user ? (
+          <>
+            <p>{state.user}</p>{" "}
+            <Link to={"/profile"}>
+              <button className='button-profile'>Mi perfil</button>
+            </Link>
+          </>
+        ) : (
+          <p>Usuario</p>
+        )}
       </div>
       <ul>
         <li>
