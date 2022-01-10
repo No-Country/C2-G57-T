@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+// components
 import Sidebar from "./Sidebar";
 
 // images
@@ -13,7 +16,7 @@ const Header = () => {
         <div className="button-burguer" onClick={ () => setShowSidebar(!showSidebar) }>
           <i className="fas fa-bars"></i>
         </div>
-        <img src={logo} alt="logo" />
+        <Link to={'/'}><img src={logo} alt="logo" /></Link>
         <div className="icons-header">
           <div className="icon-search">
             <i className="fas fa-search"></i>

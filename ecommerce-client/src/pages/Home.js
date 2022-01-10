@@ -19,9 +19,9 @@ const Home = () => {
       <Carousel/>
       <div className='container__page'>
         <div className="sections-home">
-          <CardHome name='DESTACADOS' img={section01} />
-          <CardHome name='30% OFF' img={section02} />
-          <CardHome name='ACCESORIOS' img={section03} />
+          <CardHome name='DESTACADOS' img={section01} uri='/dress' />
+          <CardHome name='30% OFF' img={section02} uri='#' />
+          <CardHome name='ACCESORIOS' img={section03} uri='#' />
         </div>
         <div className="sections-home">
           <CardRedes img={redes01}>

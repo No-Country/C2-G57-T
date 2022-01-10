@@ -8,6 +8,7 @@ import { Profile } from "../pages/Profile";
 import { RegisterProducts } from "../pages/RegisterProducts";
 // import your route components too
 import Dress from "./../pages/Dress";
+import ProdDetail from "../pages/ProdDetail";
 
 export const Navigation = () => {
   //pedir endpoint para mantener el usuario
@@ -22,6 +23,7 @@ export const Navigation = () => {
           <Route path='login' element={<Login />} />
           {state.logged && <Route path='profile' element={<Profile />} />}
           <Route path='dress' element={<Dress />} />
+          <Route path='prodDetail' element={<ProdDetail />} />
           <Route path='registerproducts' element={<RegisterProducts />} />
 
           <Route path='*' element={<Home />} />
