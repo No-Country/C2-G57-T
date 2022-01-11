@@ -15,9 +15,15 @@ const ProductSchema = Schema({
         type: String,
         default: "No description"
     },    
+<<<<<<< HEAD
     img: {
         type: Array
     }
+=======
+    img: [{
+        url: String
+    }]
+>>>>>>> d9e454ac4bb218ceadf85f852cc75890ddccfd76
 });
 
 ProductSchema.methods.toJSON = function(){

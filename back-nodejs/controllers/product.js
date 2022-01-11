@@ -1,5 +1,9 @@
 const Product = require("../models/product");
+const cloudinary = require('cloudinary').v2
+cloudinary.config(process.env.CLOUDINARY_URL);
+const {getIdCloudinary} = require("../helpers/getIdCloudinary");
 
+<<<<<<< HEAD
 const saveProduct = async (req, res) => {
   console.log("req", req.body);
 
@@ -12,10 +16,44 @@ const saveProduct = async (req, res) => {
     console.log("errpr", error);
     res.status(400).json({
       msg: "Product name already registered",
+=======
+const saveProduct = async(req, res) => {
+
+    const { name, price, description, img } = req.body;
+    const product = new Product({ name, price, description, img });
+    try {
+        await product.save();
+        res.status(201).json(product);
+    } catch (error) {
+        res.json({
+            msg: "Product name already registered"
+        });
+    }
+};
+
+const getProducts = async(req, res) => {
+
+    const product = await Product.find({});
+    res.status(200).json(product);
+
+}
+const updateProduct = async(req, res) => {
+    const { id } = req.params;
+    let productUpdate = req.body;
+    
+    const product = await Product.updateOne({ _id: id }, {
+        $set: {
+            name: productUpdate.name,
+            price: productUpdate.price,
+            description: productUpdate.description,
+            img: productUpdate.img
+        }
+>>>>>>> d9e454ac4bb218ceadf85f852cc75890ddccfd76
     });
   }
 };
 
+<<<<<<< HEAD
 const listProduct = async (req, res) => {
   const product = await Product.find({});
   res.json({
@@ -35,6 +73,34 @@ const updateProduct = async (req, res) => {
         description: productUpdate.description,
         img: productUpdate.img,
       },
+=======
+const deleteProduct = async(req, res) => {
+
+    const { id } = req.params;
+    
+    const product = await Product.findByIdAndDelete(id);
+    
+    const arrayxd = product.img.map( e => cloudinary.uploader.destroy( getIdCloudinary(e.url) ) );    
+     
+    res.status(200).json({
+        msg: "Producto eliminado"
+    });
+};
+
+const listProductName = async(req, res) => {
+    let name = req.query.name;
+    //const { name } = req.params;
+    //console.log(name);
+    console.log(name);
+    try {
+        const product = await Product.find({ name: name });
+        console.log(product);
+        res.json({
+            product
+        });
+    } catch (error) {
+        msg = "opss.."
+>>>>>>> d9e454ac4bb218ceadf85f852cc75890ddccfd76
     }
   );
   res.status(200).json(product);
@@ -78,6 +144,7 @@ const listProductPrice = async (req, res) => {
   }
 };
 module.exports = {
+<<<<<<< HEAD
   saveProduct,
   listProduct,
   updateProduct,
@@ -85,3 +152,12 @@ module.exports = {
   listProductName,
   listProductPrice,
 };
+=======
+    saveProduct,
+    getProducts,
+    updateProduct,
+    deleteProduct,
+    listProductName,
+    listProductPrice
+}
+>>>>>>> d9e454ac4bb218ceadf85f852cc75890ddccfd76
