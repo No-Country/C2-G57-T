@@ -15,9 +15,9 @@ const ProductSchema = Schema({
         type: String,
         default: "No description"
     },    
-    img: {
-        type: String
-    }
+    img: [{
+        url: String
+    }]
 });
 
 ProductSchema.methods.toJSON = function(){

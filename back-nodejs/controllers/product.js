@@ -1,5 +1,8 @@
 
 const Product = require("../models/product");
+const cloudinary = require('cloudinary').v2
+cloudinary.config(process.env.CLOUDINARY_URL);
+const {getIdCloudinary} = require("../helpers/getIdCloudinary");
 
 const saveProduct = async(req, res) => {
 
@@ -15,12 +18,10 @@ const saveProduct = async(req, res) => {
     }
 };
 
-const listProduct = async(req, res) => {
+const getProducts = async(req, res) => {
 
     const product = await Product.find({});
-    res.json({
-        product
-    });
+    res.status(200).json(product);
 
 }
 const updateProduct = async(req, res) => {
@@ -42,11 +43,16 @@ const updateProduct = async(req, res) => {
 const deleteProduct = async(req, res) => {
 
     const { id } = req.params;
-
+    
     const product = await Product.findByIdAndDelete(id);
+    
+    const arrayxd = product.img.map( e => cloudinary.uploader.destroy( getIdCloudinary(e.url) ) );    
+     
+    res.status(200).json({
+        msg: "Producto eliminado"
+    });
+};
 
-    res.status(200).json(product);
-}
 const listProductName = async(req, res) => {
     let name = req.query.name;
     //const { name } = req.params;
@@ -85,7 +91,7 @@ const listProductPrice = async(req, res) => {
 }
 module.exports = {
     saveProduct,
-    listProduct,
+    getProducts,
     updateProduct,
     deleteProduct,
     listProductName,
