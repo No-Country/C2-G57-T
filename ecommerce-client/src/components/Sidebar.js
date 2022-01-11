@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UserData } from "../authContext/AuthContext";
 
 const Sidebar = () => {
-  const { state, logOut } = useContext(UserData);
+  const { state, logOut, user } = useContext(UserData);
 
   const handleLogOut = () => {
     logOut();
@@ -15,9 +15,9 @@ const Sidebar = () => {
         <div className='icon-user'>
           <i className='far fa-user'></i>
         </div>
-        {state.user ? (
+        {state.token ? (
           <>
-            <p>{state.user}</p>{" "}
+            <p>{user}</p>{" "}
             <Link to={"/profile"}>
               <button className='button-profile'>Mi perfil</button>
             </Link>

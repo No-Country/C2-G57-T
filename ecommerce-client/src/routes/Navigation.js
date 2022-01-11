@@ -21,7 +21,7 @@ export const Navigation = () => {
         <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
           <Route path='login' element={<Login />} />
-          {state.logged && <Route path='profile' element={<Profile />} />}
+          {state.token && <Route path='profile' element={<Profile />} />}
           <Route path='dress' element={<Dress />} />
           <Route path='prodDetail' element={<ProdDetail />} />
           <Route path='registerproducts' element={<RegisterProducts />} />
