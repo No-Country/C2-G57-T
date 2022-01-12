@@ -67,7 +67,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.alternate_email_outlined),
                 hintText: "Email",
-                contentPadding: EdgeInsets.all(30),
+                contentPadding: EdgeInsets.all(20),
               ),
             ),
             TexfieldPersonalizado(
@@ -88,7 +88,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.lock),
                 hintText: "Contraseña",
-                contentPadding: EdgeInsets.all(30),
+                contentPadding: EdgeInsets.all(20),
               ),
             ),
             TextFormField(
@@ -187,8 +187,10 @@ class TexfieldPersonalizado extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: InputDecoration(
+        hintMaxLines: 2,
         prefixIcon: Icon(icono),
         hintText: titulo,
+        hintStyle: TextStyle(overflow: TextOverflow.ellipsis),
         contentPadding: EdgeInsets.all(30),
       ),
     );

@@ -13,6 +13,8 @@ class _DetailState extends State<Detail> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.purple[200],
@@ -27,32 +29,37 @@ class _DetailState extends State<Detail> {
             Icon(Icons.shopping_cart_outlined)
           ],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(20.0),
+        body: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              ImagenPrincipal(
-                color: Colors.pink,
+              Center(
+                child: Container(
+                  height: height * 0.7,
+                  width: width * 0.6,
+                  child: ImagenPrincipal(
+                    color: Colors.pink,
+                  ),
+                ),
               ),
               //ImagenesSecundarias(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   Container(
-                    height: 80,
-                    width: 80,
+                    height: height * 0.2,
+                    width: width * 0.3,
                     color: Colors.yellow,
                   ),
                   Container(
-                    height: 80,
-                    width: 80,
+                    height: height * 0.2,
+                    width: width * 0.3,
                     color: Colors.green,
                   ),
                   Container(
-                    height: 80,
-                    width: 80,
+                    height: height * 0.2,
+                    width: width * 0.3,
                     color: Colors.red,
                   )
                 ],
@@ -248,9 +255,11 @@ class ImagenPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Container(
-      height: 250,
-      width: 345,
+      height: height * 0.5,
+      width: width * 0.5,
       color: color,
     );
   }

@@ -17,6 +17,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.purple[200],
@@ -35,7 +38,7 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               Container(
-                height: 200,
+                height: height * 0.3,
                 width: double.infinity,
                 child: Swiper(
                   itemBuilder: (BuildContext context, int index) {
@@ -52,17 +55,17 @@ class _HomeState extends State<Home> {
                   control: SwiperControl(),
                 ),
               ),
-              SizedBox(height: 5),
+              SizedBox(height: height * 0.05),
               ImagenCategoria(categoria: 'Remera', imagenAssets: '7'),
-              SizedBox(height: 5),
+              SizedBox(height: height * 0.05),
               ImagenCategoria(categoria: "Pantalon", imagenAssets: "4"),
-              const SizedBox(height: 5),
+              SizedBox(height: height * 0.05),
               ImagenCategoria(categoria: "Accesorio", imagenAssets: "1"),
-              const SizedBox(height: 10),
+              SizedBox(height: height * 0.05),
               const ContainerRedesSociales(),
-              const SizedBox(height: 10),
+              SizedBox(height: height * 0.05),
               const ContainerRedesSociales(),
-              const SizedBox(height: 10),
+              SizedBox(height: height * 0.1),
             ],
           ),
         ),
@@ -81,22 +84,25 @@ class ImagenCategoria extends StatelessWidget {
   final String imagenAssets;
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, "grid");
       },
       child: Center(
         child: Container(
-          height: 200,
+          height: height * 0.6,
           width: double.infinity,
           child: Stack(alignment: Alignment.bottomCenter, children: [
             FadeInImage(
               placeholder: AssetImage("assets/loading.gif"),
               image: AssetImage("assets/${imagenAssets}.jpg"),
+              height: height * 0.5,
               fit: BoxFit.cover,
             ),
             Container(
-              height: 30,
+              height: height * 0.1,
               width: double.infinity,
               color: Colors.black87,
               child: Center(

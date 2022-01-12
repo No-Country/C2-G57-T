@@ -22,6 +22,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return Container(
       child: Column(
         children: [
@@ -35,22 +37,30 @@ class _LoginWidgetState extends State<LoginWidget> {
             titulo: "Contraseña",
             controller: contrasenia2,
           ),
-          ListTile(
-            leading: Checkbox(
-                activeColor: Colors.grey,
-                value: activar,
-                onChanged: (valor) {
-                  activar = valor ?? false;
-                  setState(() {});
-                }),
-            title: Text(
-              "Recordar",
-              style: TextStyle(fontSize: 14),
-            ),
-            trailing: Text(
-              "Olvidaste tu contraseña?",
-              style: TextStyle(fontSize: 13),
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Checkbox(
+                      activeColor: Colors.grey,
+                      value: activar,
+                      onChanged: (valor) {
+                        activar = valor ?? false;
+                        setState(() {});
+                      }),
+                  Text(
+                    "Recordar",
+                    style: TextStyle(fontSize: height * 0.02),
+                  ),
+                ],
+              ),
+              Text(
+                "Olvidaste tu contraseña?",
+                maxLines: 4,
+                style: TextStyle(fontSize: height * 0.015),
+              )
+            ],
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.grey),
