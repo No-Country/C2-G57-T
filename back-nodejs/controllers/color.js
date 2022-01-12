@@ -1,20 +1,13 @@
-const Product = require("../models/product");
-const cloudinary = require('cloudinary').v2
-cloudinary.config(process.env.CLOUDINARY_URL);
-const { getIdCloudinary } = require("../helpers/getIdCloudinary");
-
+const Color = require("../models/color");
 const saveProduct = async(req, res) => {
 
-    const { name, price, description, img, color } = req.body;
-    const product = new Product({ name, price, description, img, color });
-    //console.log(product);
-    //product.img.push({ name: "Nuevo elemento" });
-    //product.img.push("holis");
-    console.log(product);
+    const { name } = req.body;
+    const color = new Color({ name });
+    console.log(color);
 
     try {
-        await product.save();
-        res.status(201).json(product);
+        await color.save();
+        res.status(201).json(color);
     } catch (error) {
         res.json({
             msg: error
@@ -25,8 +18,8 @@ const saveProduct = async(req, res) => {
 
 const getProducts = async(req, res) => {
 
-    const product = await Product.find({});
-    res.status(200).json(product);
+    const color = await Color.find({});
+    res.status(200).json(color);
 
 }
 const updateProduct = async(req, res) => {
@@ -57,24 +50,6 @@ const deleteProduct = async(req, res) => {
         msg: "Producto eliminado"
     });
 };
-
-const getProduct = async(req, res) => {
-
-    const { id } = req.params;
-
-    const product = await Product.findById(id)
-
-    try {
-        res.status(201).json(product);
-    } catch (error) {
-        res.json({
-            msg: "Id de producto no encontrado"
-                //msg: "Product name already registered"
-        });
-    }
-
-};
-
 
 const listProductName = async(req, res) => {
     let name = req.query.name;
@@ -115,7 +90,6 @@ const listProductPrice = async(req, res) => {
 module.exports = {
     saveProduct,
     getProducts,
-    getProduct,
     updateProduct,
     deleteProduct,
     listProductName,
