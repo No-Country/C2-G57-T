@@ -1,4 +1,3 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
 class Pay extends StatefulWidget {
@@ -9,7 +8,7 @@ class Pay extends StatefulWidget {
 }
 
 class _PayState extends State<Pay> {
-  int currentStep = 0;
+  bool recordarTarjeta = true;
   bool tarjetaCredito = true;
   bool transferenciaCbu = true;
   bool mercadoPago = true;
@@ -31,170 +30,179 @@ class _PayState extends State<Pay> {
     super.initState();
   }
 
-  showAltertaDialog(context) {
-    showDialog(
+  @override
+  Widget build(BuildContext context) {
+    showAltertaDialog(context) {
+      showDialog(
         context: context,
         builder: (context) {
           return const AlertDialog(
-              title: Padding(
-                padding: EdgeInsets.only(left: 30.0),
-                child: Text("Pago realizado enviado"),
-              ),
-              content: Icon(
-                Icons.check_circle,
-                color: Colors.purple,
-                size: 60.0,
-              ));
-        });
-  }
+            title: Padding(
+              padding: EdgeInsets.only(left: 30.0),
+              child: Text("Pago realizado"),
+            ),
+            content: Icon(
+              Icons.check_circle,
+              color: Colors.purple,
+              size: 60.0,
+            ),
+          );
+        },
+      );
+    }
 
-  @override
-  Widget build(BuildContext context) {
-    List<Step> listaPasos = [
-      Step(
-          title: Text("Metodo\nde Pago\t"),
-          content: Column(
-            children: [
-              CheckboxListTile(
-                activeColor: Colors.purple,
-                value: tarjetaCredito,
-                onChanged: (val) {
-                  setState(() {});
-                  tarjetaCredito = val ?? false;
-                },
-                title: Text("Tarjeta de Credito"),
-              ),
-              CheckboxListTile(
-                activeColor: Colors.purple,
-                value: transferenciaCbu,
-                onChanged: (val) {
-                  setState(() {});
-                  transferenciaCbu = val ?? false;
-                },
-                title: Text("Transferencia CBU"),
-              ),
-              CheckboxListTile(
-                activeColor: Colors.purple,
-                value: mercadoPago,
-                onChanged: (val) {
-                  setState(() {});
-                  mercadoPago = val ?? false;
-                },
-                title: Text("Mercado Pago"),
-              ),
-              CheckboxListTile(
-                activeColor: Colors.purple,
-                value: efectivo,
-                onChanged: (val) {
-                  setState(() {});
-                  efectivo = val ?? false;
-                },
-                title: Text("Efectivo"),
-              ),
-            ],
-          ),
-          isActive: currentStep >= 0),
-      Step(
-          title: const Text("Datos de\nTarjeta"),
-          content: Column(
-            children: [
-              TextField(
-                controller: direccionController,
-                decoration: const InputDecoration(
-                    hintText: "Numero de tarjeta",
-                    suffixIcon: Icon(Icons.credit_score_outlined)),
-              ),
-              ListTile(
-                  title: Container(
-                    height: 40,
-                    width: 100,
-                    child: TextField(
-                      controller: codigoController,
-                      decoration: const InputDecoration(
-                        hintText: "Cod de Seg",
-                      ),
-                    ),
-                  ),
-                  leading: Container(
-                    height: 40,
-                    width: 150,
-                    child: TextField(
-                      controller: codigoController,
-                      decoration: const InputDecoration(
-                        hintText: "Fecha de Venc",
-                      ),
-                    ),
-                  )),
-            ],
-          ),
-          isActive: currentStep >= 1),
-      Step(
-          title: const Text("Transferencia"),
-          content: Container(
-            padding: const EdgeInsets.all(8.0),
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: "CBU/CVU", suffixIcon: Icon(Icons.home)),
-              ),
-              TextFormField(
-                decoration:
-                    InputDecoration(hintText: "Numero de Cuil del titular"),
-              ),
-            ]),
-          ),
-          isActive: currentStep >= 2)
-    ];
     return Scaffold(
+      backgroundColor: Colors.purple[500],
       appBar: AppBar(
         centerTitle: true,
         title: const Text('Realizar Pago'),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.black,
       ),
-      body: Stepper(
-          type: StepperType.horizontal,
-          currentStep: currentStep,
-          onStepContinue: () {
-            setState(() {
-              if (currentStep < 2) currentStep++;
-            });
-          },
-          onStepCancel: () {
-            setState(() {
-              if (currentStep > 0) currentStep--;
-            });
-          },
-          controlsBuilder: (context, {onStepCancel, onStepContinue}) {
-            return Container(
-              margin: const EdgeInsets.only(top: 50),
-              child: Row(children: [
-                if (currentStep != 2)
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: onStepContinue,
-                        child: const Text("Siguiente")),
-                  ),
-                if (currentStep == 2)
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: () {
-                          showAltertaDialog(context);
-                        },
-                        child: const Text("Enviar")),
-                  ),
-                const SizedBox(
-                  width: 30.0,
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Container(
+          alignment: Alignment.center,
+          height: 400,
+          width: 400,
+          color: Colors.white,
+          child: PageView(
+            controller: PageController(viewportFraction: 0.9),
+            scrollDirection: Axis.horizontal,
+            children: [
+              Container(
+                height: 300,
+                width: 300,
+                child: Column(
+                  children: [
+                    ListTile(
+                      title: Text("Selecciona tu metodo de pago"),
+                      trailing: Container(
+                          height: 30,
+                          width: 30,
+                          color: Colors.red,
+                          child: Icon(Icons.navigate_next_rounded)),
+                    ),
+                    CheckboxListTile(
+                      activeColor: Colors.purple,
+                      value: tarjetaCredito,
+                      onChanged: (val) {
+                        setState(() {});
+                        tarjetaCredito = val ?? false;
+                      },
+                      title: Text("Tarjeta de Credito"),
+                    ),
+                    CheckboxListTile(
+                      activeColor: Colors.purple,
+                      value: transferenciaCbu,
+                      onChanged: (val) {
+                        setState(() {});
+                        transferenciaCbu = val ?? false;
+                      },
+                      title: Text("Transferencia CBU"),
+                    ),
+                    CheckboxListTile(
+                      activeColor: Colors.purple,
+                      value: mercadoPago,
+                      onChanged: (val) {
+                        setState(() {});
+                        mercadoPago = val ?? false;
+                      },
+                      title: Text("Mercado Pago"),
+                    ),
+                    CheckboxListTile(
+                      activeColor: Colors.purple,
+                      value: efectivo,
+                      onChanged: (val) {
+                        setState(() {});
+                        efectivo = val ?? false;
+                      },
+                      title: Text("Efectivo"),
+                    ),
+                  ],
                 ),
-                if (currentStep != 0)
-                  Expanded(
-                    child: ElevatedButton(
-                        onPressed: onStepCancel, child: const Text("Cancelar")),
-                  ),
-              ]),
-            );
-          },
-          steps: listaPasos),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  children: [
+                    Text("Datos de Tarjeta"),
+                    TextField(
+                      controller: direccionController,
+                      decoration: const InputDecoration(
+                          hintText: "Numero de tarjeta",
+                          suffixIcon: Icon(Icons.credit_score_outlined)),
+                    ),
+                    ListTile(
+                      title: Container(
+                        height: 40,
+                        width: 100,
+                        child: TextField(
+                          controller: codigoController,
+                          decoration: const InputDecoration(
+                            hintText: "Cod de Seg",
+                          ),
+                        ),
+                      ),
+                      leading: Container(
+                        height: 40,
+                        width: 150,
+                        child: TextField(
+                          controller: codigoController,
+                          decoration: const InputDecoration(
+                            hintText: "Fecha de Venc",
+                          ),
+                        ),
+                      ),
+                    ),
+                    ListTile(
+                      leading: Checkbox(
+                          activeColor: Colors.grey,
+                          value: recordarTarjeta,
+                          onChanged: (valor) {
+                            recordarTarjeta = valor ?? false;
+                            setState(() {});
+                          }),
+                      title: const Text(
+                        "Recordar Tarjeta",
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    ElevatedButton(
+                        onPressed: () {}, child: Text("Realizar Pago"))
+                  ],
+                ),
+              ),
+              Container(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextFormField(
+                      decoration: InputDecoration(
+                          hintText: "CBU/CVU", suffixIcon: Icon(Icons.home)),
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(
+                          hintText: "Numero de Cuil del titular"),
+                    ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: ElevatedButton(
+                          onPressed: () {}, child: Text("Realizar Pago")),
+                    )
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

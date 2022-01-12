@@ -20,7 +20,7 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.purple[200],
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(50),
           child: SafeArea(
             child: Container(
               width: width * 0.7,

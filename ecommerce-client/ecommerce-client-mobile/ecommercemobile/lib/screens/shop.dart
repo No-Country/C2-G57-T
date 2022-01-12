@@ -79,7 +79,7 @@ class _ShopState extends State<Shop> {
                           ),
                         ],
                       ),
-                      activar ? Text("Hola Mundo") : DatosPersonales(),
+                      activar ? Carrito() : DatosPersonales(),
                     ],
                   ),
                 ),
@@ -93,11 +93,103 @@ class _ShopState extends State<Shop> {
   }
 }
 
-class DatosPersonales extends StatelessWidget {
+class Carrito extends StatefulWidget {
+  const Carrito({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<Carrito> createState() => _CarritoState();
+}
+
+class _CarritoState extends State<Carrito> {
+  bool producto = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15.0),
+      child: Container(
+        width: 500,
+        height: 400,
+        decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Nombre del Usuario\n",
+                style: TextStyle(fontSize: 20),
+              ),
+              Text("Productos"),
+              ListTile(
+                leading: Checkbox(
+                    activeColor: Colors.grey,
+                    value: producto,
+                    onChanged: (valor) {
+                      producto = valor!;
+                      setState(() {});
+                    }),
+                title: const Text(
+                  "Nombre del Producto",
+                  style: TextStyle(fontSize: 14),
+                ),
+                trailing: Text("Precio"),
+              ),
+              ListTile(
+                  leading: Checkbox(
+                      activeColor: Colors.grey,
+                      value: producto,
+                      onChanged: (valor) {
+                        producto = valor!;
+                        setState(() {});
+                      }),
+                  title: const Text(
+                    "Nombre del Producto",
+                    style: TextStyle(fontSize: 14),
+                  ),
+                  trailing: Text("Precio")),
+              Divider(
+                thickness: 2.0,
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Text("Subtotal"),
+              ),
+              SizedBox(
+                height: 30.0,
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton.icon(
+                    icon: Icon(Icons.shopping_cart_outlined),
+                    onPressed: () {
+                      Navigator.pushNamed(context, "pay");
+                    },
+                    label: Text("Pagar Compra")),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class DatosPersonales extends StatefulWidget {
   const DatosPersonales({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<DatosPersonales> createState() => _DatosPersonalesState();
+}
+
+class _DatosPersonalesState extends State<DatosPersonales> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -137,14 +229,6 @@ class DatosPersonales extends StatelessWidget {
               Text("Direccion"),
               Text("Codigo Postal"),
               Text("\n\n\n"),
-              Padding(
-                padding: const EdgeInsets.only(left: 100.0),
-                child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, "pay");
-                    },
-                    child: Text("Pagar Compra")),
-              )
             ],
           ),
         ),
