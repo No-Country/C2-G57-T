@@ -53,10 +53,10 @@ const Sidebar = () => {
             <div className='collapse' id='collapse-remeras'>
               <ul>
                 <li>
-                  <Link to={"#"}>CON MANGAS</Link>
+                  <Link to={"/dress/t-shirt/conmangas"}>CON MANGAS</Link>
                 </li>
                 <li>
-                  <Link to={"#"}>SIN MANGAS</Link>
+                  <Link to={"/dress/t-shirt/sinmangas"}>SIN MANGAS</Link>
                 </li>
                 <li>
                   <Link to={"#"}>MANGA LARGA</Link>
