@@ -10,14 +10,18 @@ const router = Router();
 
 
 
-router.put("/:collection/:id", [
+router.put("/products/:id", [
     validarJWT,
     fileValidation,
-    check("id", "Id must be a Mongo ID").isMongoId(),
+    check("id", "Id debe ser un ID de Mongo").isMongoId(),
     validations
 ], updateImageCloudinary);
 
-router.delete("/:idImage/:codeImage", deleteImageCloudinary);
+router.delete("/:idProduct/:idImage", [
+    validarJWT,
+    check("idProduct", "Id product debe ser un ID de Mongo").isMongoId(),
+    validations
+], deleteImageCloudinary);
 
 
 module.exports = router;
