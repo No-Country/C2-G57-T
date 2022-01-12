@@ -31,8 +31,8 @@ class Server {
         this.app.use(express.json());
         // Subida de archivos con fileupload
         this.app.use(fileUpload({
-            useTempFiles: true,
-            tempFileDir: '/tmp/',
+            useTempFiles : true,
+            tempFileDir : '/tmp/',
             createParentPath: true
         }));
     }
