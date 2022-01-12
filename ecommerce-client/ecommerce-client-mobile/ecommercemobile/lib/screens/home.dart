@@ -10,7 +10,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  //probando
+  //probando otra ves
   bool indumentaria = false;
   bool accesorios = false;
   bool colores = false;
