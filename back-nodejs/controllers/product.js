@@ -28,23 +28,24 @@ const getProductById = async(req, res) => {
 
 const saveProduct = async(req, res) => {
 
-    const { name, price, description, img } = req.body;
-    //const product = new Product({ name, price, description, img });
+    const { name, price, description, img, talle=[], color=[] } = req.body;
+    
     const info = { name, price, description, img };
 
     const product = await Product.create(info);
-
-
+    
+    product.talle = talle;    
+    product.color = color
 
     const promises = req.files.file.map(async e => {
         const { tempFilePath } = e;
         const { secure_url } = await cloudinary.uploader.upload(tempFilePath);
         product.img.push({ url: secure_url })
-        return await product.save();
-        //console.log(product.img)        
+        return product;       
     })
 
     await Promise.all(promises)
+    await product.save();
     res.status(201).json(product)
 };
 
