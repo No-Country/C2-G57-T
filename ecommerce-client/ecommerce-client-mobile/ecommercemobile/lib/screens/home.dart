@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
           elevation: 0,
           backgroundColor: Colors.purple[200],
           centerTitle: true,
-          title: const Text("Logo de la marca\nSlogan"),
+          title: const Text("Mujeres Reales"),
           actions: const [
             Icon(Icons.search),
             Icon(Icons.shopping_cart_outlined)
@@ -45,28 +45,28 @@ class _HomeState extends State<Home> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () => Navigator.pushNamed(context, "detail"),
-                      child: Image.asset(
-                        "assets/${index + 1}.jpg",
-                        fit: BoxFit.fill,
-                      ),
+                      child: Image.asset("assets/${index + 10}.jpg",
+                          fit: BoxFit.contain),
                     );
                   },
-                  itemCount: 3,
+                  itemCount: 4,
                   pagination: SwiperPagination(),
                   control: SwiperControl(),
                 ),
               ),
-              SizedBox(height: height * 0.05),
-              ImagenCategoria(categoria: 'Remera', imagenAssets: '7'),
-              SizedBox(height: height * 0.05),
-              ImagenCategoria(categoria: "Pantalon", imagenAssets: "4"),
-              SizedBox(height: height * 0.05),
-              ImagenCategoria(categoria: "Accesorio", imagenAssets: "1"),
-              SizedBox(height: height * 0.05),
-              const ContainerRedesSociales(),
-              SizedBox(height: height * 0.05),
-              const ContainerRedesSociales(),
-              SizedBox(height: height * 0.1),
+              SizedBox(height: height * 0.01),
+              ImagenCategoria(categoria: 'Destacados', imagenAssets: '14'),
+              SizedBox(height: height * 0.01),
+              ImagenCategoria(categoria: "30% off", imagenAssets: "16"),
+              SizedBox(height: height * 0.01),
+              ImagenCategoria(categoria: "Accesorios", imagenAssets: "15"),
+              SizedBox(height: height * 0.01),
+              ContainerRedesSociales(
+                  imagenAssets: '17', icono: Icons.photo_camera_sharp),
+              SizedBox(height: height * 0.01),
+              ContainerRedesSociales(
+                  imagenAssets: '18', icono: Icons.local_parking_outlined),
+              SizedBox(height: height * 0.01),
             ],
           ),
         ),
@@ -93,27 +93,33 @@ class ImagenCategoria extends StatelessWidget {
       },
       child: Center(
         child: Container(
-          height: height * 0.6,
-          width: double.infinity,
-          child: Stack(alignment: Alignment.bottomCenter, children: [
-            FadeInImage(
-              placeholder: AssetImage("assets/loading.gif"),
-              image: AssetImage("assets/${imagenAssets}.jpg"),
-              height: height * 0.5,
-              fit: BoxFit.cover,
-            ),
-            Container(
-              height: height * 0.1,
-              width: double.infinity,
-              color: Colors.black87,
-              child: Center(
-                child: Text(
-                  categoria,
-                  style: TextStyle(color: Colors.white),
+          height: height * 0.5,
+          width: width * 0.95,
+          child: Stack(
+            children: [
+              Container(
+                height: height * 0.5,
+                width: width * 1,
+                child: FadeInImage(
+                  placeholder: AssetImage("assets/loading.gif"),
+                  image: AssetImage("assets/${imagenAssets}.jpg"),
+                  height: height * 0.5,
+                  fit: BoxFit.fill,
                 ),
               ),
-            )
-          ]),
+              Center(
+                child: Container(
+                    height: 50,
+                    width: 150,
+                    color: Colors.white,
+                    alignment: Alignment.center,
+                    child: Text(
+                      categoria,
+                      style: TextStyle(color: Colors.black, fontSize: 20.0),
+                    )),
+              ),
+            ],
+          ),
         ),
       ),
     );
