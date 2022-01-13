@@ -17,10 +17,9 @@ const ProductSchema = Schema({
     img: [{
         url: String
     }],
-    talle: {
-        type: String,
-        default: "No talle"
-    },
+    talle: [
+        String
+    ],
     stock: {
         type: Boolean,
         default: false
@@ -28,20 +27,10 @@ const ProductSchema = Schema({
     destacado: {
         type: Boolean,
         default: false
-    },
-    cantidadIngreso: {
-        type: Number,
-        default: 0
-    },
-    cantidadRestante: {
-        type: Number,
-        default: 0
-    },
-    color: {
-        type: String,
-
-    },
-    //color: { type: Schema.Types.ObjectId, ref: 'color' },
+    },    
+    color: [
+        String
+    ],   
 
 
 });
