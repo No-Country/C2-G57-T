@@ -35,8 +35,8 @@ export const RegisterProductContext = ({ children }) => {
 
       images.map((image) => bodyFormData.append("file", image.file));
       bodyFormData.append("name", info.name);
-      // bodyFormData.append("price", info.price);
-      // bodyFormData.append("description", info.description);
+      bodyFormData.append("price", info.price);
+      bodyFormData.append("description", info.description);
       
       const resp = await clientAxios
         .post("/api/products", bodyFormData, {

@@ -28,7 +28,7 @@ const getProductById = async(req, res) => {
 
 const saveProduct = async(req, res) => {
 
-    console.log('req',req )
+    console.log('req', req )
 
     const { name, price, description, img } = req.body;   
     //const product = new Product({ name, price, description, img });
