@@ -13,12 +13,6 @@ const ProductSchema = Schema({
     description: {
         type: String,
         default: "No description"
-<<<<<<< HEAD
-    },    
-    img: {
-        type: Array
-    }
-=======
     },
     img: [{
         url: String
@@ -50,7 +44,6 @@ const ProductSchema = Schema({
     //color: { type: Schema.Types.ObjectId, ref: 'color' },
 
 
->>>>>>> d837e5eece012d75b8ffec20fd56bd9121e6db5a
 });
 
 ProductSchema.methods.toJSON = function() {

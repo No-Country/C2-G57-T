@@ -16,19 +16,35 @@ export const RegisterProductContext = ({ children }) => {
   const [state, dispatch] = useReducer(RegisterProductReducer, initialState);
 
   const imageInfoProduct = async (images, info) => {
-    const urlImage = images.map((img) => img.secure_url);
+    // const urlImage = images.map((img) => img.secure_url);
 
     const product = {
-      img: urlImage,
+      // img: urlImage,
+      img: images,
       description: info.description,
       name: info.name,
       price: info.price,
     };
 
-    console.log("productfinal", product);
+    console.log("productfinal", images);
 
     try {
-      const resp = await clientAxios.post("/api/products", product);
+      // const resp = await clientAxios.post("/api/products", product);
+      // console.log("resp", resp);
+      let bodyFormData = new FormData();
+
+      images.map((image) => bodyFormData.append("file", image.file));
+      bodyFormData.append("name", info.name);
+      // bodyFormData.append("price", info.price);
+      // bodyFormData.append("description", info.description);
+      
+      const resp = await clientAxios
+        .post("/api/products", bodyFormData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        })
+        .then((resp) => {
+          console.log(resp);
+        });
       console.log("resp", resp);
     } catch (error) {
       console.log("error", error.response.data.msg);

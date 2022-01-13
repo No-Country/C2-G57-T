@@ -8,13 +8,19 @@ export const RegisterProducts = () => {
   const { imageInfoProduct } = useContext(RegisterProductData);
   const [fileUpload, setFileUpload] = useState([]);
 
+
+  console.log('fileupload', fileUpload )
+
+
+
   const [valuesForm, setValuesForm] = useState("");
 
   const handleUploadImage = async () => {
     try {
-      const cloudiURL = await fileforCloudi(fileUpload);
-      console.log("cloudiuRL", cloudiURL);
-      imageInfoProduct(cloudiURL, valuesForm);
+      // const cloudiURL = await fileforCloudi(fileUpload);
+      // console.log("cloudiuRL", cloudiURL);
+      // // imageInfoProduct(cloudiURL, valuesForm);
+      imageInfoProduct(fileUpload, valuesForm);
     } catch (error) {
       console.log("erro", error);
     }

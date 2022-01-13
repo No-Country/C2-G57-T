@@ -10,7 +10,7 @@ const router = Router();
 router.get("/", getProducts);
 
 router.post("/", saveProduct);
-router.get("/:id", getProduct);
+// router.get("/:id", getProduct);
 
 router.get("/:id", getProductById);
 

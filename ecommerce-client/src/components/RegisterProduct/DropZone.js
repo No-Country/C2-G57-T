@@ -17,7 +17,8 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
 
   //get image
   const onDrop = useCallback((acceptedFiles) => {
-    console.log("acceptedFiles", acceptedFiles);
+    // console.log("acceptedFiles", acceptedFiles);
+
     acceptedFiles.forEach((file) => {
       setFileUpload((current) =>
         current.concat({
@@ -32,6 +33,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: "image/jpeg, image/png",
+
     noKeyboard: true,
     multiple: true,
     maxFiles: 4,
