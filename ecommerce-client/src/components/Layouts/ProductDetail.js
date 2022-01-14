@@ -23,8 +23,9 @@ const ProductDetail = ({children, firstimage, name, price}) => {
                 </div>
                 <label htmlFor="cant">CANTIDAD</label>
                 <input type="number" id='cant'/>
+
+                <button>COMPRAR <i className="fas fa-shopping-cart"></i></button>
             </div>
-            <button>COMPRAR <i className="fas fa-shopping-cart"></i></button>
         </div>
     )
 }

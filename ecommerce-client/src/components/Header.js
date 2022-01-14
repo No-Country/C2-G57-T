@@ -48,7 +48,7 @@ const Header = () => {
         </ul>
         <ul>
           <li>
-            <Link to={'#'}>INGRESAR</Link>
+            <Link to={'/login'}>INGRESAR</Link>
           </li>
           <li>
             <Link to={'#'}><i className="fas fa-shopping-cart"></i></Link>

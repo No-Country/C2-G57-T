@@ -91,7 +91,7 @@ export const FormRegisterProduct = ({ values, handleInputChange }) => {
         // value={values.type}
         name='type'
         defaultValue={"DEFAULT"}
-        className='select'
+        className="select form-select form-select-lg my-3"
         onChange={handleInputChange}
       >
         <option value='DEFAULT' disabled>
@@ -104,11 +104,10 @@ export const FormRegisterProduct = ({ values, handleInputChange }) => {
         <option value='pants'>Pantalones</option>
       </select>
 
-      <select
+      <select className="select form-select form-select-lg mb-3"
         // value={value}
         name='subType'
         defaultValue={"DEFAULT"}
-        className='select'
         onChange={handleInputChange}
       >
         <option value='DEFAULT' disabled>

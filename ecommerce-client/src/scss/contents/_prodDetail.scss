@@ -40,13 +40,18 @@
         .prices {
             h6 {
                 margin: 0;
-                font-weight: 300;
+                font-weight: bold;
             }
         }
     }
 
+    input {
+        height: 30px;
+        width: 30px;
+    }
+
     button {
-        justify-self: center;
+        align-self: center;
         width: 150px;
         height: 50px;
         font-size: .8rem;
@@ -57,9 +62,15 @@
         background: v.$colorButton;
         cursor: pointer;
     }
+
+    @media screen and (min-width: 992px) {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
-.redes-prod {
+
+/* .redes-prod {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
@@ -92,4 +103,4 @@
             }
         }
     }
-}
+} */
