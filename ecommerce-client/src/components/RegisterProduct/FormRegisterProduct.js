@@ -1,20 +1,44 @@
-import React, { useEffect } from "react";
-import { useForm } from "../../hooks/useForm";
+import React, { useState, useEffect } from "react";
 
-export const FormRegisterProduct = ({ setValuesForm }) => {
-  const { values, handleInputChange } = useForm({
-    name: "",
-    description: "",
-    price: "",
-    color: "",
-    size: "",
-    stock: "",
-  });
+export const FormRegisterProduct = ({ values, handleInputChange }) => {
+  const [subType, setSubType] = useState([]);
+
+  console.log("values", values);
+
+  const sendSubtype = (values) => {
+    switch (values.type) {
+      case "t-shirt":
+        return [{ id: 1, sub: ["Con Mangas", "Sin Magas", "Manga Larga"] }];
+      case "skirts":
+        return [{ id: 2, sub: ["Cortas", "Largas"] }];
+
+      case "dresses":
+        return [
+          {
+            id: 3,
+            sub: ["De dia", "De noche"],
+          },
+        ];
+
+      case "pants":
+        return [
+          {
+            id: 3,
+            sub: ["Jeans", "De Morley"],
+          },
+        ];
+
+      default:
+        break;
+    }
+  };
 
   useEffect(() => {
-    setValuesForm(values);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values]);
+    const subtypeArticle = sendSubtype(values);
+    if (subtypeArticle) {
+      setSubType(subtypeArticle);
+    }
+  }, [values.type]);
 
   return (
     <form>
@@ -62,6 +86,44 @@ export const FormRegisterProduct = ({ setValuesForm }) => {
           value={values.stock}
         />
       </div>
+
+      <select
+        // value={values.type}
+        name='type'
+        defaultValue={"DEFAULT"}
+        className='select'
+        onChange={handleInputChange}
+      >
+        <option value='DEFAULT' disabled>
+          Selecciona un tipo de producto
+        </option>
+
+        <option value='t-shirt'>Remeras</option>
+        <option value='skirts'>Faldas</option>
+        <option value='dresses'>Vestidos</option>
+        <option value='pants'>Pantalones</option>
+      </select>
+
+      <select
+        // value={value}
+        name='subType'
+        defaultValue={"DEFAULT"}
+        className='select'
+        onChange={handleInputChange}
+      >
+        <option value='DEFAULT' disabled>
+          Selecciona un Subtipo de producto
+        </option>
+
+        {subType.length > 0 &&
+          subType.map((s) =>
+            s.sub.map((s, i) => (
+              <option value={s} key={i}>
+                {s}
+              </option>
+            ))
+          )}
+      </select>
     </form>
   );
 };

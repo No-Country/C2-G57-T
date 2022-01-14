@@ -11,9 +11,14 @@ import section02 from '../images/sections/section02.jpg';
 import section03 from '../images/sections/section03.jpg';
 import redes01 from '../images/redes/redes01.jpg';
 import redes02 from '../images/redes/redes02.jpg';
+import { tokenAuth } from './../config/authTokenHeaders';
 
 
 const Home = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    tokenAuth(token);
+  }
   return (
     <>
       <Carousel/>

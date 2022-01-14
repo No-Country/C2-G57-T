@@ -8,8 +8,9 @@ export const UserData = createContext({
 });
 
 export const AuthContext = ({ children }) => {
-
+  
   const user = localStorage.getItem("user");
+  
 
   console.log('user', user )
 
@@ -55,7 +56,7 @@ export const AuthContext = ({ children }) => {
   const userLogin = async (data) => {
     try {
       const resp = await clientAxios.post("api/auth/login", data);
-      console.log("resp", resp);
+      console.log("resp", resp);      
       dispatch({
         type: LOGIN_SUCCESS,
         payload: resp.data,

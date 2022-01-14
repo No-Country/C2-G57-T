@@ -18,13 +18,13 @@ export const RegisterProductContext = ({ children }) => {
   const imageInfoProduct = async (images, info) => {
     // const urlImage = images.map((img) => img.secure_url);
 
-    const product = {
-      // img: urlImage,
-      img: images,
-      description: info.description,
-      name: info.name,
-      price: info.price,
-    };
+    // const product = {
+    //   // img: urlImage,
+    //   img: images,
+    //   description: info.description,
+    //   name: info.name,
+    //   price: info.price,
+    // };
 
     console.log("productfinal", images);
 

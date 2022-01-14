@@ -11,6 +11,7 @@ function App() {
 
   console.log("token ok", token);
 
+
   return (
     <AuthContext>
       <RegisterProductContext>

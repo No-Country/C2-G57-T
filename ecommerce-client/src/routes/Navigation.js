@@ -10,7 +10,7 @@ import { RegisterProducts } from "../pages/RegisterProducts";
 import Dress from "./../pages/Dress";
 import ProdDetail from "../pages/ProdDetail";
 import { Shop } from "./../pages/Shop";
-import { ProductView } from './../pages/ProductView';
+import { ProductView } from "./../pages/ProductView";
 
 export const Navigation = () => {
   //pedir endpoint para mantener el usuario

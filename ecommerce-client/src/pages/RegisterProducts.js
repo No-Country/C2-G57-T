@@ -1,26 +1,31 @@
 import React, { useState, useContext } from "react";
 import { Dropzone } from "../components/RegisterProduct/DropZone";
 import { FormRegisterProduct } from "../components/RegisterProduct/FormRegisterProduct";
-import { fileUpload as fileforCloudi } from "../helpers/fileUpload";
+import { useForm } from "../hooks/useForm";
 import { RegisterProductData } from "./../registerProductContext/RegisterProductContext";
 
 export const RegisterProducts = () => {
   const { imageInfoProduct } = useContext(RegisterProductData);
   const [fileUpload, setFileUpload] = useState([]);
 
+  const { values, handleInputChange, reset } = useForm({
+    name: "",
+    description: "",
+    price: "",
+    color: "",
+    size: "",
+    stock: "",
+    type: "",
+    subType: ""
+  });
 
-  console.log('fileupload', fileUpload )
 
 
-
-  const [valuesForm, setValuesForm] = useState("");
-
-  const handleUploadImage = async () => {
+  const handleUploadImage = () => {
     try {
-      // const cloudiURL = await fileforCloudi(fileUpload);
-      // console.log("cloudiuRL", cloudiURL);
-      // // imageInfoProduct(cloudiURL, valuesForm);
-      imageInfoProduct(fileUpload, valuesForm);
+      imageInfoProduct(fileUpload, values);
+      setFileUpload([]);
+      reset();
     } catch (error) {
       console.log("erro", error);
     }
@@ -36,8 +41,8 @@ export const RegisterProducts = () => {
           handleUploadImage={handleUploadImage}
         />
         <FormRegisterProduct
-          setValuesForm={setValuesForm}
-          handleUploadImage={handleUploadImage}
+          values={values}
+          handleInputChange={handleInputChange}
         />
       </div>
     </div>
