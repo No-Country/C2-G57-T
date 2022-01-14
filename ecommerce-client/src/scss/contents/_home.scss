@@ -7,9 +7,18 @@
 }
 
 .sections-home {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    gap: .2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1rem;
     margin: .2rem 0;
+
+    @media screen and (min-width: 768px) {
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.redes-home {
+    grid-template-columns: repeat(2, 1fr);
 }

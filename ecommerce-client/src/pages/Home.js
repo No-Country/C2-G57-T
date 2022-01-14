@@ -23,7 +23,7 @@ const Home = () => {
           <CardHome name='30% OFF' img={section02} uri='#' />
           <CardHome name='ACCESORIOS' img={section03} uri='#' />
         </div>
-        <div className="sections-home">
+        <div className="sections-home redes-home">
           <CardRedes img={redes01}>
             <i className="fab fa-instagram"></i>
           </CardRedes>

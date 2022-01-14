@@ -49,6 +49,7 @@
 
       &:hover {
         background: rgba($color: #fff, $alpha: .5);
+        
       }
     }
   }
@@ -58,6 +59,53 @@
     color: v.$blanco;
   }
 
+  @media screen and (min-width: 768px) {
+
+    justify-content: center;
+    
+    .button-burguer {
+      display: none;
+    }
+
+    .icons-header {
+      display: none;
+    }
+  }
+
+}
+
+.preheader {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  display: none;
+
+  ul {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+  }
+
+  
+  a {
+    color: black;
+    padding: .5rem;
+    transition: .3s;
+    border-radius: 1rem;
+    &:hover {
+      background: rgba($color: #000, $alpha: .5);
+      color:white;
+      transition: .3s;
+    }
+  }
+
+  
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+  }
 }
 
 

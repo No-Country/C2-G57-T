@@ -7,8 +7,8 @@ export const RegisterProducts = () => {
     <div className='container__page'>
       <h1>Registra un producto nuevo</h1>
       <div className='registerProductContainer'>
-        <Dropzone />
         <FormRegisterProduct />
+        <Dropzone />
       </div>
     </div>
   );

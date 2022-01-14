@@ -26,6 +26,30 @@ const Header = () => {
           </div>
         </div>
       </header>
+      <div className="preheader">
+        <ul>
+          <li>
+            <Link to={'#'}>INDUMENTARIA</Link>
+          </li>
+          <li>
+            <Link to={'#'}>ACCESORIOS</Link>
+          </li>
+          <li>
+            <Link to={'#'}>PRODUCTOS DESTACADOS</Link>
+          </li>
+          <li>
+            <Link to={'#'}>OFERTA</Link>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <Link to={'#'}>INGRESAR</Link>
+          </li>
+          <li>
+            <Link to={'#'}><i className="fas fa-shopping-cart"></i></Link>
+          </li>
+        </ul>
+      </div>
 
       {showSidebar && <Sidebar />}
     </>
