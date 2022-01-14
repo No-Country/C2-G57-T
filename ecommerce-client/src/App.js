@@ -1,6 +1,7 @@
 import { AuthContext } from "./authContext/AuthContext";
 import { Navigation } from "./routes/Navigation";
 import { tokenAuth } from "./config/authTokenHeaders";
+import { RegisterProductContext } from "./registerProductContext/RegisterProductContext";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -8,11 +9,14 @@ function App() {
     tokenAuth(token);
   }
 
-  console.log('token ok', token )
+  console.log("token ok", token);
+
 
   return (
     <AuthContext>
-      <Navigation />
+      <RegisterProductContext>
+        <Navigation />
+      </RegisterProductContext>
     </AuthContext>
   );
 }

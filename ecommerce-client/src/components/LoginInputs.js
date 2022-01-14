@@ -1,10 +1,19 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "./../hooks/useForm";
 import { UserData } from "../authContext/AuthContext";
 
 const LoginInputs = () => {
-  const { error, userLogin } = useContext(UserData);
+  const navigate = useNavigate();
+  const { error, userLogin, state } = useContext(UserData);
+
+  useEffect(() => {
+    if (state.logged) {
+      navigate("/");
+    }
+  }, [state]);
+
+  console.log("state", state.logged);
 
   const { values, handleInputChange, reset } = useForm({
     email: "c@c.com",

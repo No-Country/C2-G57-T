@@ -1,9 +1,7 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { useDropzone } from "react-dropzone";
-import { fileUpload as fileforCloudi } from "../../helpers/fileUpload";
 
-export const Dropzone = () => {
-  const [fileUpload, setFileUpload] = useState([]);
+export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -14,11 +12,13 @@ export const Dropzone = () => {
         setError(false);
       }, 3000);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fileUpload]);
 
   //get image
   const onDrop = useCallback((acceptedFiles) => {
-    console.log("acceptedFiles", acceptedFiles);
+    // console.log("acceptedFiles", acceptedFiles);
+
     acceptedFiles.forEach((file) => {
       setFileUpload((current) =>
         current.concat({
@@ -28,24 +28,17 @@ export const Dropzone = () => {
         })
       );
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: "image/jpeg, image/png",
+
     noKeyboard: true,
     multiple: true,
     maxFiles: 4,
     onDrop,
   });
-
-  const handleUploadImage = async () => {
-    try {
-      const cloudiURL = await fileforCloudi(fileUpload);
-      console.log("cloudiuRL", cloudiURL);
-    } catch (error) {
-      console.log("erro", error);
-    }
-  };
 
   return (
     <div className='container__page'>
@@ -84,7 +77,10 @@ export const Dropzone = () => {
         <p className='banner__error'>No puedes colocar mas de 4 imagenes</p>
       )}
       {fileUpload.some((img) => img.type === "image") && (
-        <button className='btn__upload' onClick={handleUploadImage}>
+        <button
+          className='btn__upload'
+          onClick={() => handleUploadImage(fileUpload)}
+        >
           Upload
         </button>
       )}

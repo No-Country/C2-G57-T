@@ -9,6 +9,7 @@ import prod01 from '../images/products/prod01.jpg';
 import prod02 from '../images/products/prod02.jpg';
 import prod03 from '../images/products/prod03.jpg';
 import prod04 from '../images/products/prod04.jpg';
+import { Outlet } from "react-router-dom";
 
 const Dress = () => {
   return (
@@ -37,6 +38,7 @@ const Dress = () => {
         <Product uri='/' img={prod03} title={'VESTIDO PINK'} price={'15.000'}/>
         <Product uri='/' img={prod04} title={'VESTIDO PINK'} price={'15.000'}/>
       </section>
+      <Outlet />
     </div>
   );
 };

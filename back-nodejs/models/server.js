@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const iniciarMongoose = require('../mongo/dbInit');
+const fileUpload = require("express-fileupload");
+
 class Server {
 
     constructor() {
@@ -10,8 +12,9 @@ class Server {
         this.paths = {
                 users: "/api/users",
                 auth: "/api/auth",
-                products: "/api/products"
-
+                color: "/api/color",
+                products: "/api/products",
+                uploads: "/api/uploads"
             }
             // Conectar DB
         iniciarMongoose()
@@ -24,15 +27,22 @@ class Server {
     middlewares() {
         // CORS
         this.app.use(cors());
-
         // Lectura y parseo de body
         this.app.use(express.json());
+        // Subida de archivos con fileupload
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/',
+            createParentPath: true
+        }));
     }
 
     routes() {
         this.app.use(this.paths.users, require("../routes/users"));
         this.app.use(this.paths.auth, require("../routes/auth"));
         this.app.use(this.paths.products, require("../routes/product"));
+        this.app.use(this.paths.uploads, require("../routes/uploads"));
+        this.app.use(this.paths.color, require("../routes/color"));
     }
 
 

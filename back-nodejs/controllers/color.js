@@ -1,58 +1,31 @@
-const Product = require("../models/product");
-const cloudinary = require('cloudinary').v2
-cloudinary.config(process.env.CLOUDINARY_URL);
-const {getIdCloudinary} = require("../helpers/getIdCloudinary");
+const Color = require("../models/color");
+const saveProduct = async(req, res) => {
 
+    const { name } = req.body;
+    const color = new Color({ name });
+    console.log(color);
+
+    try {
+        await color.save();
+        res.status(201).json(color);
+    } catch (error) {
+        res.json({
+            msg: error
+                //msg: "Product name already registered"
+        });
+    }
+};
 
 const getProducts = async(req, res) => {
 
-    const product = await Product.find({});
-    res.status(200).json(product);
+    const color = await Color.find({});
+    res.status(200).json(color);
 
 }
-
-const getProductById = async(req, res) => {
-
-    const {id} = req.params;
-    try {
-        const product = await Product.findById(id);
-        res.status(200).json(product)
-        
-    } catch (error) {
-
-        res.status(400).json({
-            msg: "ID invalido"
-        });        
-    }   
-} ;
-
-const saveProduct = async(req, res) => {
-
-    const { name, price, description, img, talle=[], color=[] } = req.body;
-    
-    const info = { name, price, description, img };
-
-    const product = await Product.create(info);
-    
-    product.talle = talle;    
-    product.color = color
-
-    const promises = req.files.file.map(async e => {
-        const { tempFilePath } = e;
-        const { secure_url } = await cloudinary.uploader.upload(tempFilePath);
-        product.img.push({ url: secure_url })
-        return product;       
-    })
-
-    await Promise.all(promises)
-    await product.save();
-    res.status(201).json(product)
-};
-
 const updateProduct = async(req, res) => {
     const { id } = req.params;
     let productUpdate = req.body;
-    
+
     const product = await Product.updateOne({ _id: id }, {
         $set: {
             name: productUpdate.name,
@@ -68,11 +41,11 @@ const updateProduct = async(req, res) => {
 const deleteProduct = async(req, res) => {
 
     const { id } = req.params;
-    
+
     const product = await Product.findByIdAndDelete(id);
-    
-    const arrayxd = product.img.map( e => cloudinary.uploader.destroy( getIdCloudinary(e.url) ) );    
-     
+
+    const arrayxd = product.img.map(e => cloudinary.uploader.destroy(getIdCloudinary(e.url)));
+
     res.status(200).json({
         msg: "Producto eliminado"
     });
@@ -115,7 +88,6 @@ const listProductPrice = async(req, res) => {
     }
 }
 module.exports = {
-    getProductById,
     saveProduct,
     getProducts,
     updateProduct,

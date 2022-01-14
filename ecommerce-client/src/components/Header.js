@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 // components
 import Sidebar from "./Sidebar";
@@ -9,6 +9,11 @@ import logo from '../images/logo.png';
 
 const Header = () => {
   const [showSidebar, setShowSidebar] = useState(false);
+
+  const {pathname} = useLocation()
+  useEffect(() => {
+    setShowSidebar(false)
+  }, [pathname])
 
   return (
     <>
