@@ -19,7 +19,10 @@ router.post("/", [
     validations
 ], saveProduct);
 
-router.put("/:id", updateProduct);
+router.put("/:id", [
+    validarJWT,
+    validations
+], updateProduct);
 
 router.delete("/:id", [
     validarJWT,
