@@ -52,17 +52,10 @@ const saveProduct = async(req, res) => {
 const updateProduct = async(req, res) => {
     const { id } = req.params;
     let productUpdate = req.body;
-    
-    const product = await Product.updateOne({ _id: id }, {
-        $set: {
-            name: productUpdate.name,
-            price: productUpdate.price,
-            description: productUpdate.description,
-            img: productUpdate.img
-        }
-    });
-    res.status(200).json(product);
 
+    const product = await Product.findByIdAndUpdate(id, productUpdate, {new: true});    
+    
+    res.status(200).json(product);
 };
 
 const deleteProduct = async(req, res) => {

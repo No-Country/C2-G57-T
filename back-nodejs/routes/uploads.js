@@ -9,8 +9,6 @@ const { validations } = require("../middlewares/validations");
 const router = Router();
 
 
-
-
 router.put("/:collection/:id", [
     validarJWT,
     fileValidation,
@@ -18,8 +16,6 @@ router.put("/:collection/:id", [
     validations
 ], updateImageCloudinary);
 
-router.delete("/:idImage/:codeImage", deleteImageCloudinary);
-//=======
 router.put("/products/:id", [
     validarJWT,
     fileValidation,
@@ -32,7 +28,6 @@ router.delete("/:idProduct/:idImage", [
     check("idProduct", "Id product debe ser un ID de Mongo").isMongoId(),
     validations
 ], deleteImageCloudinary);
-
 
 
 module.exports = router;
