@@ -1,6 +1,0 @@
-export const REGISTER_PRODUCT = "REGISTER_PRODUCT";
-// export const LOGOUT_SUCCESS = "LOGOUT_SUCCESS";
-
-
-// export const SHOW_ALERT_TRUE = "SHOW_ALERT_TRUE";
-// export const SHOW_ALERT_FALSE = "SHOW_ALERT_FALSE";

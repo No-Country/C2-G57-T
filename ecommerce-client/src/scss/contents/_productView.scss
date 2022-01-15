@@ -1,0 +1,85 @@
+@use "../base/variables" as v;
+
+.productViewContainer {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+.productViewInfo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: v.$fuente_principal;
+  padding: 0 2rem;
+}
+
+.productViewInfo__name {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+.productViewInfo__description {
+  text-transform: uppercase;
+  font-size: 1.4rem;
+}
+.productViewInfo__price {
+  font-size: 1.4rem;
+}
+
+.grid-productView {
+  display: grid;
+  // grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 40rem;
+  // height: 40rem;
+}
+
+.img-productView {
+  width: 100%;
+  display: block;
+  // height: 40rem;
+  object-fit: cover;
+  object-position: top;
+}
+
+.img-productView:nth-child(1) {
+  // grid-column: 1/4;
+  grid-column: 1/2;
+  grid-row: 1/4;
+  // height: 40rem;
+  height: 100%;
+  width: 25rem;
+}
+.img-productView:nth-child(2) {
+  height: 100%;
+  max-width: 11rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+.img-productView:nth-child(3) {
+  height: 100%;
+  max-width: 11rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+.img-productView:nth-child(4) {
+  max-width: 11rem;
+  height: 100%;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.productViewInfo__button {
+  padding: 1rem;
+  border: none;
+}

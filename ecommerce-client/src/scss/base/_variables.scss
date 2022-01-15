@@ -1,5 +1,7 @@
 // Fuentes
-$fuente_principal: "Roboto", sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+
+$fuente_principal: 'Montserrat', sans-serif;
 
 // Tamaño de Media Queries
 $telefono: 576px;

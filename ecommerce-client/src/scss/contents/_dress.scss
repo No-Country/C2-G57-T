@@ -1,70 +1,69 @@
 @use "../base/variables" as v;
 
-.container-dress {
-    margin: 1rem 0;
+// .container-dress {
+//   margin: 1rem 0;
 
-    .aside-dress {
-        display: none;
-        font-size: .7rem;
+//   .aside-dress {
+//     display: none;
+//     font-size: 0.7rem;
 
-        a {
-            color: v.$negro;
-        }
+//     a {
+//       color: v.$negro;
+//     }
 
-        .first-ul {
-            padding-inline-start: 0;
+//     .first-ul {
+//       padding-inline-start: 0;
 
-            li {
-                ul {
+//       li {
+//         ul {
+//           a {
+//             color: #666;
+//           }
+//         }
+//       }
+//     }
+//   }
 
-                    a {
-                        color: #666;
-                    } 
-                }
-            }
-        }     
-    }
+//   @media screen and (min-width: 768px) {
+//     display: grid;
+//     grid-template-columns: 150px auto;
+//     gap: 1rem;
 
-    @media screen and (min-width: 768px) {
-        display: grid;
-        grid-template-columns: 150px auto;
-        gap: 1rem;
-
-        .aside-dress {
-            display: block;
-        }
-    }
-}
+//     .aside-dress {
+//       // display: block;
+//     }
+//   }
+// }
 
 .dress-products {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    margin: 1rem 0;
-    overflow: hidden;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1rem 0;
+  // overflow: hidden;
 
-    @media screen and (min-width: 768px) {
-        grid-auto-rows: 10rem;
-        grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
-    }
+  @media screen and (min-width: 768px) {
+    grid-auto-rows: 10rem;
+    grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  }
 }
 
 .card-product {
+  width: 100%;
+  color: v.$negro;
+
+  img {
     width: 100%;
-    color: v.$negro;
+    height: 150px;
+    object-fit: cover;
+  }
 
-    img {
-        width: 100%;
-        height: 150px;
-        object-fit: cover;
-    }
-
-    .detail {
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: column;
-        font-size: .8rem;
-        font-weight: 300;
-    }
+  .detail {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    font-size: 0.8rem;
+    font-weight: 300;
+  }
 }

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 export const FormRegisterProduct = ({ values, handleInputChange }) => {
-  const [subType, setSubType] = useState([]);
-
-  console.log("values", values);
+  const [subType, setSubType] = useState([]); 
 
   const sendSubtype = (values) => {
     switch (values.type) {

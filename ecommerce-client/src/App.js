@@ -2,6 +2,7 @@ import { AuthContext } from "./authContext/AuthContext";
 import { Navigation } from "./routes/Navigation";
 import { tokenAuth } from "./config/authTokenHeaders";
 import { RegisterProductContext } from "./registerProductContext/RegisterProductContext";
+import { CartContext } from "./cartContext/Cartcontext";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -11,11 +12,12 @@ function App() {
 
   console.log("token ok", token);
 
-
   return (
     <AuthContext>
       <RegisterProductContext>
-        <Navigation />
+        <CartContext>
+          <Navigation />
+        </CartContext>
       </RegisterProductContext>
     </AuthContext>
   );

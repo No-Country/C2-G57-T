@@ -94,10 +94,10 @@ const Sidebar = () => {
             <div className='collapse' id='collapse-vestidos'>
               <ul>
                 <li>
-                  <Link to={"#"}>DE DIA</Link>
+                  <Link to={"/dress/dress/day"}>DE DIA</Link>
                 </li>
                 <li>
-                  <Link to={"#"}>DE NOCHE</Link>
+                  <Link to={"/dress/dress/night"}>DE NOCHE</Link>
                 </li>
               </ul>
             </div>

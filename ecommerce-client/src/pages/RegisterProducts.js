@@ -16,10 +16,8 @@ export const RegisterProducts = () => {
     size: "",
     stock: "",
     type: "",
-    subType: ""
+    subType: "",
   });
-
-
 
   const handleUploadImage = () => {
     try {

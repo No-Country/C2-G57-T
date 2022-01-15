@@ -1,0 +1,13 @@
+.controlPanel {
+  display: flex;
+
+}
+.container-button-form {
+  margin-right: 0.5rem;
+  flex: 1;
+
+  &:last-child {
+    margin-right: 0rem;
+  }
+}
+

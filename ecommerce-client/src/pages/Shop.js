@@ -15,11 +15,9 @@ export const Shop = () => {
     fetchData();
   }, []);
 
-  console.log("data", dataProduct);
-
   return (
     <div>
-      <h1>{`shop ${params.id}`}</h1>
+      <h1>Tienda</h1>
 
       <section className='dress-products'>
         {dataProduct.map((product) => (

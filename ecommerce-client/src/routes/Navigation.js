@@ -29,6 +29,10 @@ export const Navigation = () => {
               <Route path=':id' element={<Shop />} />
               <Route path=':id/:id' element={<ProductView />} />
             </Route>
+            <Route path='dress'>
+              <Route path=':id' element={<Shop />} />
+              <Route path=':id/:id' element={<ProductView />} />
+            </Route>
           </Route>
           <Route path='prodDetail' element={<ProdDetail />} />
           <Route path='registerproducts' element={<RegisterProducts />} />

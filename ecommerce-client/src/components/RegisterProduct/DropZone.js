@@ -78,10 +78,10 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
       )}
       {fileUpload.some((img) => img.type === "image") && (
         <button
-          className='btn__upload'
+          className='generalButton'
           onClick={() => handleUploadImage(fileUpload)}
         >
-          Upload
+          SUBIR A LA TIENDA
         </button>
       )}
     </div>
