@@ -4,8 +4,12 @@
   position: fixed;
   right: 0px;
   height: auto;
-  // height: 20rem;
   padding: 0.5rem;
+  border: 1px solid #000;
+  border-top: none;
+  box-shadow: 10px 10px 21px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 21px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 21px -4px rgba(0, 0, 0, 0.75);
 
   &__title {
     margin: 1rem;

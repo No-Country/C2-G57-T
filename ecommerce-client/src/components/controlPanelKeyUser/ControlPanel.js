@@ -14,7 +14,6 @@ export const ControlPanel = ({ dataProductView }) => {
     navigate(-1, { replace: true });
   };
 
-  console.log("dataProductView", dataProductView);
   return (
     <div className='controlPanel'>
       <div className='container-button-form'>
@@ -32,7 +31,12 @@ export const ControlPanel = ({ dataProductView }) => {
         >
           {showFormUpdate ? "cerrar" : "Actualizar articulo"}
         </button>
-        {showFormUpdate && <FormUpdate dataProductView={dataProductView} setShowFormUpdate={setShowFormUpdate} />}
+        {showFormUpdate && (
+          <FormUpdate
+            dataProductView={dataProductView}
+            setShowFormUpdate={setShowFormUpdate}
+          />
+        )}
       </div>
     </div>
   );
@@ -52,9 +56,9 @@ const FormUpdate = ({ dataProductView, setShowFormUpdate }) => {
     setProductCurrent({
       ...productCurrent,
       values,
-    });    
+    });
     updateProduct(dataProductView._id, values);
-    setShowFormUpdate(false)
+    setShowFormUpdate(false);
   };
 
   return (
@@ -71,7 +75,9 @@ const FormUpdate = ({ dataProductView, setShowFormUpdate }) => {
       <input
         type='text'
         className='generalInput'
-        value={!values.description ? productCurrent.description : values.description}
+        value={
+          !values.description ? productCurrent.description : values.description
+        }
         onChange={handleInputChange}
         name='description'
       />

@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { clientAxios } from "../config/axios";
 
 export const RegisterProductData = createContext({
@@ -6,9 +6,10 @@ export const RegisterProductData = createContext({
 });
 
 export const RegisterProductContext = ({ children }) => {
+  const [newProductUpdate, setNewProductUpdate] = useState({})
+  
+  
   const imageInfoProduct = async (images, info) => {
-    console.log("productfinal", images);
-
     try {
       let bodyFormData = new FormData();
 
@@ -33,32 +34,27 @@ export const RegisterProductContext = ({ children }) => {
   const deleteProduct = async (id) => {
     try {
       await clientAxios.delete(`/api/products/${id}`);
-      
     } catch (error) {
       console.log("error", error.response.data.msg);
     }
   };
 
-
-  const updateProduct = async(id, update)=>{
+  const updateProduct = async (id, update) => {
     try {
-     const resp = await clientAxios.put(`/api/products/${id}`, update);
-
-      console.log('resp', resp )
-
+      const {data} = await clientAxios.put(`/api/products/${id}`, update);
+      setNewProductUpdate(data)      
     } catch (error) {
       console.log("error", error.response.data.msg);
     }
-
-
-  }
+  };
 
   return (
     <RegisterProductData.Provider
       value={{
+        newProductUpdate,
         imageInfoProduct,
         deleteProduct,
-        updateProduct
+        updateProduct,
       }}
     >
       {children}

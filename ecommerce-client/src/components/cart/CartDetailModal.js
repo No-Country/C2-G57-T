@@ -23,7 +23,7 @@ export const CartDetailModal = () => {
         state.products.map((p) => <CardProductCart product={p} key={p._id} />)
       )}
 
-      <button className='CartModal__button--endBuy'>Finalizar Compra</button>
+      <button className='generalButton'>Finalizar Compra</button>
     </div>
   );
 };

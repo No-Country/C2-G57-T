@@ -4,12 +4,14 @@ import { clientAxios } from "../config/axios";
 
 import { CartData } from "../cartContext/Cartcontext";
 import { ControlPanel } from "../components/controlPanelKeyUser/ControlPanel";
+import { RegisterProductData } from "../registerProductContext/RegisterProductContext";
 
 export const ProductView = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
   const { addProductCart, msg } = useContext(CartData);
+  const { newProductUpdate } = useContext(RegisterProductData);
   const [dataProductView, setDataProductView] = useState("");
   const [quantity, setQuantity] = useState("");
   const [error, setError] = useState(false);
@@ -61,11 +63,22 @@ export const ProductView = () => {
         ))}
       </div>
       <div className='productViewInfo'>
-        <h2 className='productViewInfo__name'>{dataProductView.name}</h2>
-        <h2 className='productViewInfo__description'>
-          {dataProductView.description}
+        <h2 className='productViewInfo__name'>
+          {Object.entries(newProductUpdate).length === 0
+            ? dataProductView.name
+            : newProductUpdate.name}
         </h2>
-        <h2 className='productViewInfo__price'>${dataProductView.price}</h2>
+        <h2 className='productViewInfo__description'>
+          {Object.entries(newProductUpdate).length === 0
+            ? dataProductView.description
+            : newProductUpdate.description}
+        </h2>
+        <h2 className='productViewInfo__price'>
+          $
+          {Object.entries(newProductUpdate).length === 0
+            ? dataProductView.price
+            : newProductUpdate.price}
+        </h2>
         {/* <h2 className='productViewInfo'>{dataProductView.talle}</h2> */}
         <input
           placeholder='Cantidad'
