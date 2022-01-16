@@ -18,6 +18,7 @@ export const CardProductCart = ({ product }) => {
       <div className='productCart__info'>
         <p>Producto: {product.name}</p>
         <p>Cantidad: {product.quantity}</p>
+        <p>Talle: {product.size}</p>
         <p>Precio: ${product.price}</p>
       </div>
       <button className='productCart__button' onClick={handleDelete}>

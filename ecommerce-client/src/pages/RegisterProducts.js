@@ -7,13 +7,13 @@ import { RegisterProductData } from "./../registerProductContext/RegisterProduct
 export const RegisterProducts = () => {
   const { imageInfoProduct } = useContext(RegisterProductData);
   const [fileUpload, setFileUpload] = useState([]);
+  const [size, setSize] = useState([]);  
 
   const { values, handleInputChange, reset } = useForm({
     name: "",
     description: "",
     price: "",
     color: "",
-    size: "",
     stock: "",
     type: "",
     subType: "",
@@ -21,13 +21,14 @@ export const RegisterProducts = () => {
 
   const handleUploadImage = () => {
     try {
-      imageInfoProduct(fileUpload, values);
+      imageInfoProduct(fileUpload, values, size);
       setFileUpload([]);
       reset();
     } catch (error) {
       console.log("erro", error);
     }
   };
+  
 
   return (
     <div className='container__page'>
@@ -35,6 +36,7 @@ export const RegisterProducts = () => {
       <div className='registerProductContainer'>
         <FormRegisterProduct
           values={values}
+          setSize={setSize}
           handleInputChange={handleInputChange}
         />
         <Dropzone

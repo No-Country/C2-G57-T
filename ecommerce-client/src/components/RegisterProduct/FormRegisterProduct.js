@@ -1,42 +1,39 @@
 import React, { useState, useEffect } from "react";
+import { sendSubtype } from "./../../helpers/sedSubtype";
 
-export const FormRegisterProduct = ({ values, handleInputChange }) => {
-  const [subType, setSubType] = useState([]); 
+export const FormRegisterProduct = ({ values, handleInputChange, setSize }) => {
+  const [subType, setSubType] = useState([]);
 
-  const sendSubtype = (values) => {
-    switch (values.type) {
-      case "t-shirt":
-        return [{ id: 1, sub: ["Con Mangas", "Sin Magas", "Manga Larga"] }];
-      case "skirts":
-        return [{ id: 2, sub: ["Cortas", "Largas"] }];
-
-      case "dresses":
-        return [
-          {
-            id: 3,
-            sub: ["De dia", "De noche"],
-          },
-        ];
-
-      case "pants":
-        return [
-          {
-            id: 3,
-            sub: ["Jeans", "De Morley"],
-          },
-        ];
-
-      default:
-        break;
-    }
-  };
+  const [check, setCheck] = useState({
+    options: [
+      { check: false, id: "S" },
+      { check: false, id: "M" },
+      { check: false, id: "L" },
+      { check: false, id: "XL" },
+    ],
+  });
 
   useEffect(() => {
     const subtypeArticle = sendSubtype(values);
     if (subtypeArticle) {
       setSubType(subtypeArticle);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.type]);
+
+  const onSeleccion = (e) => {
+    let { name } = e.target;
+    let options = [...check.options];
+    let index = options.findIndex((el) => el.id === name);
+    options[index].check = !options[index].check;
+    setCheck({
+      options: [...options],
+    });
+
+    let select = check.options.filter((el) => el.check);
+    let endSelect = select.map((id) => id.id);
+    setSize(endSelect);
+  };
 
   return (
     <form>
@@ -69,13 +66,24 @@ export const FormRegisterProduct = ({ values, handleInputChange }) => {
           type='text'
           value={values.color}
         />
-        <input
-          name='size'
-          onChange={handleInputChange}
-          placeholder='Talle'
-          type='text'
-          value={values.size}
-        />
+ 
+        <div className='checkbox-container'>
+          {check.options.map((el) => {
+            return (
+              <div key={el.id} className='checkbox-info'>
+                <label className='label' htmlFor={el.id}>{el.id}</label>
+                <input
+                  type='checkbox'
+                  value={el.check}
+                  onChange={onSeleccion}
+                  name={el.id}
+                  className='option-input checkbox'
+                  id={el.id}
+                />
+              </div>
+            );
+          })}
+        </div>
         <input
           name='stock'
           onChange={handleInputChange}
@@ -89,7 +97,7 @@ export const FormRegisterProduct = ({ values, handleInputChange }) => {
         // value={values.type}
         name='type'
         defaultValue={"DEFAULT"}
-        className="select form-select form-select-lg my-3"
+        className='select form-select form-select-lg my-3'
         onChange={handleInputChange}
       >
         <option value='DEFAULT' disabled>
@@ -102,7 +110,8 @@ export const FormRegisterProduct = ({ values, handleInputChange }) => {
         <option value='pants'>Pantalones</option>
       </select>
 
-      <select className="select form-select form-select-lg mb-3"
+      <select
+        className='select form-select form-select-lg'
         // value={value}
         name='subType'
         defaultValue={"DEFAULT"}

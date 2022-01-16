@@ -83,3 +83,32 @@
   padding: 1rem;
   border: none;
 }
+
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+.radio-container {
+  display: flex;
+}
+
+.radio-toolbar label {
+  margin: 0.5rem 0;
+  margin-right: 0.5rem;
+  display: inline-block;
+  background-color: #000;
+  color: #fff;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 2;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: pink;
+  color: #000;
+}

@@ -9,7 +9,10 @@ export const RegisterProductContext = ({ children }) => {
   const [newProductUpdate, setNewProductUpdate] = useState({})
   
   
-  const imageInfoProduct = async (images, info) => {
+  const imageInfoProduct = async (images, info, size) => {
+
+    console.log('info ', info )
+
     try {
       let bodyFormData = new FormData();
 
@@ -17,6 +20,7 @@ export const RegisterProductContext = ({ children }) => {
       bodyFormData.append("name", info.name);
       bodyFormData.append("price", info.price);
       bodyFormData.append("description", info.description);
+      bodyFormData.append("talle", size);
 
       const resp = await clientAxios
         .post("/api/products", bodyFormData, {

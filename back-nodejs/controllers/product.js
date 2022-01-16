@@ -30,6 +30,7 @@ const saveProduct = async(req, res) => {
 
     const { name, price, description, img, talle=[], color=[] } = req.body;
     
+    
     const info = { name, price, description, img };
 
     const product = await Product.create(info);
