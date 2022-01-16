@@ -1,96 +1,93 @@
 @use "../base/variables" as v;
 
-.header {
+.header-fix {
   position: sticky;
   top: 0;
   left: 0;
-  width: 100%;
-  display: flex;
-  // flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background: v.$violet;
+  padding: 5px 10px;
   z-index: 99;
-  height: 5rem;
 
-  .fas {
-    font-size: 1.8rem;
-    padding: 0.4rem 0;
-    &:hover {      
-      background: rgba($color: #fff, $alpha: 0.5);
-      width: 40px;
-      height: 40px;      
-      border-radius: 0.8rem;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
-    }
-  }
-
-  .fa-shopping-cart {
-    position: relative;
-
-    .icon-number {
-      width: 25px;
-      height: 25px;
-      background-color: #000;
-      position: absolute;
-      bottom: 25px;
-      left: 23px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      span {
-        color: #fff;
-        font-size: 1.2rem;
-      }
-    }
-  }
-
-  .button-burguer {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-
-    // &:hover {
-    //   background: rgba($color: #fff, $alpha: 0.5);
-    // }
-  }
-
-  a {
-    img {
-      width: 150px;
-      height: 40px;
-      object-fit: contain;
-    }
-  }
-
-  .icons-header {
+  header {
+    width: 100%;
+    height: 60px;
     display: flex;
-
-    .icon-search,
-    .icon-cart {
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background: #00A19D;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  
+    .button-burguer {
       width: 40px;
       height: 40px;
       text-align: center;
-      line-height: 40px;
+      line-height: 45px;
       border-radius: 0.8rem;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
-
-      // &:hover {
-      //   background: rgba($color: #fff, $alpha: 0.5);
-      // }
+  
+      &:hover {      
+        background: rgba($color: #fff, $alpha: 0.5);
+        width: 40px;
+        height: 40px;      
+        border-radius: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+    }
+  
+    a {
+      img {
+        width: 150px;
+        height: 40px;
+        object-fit: contain;
+      }
+    }
+  
+    .icons-header {
+      display: flex;
+  
+      .icon-cart {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 45px;
+        border-radius: 0.8rem;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+  
+        &:hover {      
+          background: rgba($color: #fff, $alpha: 0.5);
+          width: 40px;
+          height: 40px;      
+          border-radius: 0.8rem;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+        }
+  
+        .icon-number {
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          width: 20px;
+          height: 20px;
+          line-height: 21px;
+          font-size: .8rem;
+          border-radius: 50%;
+          background-color: v.$colorAzul;
+        }
+      }
+    }
+  
+    i {
+      font-size: 1.3rem;
+      color: v.$blanco;
     }
   }
-
-  i {
-    font-size: 0.9rem;
-    color: v.$blanco;
-  }
 }
+
+
