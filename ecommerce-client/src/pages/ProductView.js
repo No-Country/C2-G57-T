@@ -14,6 +14,7 @@ export const ProductView = () => {
   const { newProductUpdate } = useContext(RegisterProductData);
   const [dataProductView, setDataProductView] = useState("");
   const [quantity, setQuantity] = useState("");
+  const [size, setSize] = useState("");
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -33,9 +34,12 @@ export const ProductView = () => {
   const handleChange = (e) => {
     setQuantity(e.target.value);
   };
+  const handleChangeSize = (e) => {
+    setSize(e.target.value);
+  };
 
   const handleBuy = () => {
-    if (!quantity || quantity <= 0) {
+    if (!quantity || quantity <= 0 || size === "") {
       setError(true);
       setTimeout(() => {
         setError(false);
@@ -43,12 +47,18 @@ export const ProductView = () => {
       return;
     }
 
-    addProductCart(Object.assign(dataProductView, { quantity: quantity }));
+    addProductCart(
+      Object.assign(dataProductView, { quantity: quantity }, { size: size })
+    );
   };
 
   const handleBack = () => {
     navigate(-1);
   };
+
+  const talle = dataProductView.talle[0].split(",");
+
+  console.log('size', size )
 
   return (
     <div className='productViewContainer'>
@@ -79,7 +89,22 @@ export const ProductView = () => {
             ? dataProductView.price
             : newProductUpdate.price}
         </h2>
-        {/* <h2 className='productViewInfo'>{dataProductView.talle}</h2> */}
+         <div className="radio-container">   
+        {talle.map((s , i) => (
+          <div key={s} className="radio-toolbar">
+            <input
+              type='radio'
+              value={s}
+              name='gender'
+              onChange={handleChangeSize}
+              id={i}
+              
+            />
+            <label htmlFor={i} className="labelRadio">{s}</label>
+          </div>
+        ))}
+        </div>
+
         <input
           placeholder='Cantidad'
           type='number'
@@ -100,7 +125,11 @@ export const ProductView = () => {
         >
           Volver a la tienda
         </button>
-        {error && <p style={{ color: "red" }}>Que cantidad deseas comprar?</p>}
+        {error && (
+          <p style={{ color: "red" }}>
+            Debes seleccionar la catidad y el talle
+          </p>
+        )}
         {msg && <p style={{ color: "red" }}>{msg}</p>}
         {/* solo lo debe ver el usuario clave */}
         <ControlPanel dataProductView={dataProductView} />

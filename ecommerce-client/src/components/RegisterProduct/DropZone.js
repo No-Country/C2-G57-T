@@ -33,7 +33,6 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: "image/jpeg, image/png",
-
     noKeyboard: true,
     multiple: true,
     maxFiles: 4,
