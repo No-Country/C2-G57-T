@@ -24,7 +24,8 @@ const Header = () => {
 
   return (
     <>
-      <header className='header'>
+    <div className="header-fix">
+      <header> 
         <div
           className='button-burguer'
           onClick={() => setShowSidebar(!showSidebar)}
@@ -38,7 +39,7 @@ const Header = () => {
       
           <div className='icon-cart'>
             <i
-              className='fas fa-shopping-cart'
+              className='fas fa-shopping-bag'
               onClick={() => setShowOpenModalCart(!showOpenModalCart)}
             >
               <div className='icon-number'>
@@ -48,9 +49,9 @@ const Header = () => {
           </div>
         </div>
       </header>
-    
+    </div>
 
-      {showSidebar && <Sidebar />}
+      <Sidebar sidebar={showSidebar}/>
       {showOpenModalCart && <CartDetailModal />}
     </>
   );
