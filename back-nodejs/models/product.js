@@ -22,7 +22,7 @@ const ProductSchema = Schema({
     ],
     stock: {
         type: Boolean,
-        default: false
+        default: true
     },
     destacado: {
         type: Boolean,
@@ -31,7 +31,17 @@ const ProductSchema = Schema({
     color: [
         String
     ],   
-
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+    },
+    category: {
+        type: String        
+    },
+    subcategory: {
+        type: String
+    }
 
 });
 
