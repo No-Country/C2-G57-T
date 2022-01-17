@@ -51,7 +51,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       }),
                   Text(
                     "Recordar",
-                    style: TextStyle(fontSize: height * 0.02),
+                    style: TextStyle(fontSize: height * 0.01),
                   ),
                 ],
               ),
@@ -64,7 +64,9 @@ class _LoginWidgetState extends State<LoginWidget> {
           ),
           ElevatedButton(
               style: ElevatedButton.styleFrom(primary: Colors.grey),
-              onPressed: () {},
+              onPressed: () {
+                print("${contrasenia2.text}, ${emailController2.text}");
+              },
               child: Text("Ingresar"))
         ],
       ),

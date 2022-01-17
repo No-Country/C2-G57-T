@@ -9,7 +9,7 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  final int valor = 1;
+  int valor = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -86,27 +86,44 @@ class _DetailState extends State<Detail> {
                     Row(
                       children: [
                         BotonColorTalle(
-                            child: Text("L", style: TextStyle(fontSize: 11))),
+                            child: Text("L", style: TextStyle(fontSize: 20))),
                         SizedBox(width: 15),
                         BotonColorTalle(
-                            child: Text("XL", style: TextStyle(fontSize: 11))),
+                            child: Text("XL", style: TextStyle(fontSize: 20))),
                         SizedBox(width: 15),
                         BotonColorTalle(
-                            child: Text("XXL", style: TextStyle(fontSize: 11))),
+                            child: Text("XXL", style: TextStyle(fontSize: 20))),
                       ],
                     ),
                     Text("Cantidad"),
                     Container(
-                      height: 20,
-                      width: 60,
+                      width: 120,
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.black)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Text("-"),
-                          Text("1"),
-                          Text("+"),
+                          IconButton(
+                              icon: Icon(
+                                Icons.minimize_rounded,
+                                size: 15,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  valor--;
+                                });
+                              }),
+                          Text("$valor"),
+                          IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  valor++;
+                                });
+                              },
+                              icon: Icon(
+                                Icons.add,
+                                size: 15,
+                              )),
                         ],
                       ),
                     ),
@@ -214,8 +231,8 @@ class BotonColorTalle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 20,
-      width: 20,
+      height: 40,
+      width: 40,
       decoration:
           BoxDecoration(color: color, borderRadius: BorderRadius.circular(20)),
       child: Center(child: child),

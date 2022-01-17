@@ -58,6 +58,7 @@ class _RegisterWidgetState extends State<RegisterWidget> {
           children: [
             TextFormField(
               keyboardType: TextInputType.emailAddress,
+              controller: emailController,
               validator: (val) {
                 if (val?.contains("@") ?? false) {
                   return null;
@@ -153,13 +154,12 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                         : Colors.blue),
                 onPressed: () {
                   if (loginFormProvider.esValido()) {
-                    print(
-                        """ email: ${emailController.text} - nombre: ${nombreController.text} - contraseña: ${contraseniaController.text} 
-                      - ciudad: ${ciudadContoller.text} - direccion ${direccionController.text}   """);
                     FocusScope.of(context).unfocus();
                     Navigator.of(context).pushReplacementNamed("home");
                     Future.delayed(Duration(seconds: 5));
                   }
+                  print(
+                      "${contraseniaController.text},${emailController.text},${nombreController.text}");
                 },
                 child: Text(
                     loginFormProvider.esValido() ? "Espere" : "Registrarme"))
