@@ -14,14 +14,14 @@ const validarJWT = async(req, res, next)=>{
 
     try {        
         const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
-        const user = User.findById(uid);
+        const user = await User.findById(uid);
         if(!user){
             return res.status(401).json({
                 msg: "Token Invalido - El usuario no existe"
             })
         }
 
-        req.user = user;
+        req.user = user;        
         next();
 
     } catch (error) {

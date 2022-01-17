@@ -5,11 +5,56 @@ const { getIdCloudinary } = require("../helpers/getIdCloudinary");
 
 
 const getProducts = async(req, res) => {
+    const { category="", subcategory="", limit=20, from=0 } = req.query;   
+    
+    const categoryUC = category.toUpperCase();
+    const subCategoryUC = subcategory.toUpperCase();
 
-    const product = await Product.find({});
-    res.status(200).json(product);
+    if(subcategory===""){
 
-}
+        if(category===""){
+            // buscar todos
+            const [ total, products ] = await Promise.all([
+                Product.countDocuments(),
+                Product.find({})  
+                    .populate("user", "name")            
+                    .skip(Number(from))
+                    .limit(Number(limit))        
+            ]);
+            return res.status(200).json({ total, products })
+        }
+        // buscar solo por categorias
+        const [ total, products ] = await Promise.all([
+            Product.countDocuments(),
+            Product.find({ category: categoryUC })  
+                .populate("user", "name")            
+                .skip(Number(from))
+                .limit(Number(limit))        
+        ]);
+        return res.status(200).json({ total, products })
+    }else{
+        if(category===""){
+            // buscar solo por subcategoria
+            const [ total, products ] = await Promise.all([
+                Product.countDocuments(),
+                Product.find({subcategory: subCategoryUC})  
+                    .populate("user", "name")            
+                    .skip(Number(from))
+                    .limit(Number(limit))        
+            ]);
+            return res.status(200).json({ total, products })
+        }
+        // buscar por categorias y subcategorias
+        const [ total, products ] = await Promise.all([
+            Product.countDocuments(),
+            Product.find({ $and: [{category: categoryUC}, {subcategory: subCategoryUC}], })  
+                .populate("user", "name")            
+                .skip(Number(from))
+                .limit(Number(limit))        
+        ]);
+        return res.status(200).json({ total, products })
+    }       
+};
 
 const getProductById = async(req, res) => {
 
@@ -28,16 +73,23 @@ const getProductById = async(req, res) => {
 
 const saveProduct = async(req, res) => {
 
-    const { name, price, description, img, talle=[], color=[] } = req.body;
+    const { name, price, description, img, talle=[], color=[], user, category="", subcategory="" } = req.body;    
+    const info = { name, price, description, img, user: req.user._id, category: category.toUpperCase(), subcategory: subcategory.toUpperCase(), color, talle };   
     
-    const info = { name, price, description, img };
+    const verifyProduct = await Product.findOne({ name: name });
+    if (verifyProduct){
+        return res.status(400).json({
+            msg: `Producto ${verifyProduct.name} ya está registrado con ese nombre`
+        })
+    }
 
-    const product = await Product.create(info);
+    const product = await Product.create(info);       
+    let sampleFiles = req.files.file;    
+    if(!(sampleFiles.constructor === Array)){
+        sampleFiles = new Array(sampleFiles)        
+    }
     
-    product.talle = talle;    
-    product.color = color
-
-    const promises = req.files.file.map(async e => {
+    const promises = sampleFiles.map(async e => {
         const { tempFilePath } = e;
         const { secure_url } = await cloudinary.uploader.upload(tempFilePath);
         product.img.push({ url: secure_url })
@@ -108,11 +160,9 @@ const listProductPrice = async(req, res) => {
     }
 }
 module.exports = {
-    getProductById,
-    saveProduct,
     getProducts,
+    getProductById,    
+    saveProduct,
     updateProduct,
-    deleteProduct,
-    listProductName,
-    listProductPrice
+    deleteProduct    
 }
