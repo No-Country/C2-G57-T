@@ -1,35 +1,36 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/user");
 
-const validarJWT = async (req, res, next) => {
-  console.log('token', req)
-  const token = req.header("token");    
+const validarJWT = async(req, res, next)=>{
 
-  if (!token) {
-    return res.status(401).json({
-      msg: "No hay token en la petición",
-    });
-  }
+    const token = req.header("token");
 
-  try {
-    const { uid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
-    const user = User.findById(uid);
-    if (!user) {
-      return res.status(401).json({
-        msg: "Token Invalido - El usuario no existe",
-      });
+    if(!token){
+        return res.status(401).json({
+            msg: "No hay token en la petición"
+        })
     }
 
-    req.user = user;
-    next();
-  } catch (error) {
-    console.log(error);
-    res.status(401).json({
-      msg: "Invalid Token",
-    });
-  }
-};
+    try {        
+        const {uid} = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const user = await User.findById(uid);
+        if(!user){
+            return res.status(401).json({
+                msg: "Token Invalido - El usuario no existe"
+            })
+        }
+
+        req.user = user;        
+        next();
+
+    } catch (error) {
+        console.log(error);
+        res.status(401).json({
+            msg: "Invalid Token"
+        })            
+    }
+}
 
 module.exports = {
-  validarJWT,
-};
+    validarJWT
+}
