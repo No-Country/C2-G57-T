@@ -40,10 +40,37 @@
     }
   
     a {
-      img {
+      /* img {
         width: 150px;
         height: 40px;
         object-fit: contain;
+      } */
+      span {
+        position: relative;
+        font-size: 2rem;
+        font-weight: bold;
+        font-family: 'The Nautigal', cursive;
+        color: #FFB344;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 20px;
+          width: 130px;
+          height: 45px;
+          border: 2px solid #212121;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: -6px;
+          right: 20px;
+          width: 130px;
+          height: 45px;
+          border: 2px solid #666;
+        }
       }
     }
   
