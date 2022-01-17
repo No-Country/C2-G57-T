@@ -8,8 +8,12 @@
 
 
   &__container {
-    border: 2px solid black;
+    border-radius: 20px;
     padding: 1rem;
+    background: #FFF8E5;
+    box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.5);
 
     .profile__fieldContainer {
       display: flex;
@@ -25,6 +29,9 @@
       input {
         margin: 0rem 0 1rem 0;
         padding: .5rem;
+        border: none;
+        border-bottom: 1px solid #cdcdcd;
+        border-radius: 20px;
       }
     }
   }
@@ -33,5 +40,7 @@
 .profile__inputSubmit{
   width: 100%;
   padding: .5rem;
-  text-transform: uppercase;
+  border: none;
+  border-radius: 20px;
+  background: #FFB344;
 }

@@ -10,6 +10,7 @@ import { CartDetailModal } from "./cart/CartDetailModal";
 import { CartData } from "../cartContext/Cartcontext";
 
 const Header = () => {
+  
   const {showOpenModalCart, setShowOpenModalCart, state } = useContext(CartData)
   const [showSidebar, setShowSidebar] = useState(false);
 

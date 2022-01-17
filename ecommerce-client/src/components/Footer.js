@@ -22,7 +22,7 @@ const Footer = () => {
                 </Link>
             </div>
             <footer>
-                <h1>footer</h1>
+                <span>mujeresreales@gmail.com</span>
             </footer>
         </>
     )

@@ -15,6 +15,7 @@ export const ControlPanel = ({ dataProductView }) => {
   };
 
   return (
+    <>
     <div className='controlPanel'>
       <div className='container-button-form'>
         <button
@@ -29,16 +30,18 @@ export const ControlPanel = ({ dataProductView }) => {
           onClick={() => setShowFormUpdate(!showFormUpdate)}
           className='generalButton'
         >
-          {showFormUpdate ? "cerrar" : "Actualizar articulo"}
+          {showFormUpdate ? "Cerrar panel" : "Actualizar articulo"}
         </button>
-        {showFormUpdate && (
+      </div>
+    </div>
+
+    {showFormUpdate && (
           <FormUpdate
             dataProductView={dataProductView}
             setShowFormUpdate={setShowFormUpdate}
           />
         )}
-      </div>
-    </div>
+    </>
   );
 };
 
@@ -90,7 +93,7 @@ const FormUpdate = ({ dataProductView, setShowFormUpdate }) => {
         name='price'
         min='0'
       />
-      <input type='submit' value='Actualizar' className='generalButton' />
+      <input type='submit' value='Actualizar articulo' className='generalButton' />
     </form>
   );
 };

@@ -61,7 +61,7 @@ export const ProductView = () => {
   console.log('size', size )
 
   return (
-    <div className='productViewContainer'>
+    <div className='productViewContainer container__page'>
       <div className='grid-productView'>
         {dataProductView.img.map((image) => (
           <img

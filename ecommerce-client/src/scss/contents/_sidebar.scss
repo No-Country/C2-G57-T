@@ -22,9 +22,11 @@
   .icon-user-container{
     display: flex;
     align-items: center;
+
     p{
       margin: 0;
       margin-left: .5rem;
+      text-transform: capitalize;
     }
   }
   
@@ -41,8 +43,10 @@
   .button-profile{
     margin-left: 1rem;
     border: none;
-    padding: .5rem;
-    background: v.$primario;
+    padding: 8px 16px;
+    border-radius: 20px;
+    color: #fff;
+    background: #E05D5D;
     
     &:hover{
       cursor: pointer;

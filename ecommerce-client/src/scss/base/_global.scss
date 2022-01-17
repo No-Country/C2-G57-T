@@ -57,16 +57,14 @@ input:focus {
 }
 
 .generalButton {
-  padding: 0.5rem;
-  text-transform: uppercase;
+  padding: 8px 16px;
   background-color: #FFB344;
   border: none;
-  width: 100%;
-  margin: .5rem 0;
+  border-radius: 20px;
   transition: all 0.3s ease;
 
   &:hover {
-    background-color: darken($color: pink, $amount: 10);
+    background-color: darken($color: #FFB344, $amount: 10);
   }
 }
 

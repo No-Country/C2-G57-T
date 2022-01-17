@@ -1,70 +1,78 @@
 .CartModal {
-  background-color: #fff;
-  width: 35%;
   position: fixed;
-  right: 0px;
-  height: auto;
-  padding: 0.5rem;
-  border: 1px solid #000;
-  border-top: none;
-  box-shadow: 10px 10px 21px -4px rgba(0, 0, 0, 0.75);
-  -webkit-box-shadow: 10px 10px 21px -4px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 21px -4px rgba(0, 0, 0, 0.75);
-
-  &__title {
-    margin: 1rem;
-    text-align: left;
-    font-size: 1.6rem;
-  }
+  top: 70px;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  padding: 20px 10px;
+  border-radius: 20px 0 0 20px;
+  background-color: #FFF8E5;
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+  z-index: 99;
+  overflow-y: scroll;
 
   &__flex {
     display: flex;
     justify-content: space-between;
   }
   &__button {
-    background-color: transparent;
+    padding-bottom: 10px;
     border: none;
-    font-size: 0.8rem;
+    font-size: .9rem;
+    font-weight: bold;
+    background: transparent;
 
-    &--endBuy {
+    i {
+      color: red;
+    }
+    /* &--endBuy {
       border: none;
       width: 100%;
       padding: 0.5rem;
-    }
+    } */
+  }
+
+  .aviso_cart {
+    text-align: center;
+  }
+
+  .end-purchase {
+    margin: 10px 20%;
   }
 }
 
 .productCart {
   display: flex;
+  justify-content: space-between;
+  gap: 10px;
   align-items: center;
   border-bottom: 1px solid #e1e1e1;
-  padding: 0.2rem;
+  padding: 10px 0;
 
   &__img {
-    width: 6rem;
-    height: 6rem;
-    object-fit: contain;
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
   }
+
   &__info {
-    flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin: 0 2rem;
-    p {
-      margin: 0;
-    }
+    font-size: .8rem;
   }
+
   &__button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    border: 4px solid red;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
+    border: none;
+    font-size: 1.5rem;
     color: red;
-    font-weight: bold;
+    background: transparent;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }

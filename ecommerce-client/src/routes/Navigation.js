@@ -8,7 +8,6 @@ import { Profile } from "../pages/Profile";
 import { RegisterProducts } from "../pages/RegisterProducts";
 // import your route components too
 import Dress from "./../pages/Dress";
-import ProdDetail from "../pages/ProdDetail";
 import { Shop } from "./../pages/Shop";
 import { ProductView } from "./../pages/ProductView";
 
@@ -34,7 +33,6 @@ export const Navigation = () => {
               <Route path=':id/:id' element={<ProductView />} />
             </Route>
           </Route>
-          <Route path='prodDetail' element={<ProdDetail />} />
           <Route path='registerproducts' element={<RegisterProducts />} />
 
           <Route path='*' element={<Home />} />

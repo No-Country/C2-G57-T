@@ -16,13 +16,13 @@ export const CardProductCart = ({ product }) => {
         alt={product.name}
       />
       <div className='productCart__info'>
-        <p>Producto: {product.name}</p>
-        <p>Cantidad: {product.quantity}</p>
-        <p>Talle: {product.size}</p>
-        <p>Precio: ${product.price}</p>
+        <span>Producto: {product.name}</span>
+        <span>Cantidad: {product.quantity}</span>
+        <span>Talle: {product.size}</span>
+        <span>Precio: ${product.price}</span>
       </div>
       <button className='productCart__button' onClick={handleDelete}>
-        <span>X</span>
+      <i className="far fa-times-circle"></i>
       </button>
     </div>
   );

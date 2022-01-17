@@ -1,8 +1,13 @@
 @use "../base/variables" as v;
 
 footer {
-    background: v.$violet;
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    height: 200px;
+    color: #fff;
+    background: #00A19D;
 }
 
 .redes-home {
@@ -39,7 +44,7 @@ footer {
             line-height: 50px;
             border-radius: 1rem;
             color: v.$blanco;
-            background: rgba($color: #000, $alpha: .5);
+            /* background: rgba($color: #000, $alpha: .5); */
         }
     }
 
