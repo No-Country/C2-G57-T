@@ -61,20 +61,42 @@ const getProductById = async(req, res) => {
     const { id } = req.params;
     try {
         const product = await Product.findById(id);
+        if(!product){
+            return res.status(400).json({msg: `No existe producto con el id: ${id}`});
+        }
         res.status(200).json(product)
 
     } catch (error) {
-
         res.status(400).json({
-            msg: "ID invalido"
+            msg: "Error en el servidor"
         });
+    }
+};
+
+const getProductsDestacados = async(req, res) => {
+    try {
+        const products = await Product.find({destacado: true});
+        res.status(200).json(products);
+        
+    } catch (error) {
+        res.status(500).json({ msg: "Error en el servidor" });
+    }
+} ;
+
+const getProductsByDiscount = async(req, res) => {
+    try {
+        const productsOffer = await Product.find({ discount:  {$gt: 0} } );
+        res.status(200).json(productsOffer);
+        
+    } catch (error) {
+        res.status(500).json({ msg: "Error en el servidor" });        
     }
 };
 
 const saveProduct = async(req, res) => {
 
-    const { name, price, description, img, talle=[], color=[], user, category="", subcategory="" } = req.body;    
-    const info = { name, price, description, img, user: req.user._id, category: category.toUpperCase(), subcategory: subcategory.toUpperCase(), color, talle };   
+    const { name, img, talle=[], color=[], user, category="", subcategory="", ...body} = req.body;    
+    const info = { name, img, user: req.user._id, category: category.toUpperCase(), subcategory: subcategory.toUpperCase(), talle, color,...body };   
     
     const verifyProduct = await Product.findOne({ name: name });
     if (verifyProduct){
@@ -162,6 +184,8 @@ const listProductPrice = async(req, res) => {
 module.exports = {
     getProducts,
     getProductById,    
+    getProductsDestacados,
+    getProductsByDiscount,
     saveProduct,
     updateProduct,
     deleteProduct    

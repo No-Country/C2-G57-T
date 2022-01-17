@@ -27,6 +27,10 @@ const ProductSchema = Schema({
     destacado: {
         type: Boolean,
         default: false
+    },
+    discount : {
+        type: Number,
+        default: 0
     },    
     color: [
         String
