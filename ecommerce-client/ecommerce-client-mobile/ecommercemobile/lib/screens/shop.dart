@@ -140,13 +140,12 @@ class Carrito extends StatefulWidget {
 }
 
 class _CarritoState extends State<Carrito> {
-  bool producto = true;
-
   @override
   Widget build(BuildContext context) {
     // final Product product =
     //     ModalRoute.of(context)!.settings.arguments as Product;
     final productProvider = Provider.of<ProductProvider>(context);
+
     return Padding(
       padding: const EdgeInsets.only(top: 15.0),
       child: Container(
@@ -155,33 +154,45 @@ class _CarritoState extends State<Carrito> {
         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: ListView.builder(
-            itemCount: productProvider.productsList.length,
-            itemBuilder: (context, index) {
-              final Product productolist = productProvider.productsList[index];
-              return Column(
-                children: [
-                  ListTile(
-                    leading: Container(
-                      child: FadeInImage(
-                          placeholder: AssetImage("assets/loading.gif"),
-                          image: AssetImage(productolist.imagen)),
-                    ),
-                    title: Text(
-                      productolist.name,
-                      style: TextStyle(fontSize: 14),
-                    ),
-                    trailing: Text("${productolist.price}"),
-                  ),
-                  Divider(
-                    thickness: 2.0,
-                  ),
-                  SizedBox(
-                    height: 10.0,
-                  )
-                ],
-              );
-            },
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView.builder(
+                  itemCount: productProvider.productsList.length,
+                  itemBuilder: (context, index) {
+                    final Product producto =
+                        productProvider.productsList[index];
+
+                    return Column(
+                      children: [
+                        ListTile(
+                          leading: Container(
+                            child: FadeInImage(
+                                placeholder: AssetImage("assets/loading.gif"),
+                                image: AssetImage(producto.imagen)),
+                          ),
+                          title: Text(
+                            producto.name,
+                            style: TextStyle(fontSize: 14),
+                          ),
+                          trailing: Text("${producto.price}"),
+                        ),
+                        Divider(
+                          thickness: 2.0,
+                        ),
+                        SizedBox(
+                          height: 10.0,
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomRight,
+                child: Text("${productProvider.pagoTotal}"),
+              )
+            ],
           ),
         ),
       ),
