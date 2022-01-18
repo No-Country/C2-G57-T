@@ -190,7 +190,7 @@ class _CarritoState extends State<Carrito> {
               ),
               Align(
                 alignment: Alignment.bottomRight,
-                child: Text("${productProvider.pagoTotal}"),
+                child: Text("Total: \$${productProvider.pagoTotal}"),
               )
             ],
           ),

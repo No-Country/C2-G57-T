@@ -12,7 +12,7 @@ class Detail extends StatefulWidget {
 }
 
 class _DetailState extends State<Detail> {
-  int valor = 0;
+  int cantidad = 0;
   bool aumentar = false;
   bool aumentar1 = false;
   bool aumentar2 = false;
@@ -251,17 +251,17 @@ class _DetailState extends State<Detail> {
                               ),
                               onPressed: () {
                                 setState(() {
-                                  valor--;
+                                  cantidad--;
                                 });
                               }),
                           Text(
-                            "$valor",
+                            "$cantidad",
                             style: TextStyle(fontSize: 20),
                           ),
                           IconButton(
                               onPressed: () {
                                 setState(() {
-                                  valor++;
+                                  cantidad++;
                                 });
                               },
                               icon: Icon(
@@ -280,7 +280,7 @@ class _DetailState extends State<Detail> {
                           ),
                           onPressed: () {
                             setState(() {});
-                            mostradDialogoCompra(context, producto);
+                            mostradDialogoCompra(context, producto, cantidad);
                           },
                           icon: Icon(Icons.shopping_cart_outlined),
                           label: Text("COMPRAR")),
@@ -305,7 +305,8 @@ class _DetailState extends State<Detail> {
     );
   }
 
-  Future<dynamic> mostradDialogoCompra(BuildContext context, Product producto) {
+  Future<dynamic> mostradDialogoCompra(
+      BuildContext context, Product producto, int cantidad) {
     return showDialog(
       barrierDismissible: true,
       context: context,
@@ -350,7 +351,8 @@ class _DetailState extends State<Detail> {
                             style: TextStyle(fontSize: 15.0),
                           ),
                           Text("${producto.color1}"),
-                          Text("\$${producto.price}")
+                          Text("\$${producto.price}"),
+                          Text("Cantidad: ${cantidad}"),
                         ],
                       )
                     ],
@@ -364,7 +366,8 @@ class _DetailState extends State<Detail> {
                         setState(() {
                           productProvider.carritoItem++;
                           productProvider.productsList.add(producto);
-                          productProvider.pagoTotal += producto.price;
+                          productProvider.pagoTotal +=
+                              producto.price * cantidad;
                         });
                       },
                       icon: Icon(Icons.shopping_cart_outlined),
