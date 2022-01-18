@@ -1,4 +1,5 @@
 import 'package:ecommercemobile/provider/login_provider.dart';
+import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/screens/screens.dart';
 
 import 'package:flutter/material.dart';
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => LoginFormProvider(),
           lazy: false,
-        )
+        ),
+        ChangeNotifierProvider(create: (_) => ProductProvider())
       ],
       child: MaterialApp(
         title: 'Material App',

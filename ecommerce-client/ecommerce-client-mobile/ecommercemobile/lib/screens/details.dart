@@ -1,6 +1,8 @@
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Detail extends StatefulWidget {
   const Detail({Key? key}) : super(key: key);
@@ -11,13 +13,21 @@ class Detail extends StatefulWidget {
 
 class _DetailState extends State<Detail> {
   int valor = 0;
-  bool aumentar = true;
-  bool aumentar1 = true;
-  bool aumentar2 = true;
-  bool aumentar3 = true;
+  bool aumentar = false;
+  bool aumentar1 = false;
+  bool aumentar2 = false;
+  bool aumentar3 = false;
+  bool seleccionar = false;
+  bool seleccionar1 = false;
+  bool seleccionar2 = false;
+  bool seleccionar3 = false;
 
   @override
   Widget build(BuildContext context) {
+    final Product producto =
+        ModalRoute.of(context)!.settings.arguments as Product;
+    final productProvider = Provider.of<ProductProvider>(context);
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.purple[200],
@@ -30,25 +40,36 @@ class _DetailState extends State<Detail> {
           actions: [
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Stack(alignment: AlignmentDirectional.center, children: [
-                Icon(
-                  Icons.shopping_cart,
-                  size: 30,
-                ),
-                Positioned(
-                  top: 0,
-                  right: 0,
-                  left: 20,
-                  child: Container(
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                        color: Colors.white),
-                    child: Text("2",
-                        style: TextStyle(color: Colors.black, fontSize: 10)),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        "shop",
+                      );
+                    },
+                    child: Icon(
+                      Icons.shopping_cart,
+                      size: 30,
+                    ),
                   ),
-                )
-              ]),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    left: 20,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.black),
+                      child: Text("${productProvider.carritoItem}",
+                          style: TextStyle(color: Colors.white, fontSize: 10)),
+                    ),
+                  )
+                ],
+              ),
             )
           ],
         ),
@@ -59,20 +80,22 @@ class _DetailState extends State<Detail> {
                 padding: const EdgeInsets.all(15.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Center(
                       child: GestureDetector(
                         onTap: () {
                           setState(() {});
-                          aumentar3 = !aumentar3;
+                          aumentar = !aumentar;
+                          aumentar1 = false;
+                          aumentar2 = false;
+                          aumentar3 = false;
                         },
                         child: AnimatedContainer(
-                          height: aumentar3 ? 300 : 500,
-                          width: aumentar3 ? 300 : 500,
+                          height: aumentar ? 500 : 300,
+                          width: aumentar ? 500 : 300,
                           duration: Duration(milliseconds: 200),
                           child: ImagenPrincipal(
-                            imagenAssets: '1',
+                            imagenAssets: producto.imagen,
                           ),
                         ),
                       ),
@@ -86,32 +109,19 @@ class _DetailState extends State<Detail> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
-                              aumentar = !aumentar;
-                            });
-                          },
-                          child: AnimatedContainer(
-                            height: aumentar ? 100 : 150,
-                            width: aumentar ? 100 : 150,
-                            duration: Duration(milliseconds: 200),
-                            child: FadeInImage(
-                              placeholder: AssetImage("assets/loading.gif"),
-                              image: AssetImage("assets/2.jpg"),
-                            ),
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
                               aumentar1 = !aumentar1;
+                              aumentar = false;
+                              aumentar2 = false;
+                              aumentar3 = false;
                             });
                           },
                           child: AnimatedContainer(
-                            height: aumentar1 ? 100 : 150,
-                            width: aumentar1 ? 100 : 150,
+                            height: aumentar1 ? 150 : 100,
+                            width: aumentar1 ? 150 : 100,
                             duration: Duration(milliseconds: 200),
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
-                              image: AssetImage("assets/3.jpg"),
+                              image: AssetImage(producto.imagen),
                             ),
                           ),
                         ),
@@ -119,42 +129,108 @@ class _DetailState extends State<Detail> {
                           onTap: () {
                             setState(() {
                               aumentar2 = !aumentar2;
+                              aumentar1 = false;
+                              aumentar = false;
+                              aumentar3 = false;
                             });
                           },
                           child: AnimatedContainer(
-                            height: aumentar2 ? 100 : 150,
-                            width: aumentar2 ? 100 : 150,
+                            height: aumentar2 ? 150 : 100,
+                            width: aumentar2 ? 150 : 100,
                             duration: Duration(milliseconds: 200),
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
-                              image: AssetImage("assets/4.jpg"),
+                              image: AssetImage(producto.imagen),
+                            ),
+                          ),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              aumentar3 = !aumentar3;
+                              aumentar1 = false;
+                              aumentar2 = false;
+                              aumentar = false;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            height: aumentar3 ? 150 : 100,
+                            width: aumentar3 ? 150 : 100,
+                            duration: Duration(milliseconds: 200),
+                            child: FadeInImage(
+                              placeholder: AssetImage("assets/loading.gif"),
+                              image: AssetImage(producto.imagen),
                             ),
                           ),
                         )
                       ],
                     ),
-                    Text("Nombre del Producto"),
-                    Text("Precio"),
-                    Text("Colores"),
+                    Text(
+                      producto.name,
+                      style: TextStyle(fontSize: 25),
+                    ),
+                    Text("Precio: \$${producto.price}",
+                        style: TextStyle(fontSize: 25)),
+                    Text("Colores", style: TextStyle(fontSize: 25)),
                     Row(
                       children: [
-                        BotonColorTalle(
-                          color: Colors.black,
+                        GestureDetector(
+                          onTap: () {
+                            seleccionar = !seleccionar;
+                            seleccionar1 = false;
+                            setState(() {});
+                          },
+                          child: BotonColorTalle(
+                              color: Colors.black,
+                              color1:
+                                  seleccionar ? Colors.white : Colors.black),
                         ),
                         SizedBox(
                           width: 15,
                         ),
-                        BotonColorTalle(),
+                        GestureDetector(
+                            onTap: () {
+                              seleccionar = false;
+                              seleccionar1 = !seleccionar1;
+
+                              setState(() {});
+                            },
+                            child: BotonColorTalle(
+                                color1: seleccionar1
+                                    ? Colors.black
+                                    : Colors.white)),
                       ],
                     ),
                     Text("Talles"),
                     Row(
                       children: [
-                        BotonColorTalle(
-                            child: Text("L", style: TextStyle(fontSize: 20))),
+                        GestureDetector(
+                          onTap: () {
+                            seleccionar2 = !seleccionar2;
+                            seleccionar3 = false;
+                            setState(() {});
+                          },
+                          child: BotonColorTalle(
+                              color1:
+                                  seleccionar2 ? Colors.black : Colors.white,
+                              child: Text(
+                                producto.talle1,
+                                style: TextStyle(fontSize: 20),
+                              )),
+                        ),
                         SizedBox(width: 15),
-                        BotonColorTalle(
-                            child: Text("XL", style: TextStyle(fontSize: 20))),
+                        GestureDetector(
+                          onTap: () {
+                            seleccionar3 = !seleccionar3;
+                            seleccionar2 = false;
+                            setState(() {});
+                          },
+                          child: BotonColorTalle(
+                              color1:
+                                  seleccionar3 ? Colors.black : Colors.white,
+                              child: Text(producto.talle2,
+                                  style: TextStyle(fontSize: 20))),
+                        ),
                         SizedBox(width: 15),
                         BotonColorTalle(
                             child: Text("XXL", style: TextStyle(fontSize: 20))),
@@ -204,7 +280,7 @@ class _DetailState extends State<Detail> {
                           ),
                           onPressed: () {
                             setState(() {});
-                            mostradDialogoCompra(context);
+                            mostradDialogoCompra(context, producto);
                           },
                           icon: Icon(Icons.shopping_cart_outlined),
                           label: Text("COMPRAR")),
@@ -229,7 +305,7 @@ class _DetailState extends State<Detail> {
     );
   }
 
-  Future<dynamic> mostradDialogoCompra(BuildContext context) {
+  Future<dynamic> mostradDialogoCompra(BuildContext context, Product producto) {
     return showDialog(
       barrierDismissible: true,
       context: context,
@@ -262,25 +338,36 @@ class _DetailState extends State<Detail> {
                         height: 100,
                         width: 100,
                         color: Colors.grey,
+                        child: FadeInImage(
+                            placeholder: AssetImage("assets/loading.gif"),
+                            image: AssetImage(producto.imagen)),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Añadiste al carrito:"),
-                          Text("Nombre del producto"),
-                          Text("Color:Negro"),
-                          Text("Color:Negro"),
-                          Text("Total: 00000")
+                          Text(
+                            "${producto.name}",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
+                          Text("${producto.color1}"),
+                          Text("\$${producto.price}")
                         ],
                       )
                     ],
                   ),
                   ElevatedButton.icon(
                       onPressed: () {
-                        Navigator.pushNamed(context, "shop");
+                        final productProvider = Provider.of<ProductProvider>(
+                            context,
+                            listen: false);
+
+                        setState(() {
+                          productProvider.carritoItem++;
+                          productProvider.productsList.add(producto);
+                        });
                       },
                       icon: Icon(Icons.shopping_cart_outlined),
-                      label: Text("Finalizar compra")),
+                      label: Text("Agregar al carrito")),
                   ElevatedButton(
                       onPressed: () {
                         Navigator.pushNamed(context, "grid");
@@ -301,65 +388,25 @@ class BotonColorTalle extends StatelessWidget {
     Key? key,
     this.color = Colors.white,
     this.child,
+    this.color1 = Colors.black,
   }) : super(key: key);
 
   final Color color;
+  final Color color1;
   final Widget? child;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 40,
       width: 40,
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(20)),
+      decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: color1, width: 2.0)),
       child: Center(child: child),
     );
   }
 }
-
-// class ImagenesSecundarias extends StatelessWidget {
-//   const ImagenesSecundarias({
-//     Key? key,
-//     required this.imagenAssets1,
-//     required this.imagenAssets2,
-//     required this.imagenAssets3,
-//   }) : super(key: key);
-
-//   final String imagenAssets1;
-//   final String imagenAssets2;
-//   final String imagenAssets3;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Row(
-//       mainAxisAlignment: MainAxisAlignment.spaceAround,
-//       children: [
-//         Container(
-//           height: 80,
-//           width: 80,
-//           child:,
-//           ),
-//         ),
-//         Container(
-//           height: 80,
-//           width: 80,
-//           child: FadeInImage(
-//             placeholder: AssetImage("assets/loading.gif"),
-//             image: AssetImage("assets/${imagenAssets2}.jpg"),
-//           ),
-//         ),
-//         Container(
-//           height: 80,
-//           width: 80,
-//           child: FadeInImage(
-//             placeholder: AssetImage("assets/loading.gif"),
-//             image: AssetImage("assets/${imagenAssets3}.jpg"),
-//           ),
-//         )
-//       ],
-//     );
-//   }
-// }
 
 class ImagenPrincipal extends StatelessWidget {
   const ImagenPrincipal({
@@ -378,7 +425,7 @@ class ImagenPrincipal extends StatelessWidget {
       width: width * 0.5,
       child: FadeInImage(
         placeholder: AssetImage("assets/loading.gif"),
-        image: AssetImage("assets/${imagenAssets}.jpg"),
+        image: AssetImage(imagenAssets),
       ),
     );
   }

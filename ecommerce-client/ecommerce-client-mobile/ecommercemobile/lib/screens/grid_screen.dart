@@ -1,16 +1,16 @@
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class GridScreen extends StatelessWidget {
-  const GridScreen({Key? key}) : super(key: key);
+  GridScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final List<Product> products =
-        ModalRoute.of(context)!.settings.arguments as List<Product>;
+    final productProvider = Provider.of<ProductProvider>(context);
 
-    if (products.length == 0) return CircularProgressIndicator();
     return SafeArea(
       child: Scaffold(
         drawer: DrawerPersonalizado(),
@@ -19,9 +19,40 @@ class GridScreen extends StatelessWidget {
           backgroundColor: Colors.purple[200],
           centerTitle: true,
           title: const Text("Logo de la marca\nSlogan"),
-          actions: const [
-            Icon(Icons.search),
-            Icon(Icons.shopping_cart_outlined)
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(
+                        context,
+                        "shop",
+                      );
+                    },
+                    child: Icon(
+                      Icons.shopping_cart,
+                      size: 30,
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    left: 20,
+                    child: Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: Colors.black),
+                      child: Text("${productProvider.carritoItem}",
+                          style: TextStyle(color: Colors.white, fontSize: 10)),
+                    ),
+                  )
+                ],
+              ),
+            )
           ],
         ),
         body: Container(
@@ -31,9 +62,10 @@ class GridScreen extends StatelessWidget {
             gridDelegate:
                 SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
             itemBuilder: (_, index) {
-              final producto = products[index];
+              final producto = productos[index];
               return GestureDetector(
-                onTap: () => Navigator.pushNamed(context, "detail"),
+                onTap: () =>
+                    Navigator.pushNamed(context, "detail", arguments: producto),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -43,16 +75,16 @@ class GridScreen extends StatelessWidget {
                       color: Colors.grey,
                       child: FadeInImage(
                         placeholder: AssetImage("assets/loading.gif"),
-                        image: AssetImage("assets/${index + 1}.jpg"),
+                        image: AssetImage("assets/${index + 4}.jpg"),
                       ),
                     ),
-                    Text("Nombre del Producto"),
-                    Text("Precio")
+                    Text(producto.name),
+                    Text(producto.price.toString())
                   ],
                 ),
               );
             },
-            itemCount: products.length,
+            itemCount: productos.length,
           ),
         ),
         bottomNavigationBar: FooterPersonalizado(),
