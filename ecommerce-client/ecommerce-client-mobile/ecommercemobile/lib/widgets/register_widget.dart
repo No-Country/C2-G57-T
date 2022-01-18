@@ -59,6 +59,8 @@ class _RegisterWidgetState extends State<RegisterWidget> {
             TextFormField(
               keyboardType: TextInputType.emailAddress,
               controller: emailController,
+              onChanged: (val) => loginFormProvider.email = val,
+              onSaved: (val) => loginFormProvider.name = val ?? "",
               validator: (val) {
                 if (val?.contains("@") ?? false) {
                   return null;
@@ -71,21 +73,22 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 contentPadding: EdgeInsets.all(20),
               ),
             ),
-            TexfieldPersonalizado(
-              icono: Icons.accessibility_rounded,
+            TextFormField(
+              keyboardType: TextInputType.text,
               controller: nombreController,
-              titulo: 'Nombre de usuario',
+              onChanged: (val) => loginFormProvider.name = val,
+              onSaved: (val) => loginFormProvider.name = val ?? "",
+              decoration: const InputDecoration(
+                prefixIcon: Icon(Icons.alternate_email_outlined),
+                hintText: "Nombre",
+                contentPadding: EdgeInsets.all(20),
+              ),
             ),
             TextFormField(
+              keyboardType: TextInputType.number,
               controller: contraseniaController,
-              obscureText: true,
-              validator: (val) {
-                if (val != null && val.length > 6) {
-                  contraseniaController.text = val;
-                  return null;
-                }
-                return "La contraseña debe tener mas de 6 caracteres";
-              },
+              onChanged: (val) => loginFormProvider.password = val,
+              onSaved: (val) => loginFormProvider.name = val ?? "",
               decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.lock),
                 hintText: "Contraseña",
@@ -155,11 +158,15 @@ class _RegisterWidgetState extends State<RegisterWidget> {
                 onPressed: () {
                   if (loginFormProvider.esValido()) {
                     FocusScope.of(context).unfocus();
+                    // loginFormProvider.email = emailController.text;
+                    // loginFormProvider.name = nombreController.text;
+                    // loginFormProvider.password = contraseniaController.text;
+
                     Navigator.of(context).pushReplacementNamed("home");
                     Future.delayed(Duration(seconds: 5));
                   }
                   print(
-                      "${contraseniaController.text},${emailController.text},${nombreController.text}");
+                      "${loginFormProvider.email},${loginFormProvider.name},${loginFormProvider.password}");
                 },
                 child: Text(
                     loginFormProvider.esValido() ? "Espere" : "Registrarme"))

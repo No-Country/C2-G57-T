@@ -1,5 +1,7 @@
+import 'package:ecommercemobile/provider/login_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Shop extends StatefulWidget {
   Shop({Key? key}) : super(key: key);
@@ -192,6 +194,7 @@ class DatosPersonales extends StatefulWidget {
 class _DatosPersonalesState extends State<DatosPersonales> {
   @override
   Widget build(BuildContext context) {
+    final loginFormProvider = Provider.of<LoginFormProvider>(context);
     return Padding(
       padding: const EdgeInsets.only(top: 15.0),
       child: Container(
@@ -207,9 +210,9 @@ class _DatosPersonalesState extends State<DatosPersonales> {
                 "Datos del Usuario\n",
                 style: TextStyle(fontSize: 20),
               ),
-              Text("Nombre de usuario:"),
-              Text("Email:"),
-              Text("Contraseña:"),
+              Text("Nombre de usuario: ${loginFormProvider.name}"),
+              Text("Email:${loginFormProvider.email}"),
+              Text("Contraseña:${loginFormProvider.password}"),
               SizedBox(
                 height: 10.0,
               ),
@@ -229,6 +232,12 @@ class _DatosPersonalesState extends State<DatosPersonales> {
               Text("Direccion"),
               Text("Codigo Postal"),
               Text("\n\n\n"),
+              ElevatedButton(
+                  onPressed: () {
+                    print(
+                        "${loginFormProvider.email},${loginFormProvider.password},${loginFormProvider.name},");
+                  },
+                  child: Icon(Icons.add))
             ],
           ),
         ),

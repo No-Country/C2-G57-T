@@ -49,6 +49,27 @@ class _DrawerPersonalizadoState extends State<DrawerPersonalizado> {
     return Drawer(
       child: ListView(
         children: [
+          DrawerHeader(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  height: 50,
+                  width: 50,
+                  color: Colors.grey,
+                  child: Icon(
+                    Icons.person,
+                    size: 40,
+                  ),
+                ),
+                Text("Nombre del Usuario")
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 25),
+            child: Text("Home"),
+          ),
           TextButton(
             onPressed: () {
               setState(() {});

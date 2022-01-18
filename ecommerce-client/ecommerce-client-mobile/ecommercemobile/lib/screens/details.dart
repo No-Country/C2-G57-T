@@ -10,6 +10,10 @@ class Detail extends StatefulWidget {
 
 class _DetailState extends State<Detail> {
   int valor = 0;
+  bool aumentar = true;
+  bool aumentar1 = true;
+  bool aumentar2 = true;
+  bool aumentar3 = true;
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +26,29 @@ class _DetailState extends State<Detail> {
           backgroundColor: Colors.purple[200],
           centerTitle: true,
           title: const Text("Logo de la marca\nSlogan"),
-          actions: const [
-            Icon(Icons.search),
-            Icon(Icons.shopping_cart_outlined)
+          actions: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Stack(alignment: AlignmentDirectional.center, children: [
+                Icon(
+                  Icons.shopping_cart,
+                  size: 30,
+                ),
+                Positioned(
+                  top: 0,
+                  right: 0,
+                  left: 20,
+                  child: Container(
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.white),
+                    child: Text("2",
+                        style: TextStyle(color: Colors.black, fontSize: 10)),
+                  ),
+                )
+              ]),
+            )
           ],
         ),
         body: SingleChildScrollView(
@@ -37,11 +61,18 @@ class _DetailState extends State<Detail> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Center(
-                      child: Container(
-                        height: 300,
-                        width: 300,
-                        child: ImagenPrincipal(
-                          color: Colors.pink,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {});
+                          aumentar3 = !aumentar3;
+                        },
+                        child: AnimatedContainer(
+                          height: aumentar3 ? 300 : 500,
+                          width: aumentar3 ? 300 : 500,
+                          duration: Duration(milliseconds: 200),
+                          child: ImagenPrincipal(
+                            imagenAssets: '1',
+                          ),
                         ),
                       ),
                     ),
@@ -51,20 +82,53 @@ class _DetailState extends State<Detail> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Container(
-                          height: 100,
-                          width: 100,
-                          color: Colors.yellow,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              aumentar = !aumentar;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            height: aumentar ? 100 : 150,
+                            width: aumentar ? 100 : 150,
+                            duration: Duration(milliseconds: 200),
+                            child: FadeInImage(
+                              placeholder: AssetImage("assets/loading.gif"),
+                              image: AssetImage("assets/2.jpg"),
+                            ),
+                          ),
                         ),
-                        Container(
-                          height: 100,
-                          width: 100,
-                          color: Colors.green,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              aumentar1 = !aumentar1;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            height: aumentar1 ? 100 : 150,
+                            width: aumentar1 ? 100 : 150,
+                            duration: Duration(milliseconds: 200),
+                            child: FadeInImage(
+                              placeholder: AssetImage("assets/loading.gif"),
+                              image: AssetImage("assets/3.jpg"),
+                            ),
+                          ),
                         ),
-                        Container(
-                          height: 100,
-                          width: 100,
-                          color: Colors.red,
+                        GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              aumentar2 = !aumentar2;
+                            });
+                          },
+                          child: AnimatedContainer(
+                            height: aumentar2 ? 100 : 150,
+                            width: aumentar2 ? 100 : 150,
+                            duration: Duration(milliseconds: 200),
+                            child: FadeInImage(
+                              placeholder: AssetImage("assets/loading.gif"),
+                              image: AssetImage("assets/4.jpg"),
+                            ),
+                          ),
                         )
                       ],
                     ),
@@ -106,14 +170,17 @@ class _DetailState extends State<Detail> {
                           IconButton(
                               icon: Icon(
                                 Icons.minimize_rounded,
-                                size: 15,
+                                size: 20,
                               ),
                               onPressed: () {
                                 setState(() {
                                   valor--;
                                 });
                               }),
-                          Text("$valor"),
+                          Text(
+                            "$valor",
+                            style: TextStyle(fontSize: 20),
+                          ),
                           IconButton(
                               onPressed: () {
                                 setState(() {
@@ -122,7 +189,7 @@ class _DetailState extends State<Detail> {
                               },
                               icon: Icon(
                                 Icons.add,
-                                size: 15,
+                                size: 20,
                               )),
                         ],
                       ),
@@ -144,7 +211,16 @@ class _DetailState extends State<Detail> {
                   ],
                 ),
               ),
-              FooterPersonalizado()
+              //FooterPersonalizado()
+              SizedBox(
+                height: 50,
+              ),
+              ContainerRedesSociales(
+                  imagenAssets: '17', icono: Icons.photo_camera_sharp),
+              SizedBox(height: 10),
+              ContainerRedesSociales(
+                  imagenAssets: '18', icono: Icons.local_parking_outlined),
+              SizedBox(height: 10),
             ],
           ),
         ),
@@ -240,43 +316,57 @@ class BotonColorTalle extends StatelessWidget {
   }
 }
 
-class ImagenesSecundarias extends StatelessWidget {
-  const ImagenesSecundarias({
-    Key? key,
-  }) : super(key: key);
+// class ImagenesSecundarias extends StatelessWidget {
+//   const ImagenesSecundarias({
+//     Key? key,
+//     required this.imagenAssets1,
+//     required this.imagenAssets2,
+//     required this.imagenAssets3,
+//   }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: [
-        Container(
-          height: 80,
-          width: 80,
-          color: Colors.yellow,
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: Colors.green,
-        ),
-        Container(
-          height: 80,
-          width: 80,
-          color: Colors.red,
-        )
-      ],
-    );
-  }
-}
+//   final String imagenAssets1;
+//   final String imagenAssets2;
+//   final String imagenAssets3;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceAround,
+//       children: [
+//         Container(
+//           height: 80,
+//           width: 80,
+//           child:,
+//           ),
+//         ),
+//         Container(
+//           height: 80,
+//           width: 80,
+//           child: FadeInImage(
+//             placeholder: AssetImage("assets/loading.gif"),
+//             image: AssetImage("assets/${imagenAssets2}.jpg"),
+//           ),
+//         ),
+//         Container(
+//           height: 80,
+//           width: 80,
+//           child: FadeInImage(
+//             placeholder: AssetImage("assets/loading.gif"),
+//             image: AssetImage("assets/${imagenAssets3}.jpg"),
+//           ),
+//         )
+//       ],
+//     );
+//   }
+// }
 
 class ImagenPrincipal extends StatelessWidget {
   const ImagenPrincipal({
     Key? key,
-    required this.color,
+    required this.imagenAssets,
   }) : super(key: key);
 
-  final Color color;
+  final String imagenAssets;
 
   @override
   Widget build(BuildContext context) {
@@ -285,7 +375,10 @@ class ImagenPrincipal extends StatelessWidget {
     return Container(
       height: height * 0.5,
       width: width * 0.5,
-      color: color,
+      child: FadeInImage(
+        placeholder: AssetImage("assets/loading.gif"),
+        image: AssetImage("assets/${imagenAssets}.jpg"),
+      ),
     );
   }
 }
