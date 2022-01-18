@@ -19,7 +19,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize }) => {
       setSubType(subtypeArticle);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [values.type]);
+  }, [values.category]);
 
   const onSeleccion = (e) => {
     let { name } = e.target;
@@ -66,12 +66,14 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize }) => {
           type='text'
           value={values.color}
         />
- 
+
         <div className='checkbox-container'>
           {check.options.map((el) => {
             return (
               <div key={el.id} className='checkbox-info'>
-                <label className='label' htmlFor={el.id}>{el.id}</label>
+                <label className='label' htmlFor={el.id}>
+                  {el.id}
+                </label>
                 <input
                   type='checkbox'
                   value={el.check}
@@ -94,30 +96,30 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize }) => {
       </div>
 
       <select
-        // value={values.type}
-        name='type'
-        defaultValue={"DEFAULT"}
+        value={values.category}
+        name='category'
+        // defaultValue={values.category}
         className='select form-select form-select-lg my-3'
         onChange={handleInputChange}
       >
-        <option value='DEFAULT' disabled>
+        <option value="" disabled>
           Selecciona un tipo de producto
         </option>
 
         <option value='t-shirt'>Remeras</option>
-        <option value='skirts'>Faldas</option>
-        <option value='dresses'>Vestidos</option>
-        <option value='pants'>Pantalones</option>
+        <option value='skirt'>Faldas</option>
+        <option value='dress'>Vestidos</option>
+        <option value='pant'>Pantalones</option>
       </select>
 
       <select
-        className='select form-select form-select-lg'
-        // value={value}
-        name='subType'
-        defaultValue={"DEFAULT"}
+        value={values.subcategory}
+        className='select form-select form-select-lg'      
+        name='subcategory'
+        // defaultValue={"DEFAULT"}
         onChange={handleInputChange}
       >
-        <option value='DEFAULT' disabled>
+        <option value='' disabled>
           Selecciona un Subtipo de producto
         </option>
 

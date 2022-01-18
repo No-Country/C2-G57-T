@@ -1,18 +1,16 @@
 import { createContext, useState } from "react";
 import { clientAxios } from "../config/axios";
+import { useError } from "../hooks/useError";
 
 export const RegisterProductData = createContext({
   product: null,
 });
 
 export const RegisterProductContext = ({ children }) => {
-  const [newProductUpdate, setNewProductUpdate] = useState({})
-  
-  
+  const [newProductUpdate, setNewProductUpdate] = useState({});
+  const { error, msg , sendError, message } = useError()
+
   const imageInfoProduct = async (images, info, size) => {
-
-    console.log('info ', info )
-
     try {
       let bodyFormData = new FormData();
 
@@ -20,18 +18,22 @@ export const RegisterProductContext = ({ children }) => {
       bodyFormData.append("name", info.name);
       bodyFormData.append("price", info.price);
       bodyFormData.append("description", info.description);
+      bodyFormData.append("category", info.category);
+      bodyFormData.append("subcategory", info.subcategory);
       bodyFormData.append("talle", size);
 
-      const resp = await clientAxios
+      await clientAxios
         .post("/api/products", bodyFormData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
         .then((resp) => {
           console.log(resp);
         });
-      console.log("resp", resp);
     } catch (error) {
       console.log("error", error.response.data.msg);
+      sendError();
+      message(error.response.data.msg)
+      
     }
   };
 
@@ -45,8 +47,8 @@ export const RegisterProductContext = ({ children }) => {
 
   const updateProduct = async (id, update) => {
     try {
-      const {data} = await clientAxios.put(`/api/products/${id}`, update);
-      setNewProductUpdate(data)      
+      const { data } = await clientAxios.put(`/api/products/${id}`, update);
+      setNewProductUpdate(data);
     } catch (error) {
       console.log("error", error.response.data.msg);
     }

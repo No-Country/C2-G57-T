@@ -1,11 +1,11 @@
 export const sendSubtype = (values) => {
-    switch (values.type) {
+    switch (values.category) {
       case "t-shirt":
-        return [{ id: 1, sub: ["Con Mangas", "Sin Magas", "Manga Larga"] }];
-      case "skirts":
+        return [{ id: 1, sub: ["Con Mangas", "Sin Mangas"] }];
+      case "skirt":
         return [{ id: 2, sub: ["Cortas", "Largas"] }];
 
-      case "dresses":
+      case "dress":
         return [
           {
             id: 3,
@@ -13,11 +13,11 @@ export const sendSubtype = (values) => {
           },
         ];
 
-      case "pants":
+      case "pant":
         return [
           {
             id: 3,
-            sub: ["Jeans", "De Morley"],
+            sub: ["Jeans", "Calzas"],
           },
         ];
 

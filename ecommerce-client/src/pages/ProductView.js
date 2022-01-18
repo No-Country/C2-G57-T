@@ -58,7 +58,7 @@ export const ProductView = () => {
 
   const talle = dataProductView.talle[0].split(",");
 
-  console.log('size', size )
+  console.log(dataProductView.img)
 
   return (
     <div className='productViewContainer container__page'>
@@ -66,7 +66,7 @@ export const ProductView = () => {
         {dataProductView.img.map((image) => (
           <img
             src={image.url}
-            alt='image1'
+            alt={image._id}
             key={image._id}
             className='img-productView'
           />
@@ -89,20 +89,21 @@ export const ProductView = () => {
             ? dataProductView.price
             : newProductUpdate.price}
         </h2>
-         <div className="radio-container">   
-        {talle.map((s , i) => (
-          <div key={s} className="radio-toolbar">
-            <input
-              type='radio'
-              value={s}
-              name='gender'
-              onChange={handleChangeSize}
-              id={i}
-              
-            />
-            <label htmlFor={i} className="labelRadio">{s}</label>
-          </div>
-        ))}
+        <div className='radio-container'>
+          {talle.map((s, i) => (
+            <div key={s} className='radio-toolbar'>
+              <input
+                type='radio'
+                value={s}
+                name='gender'
+                onChange={handleChangeSize}
+                id={i}
+              />
+              <label htmlFor={i} className='labelRadio'>
+                {s}
+              </label>
+            </div>
+          ))}
         </div>
 
         <input

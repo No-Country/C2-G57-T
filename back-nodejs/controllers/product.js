@@ -1,12 +1,12 @@
 const Product = require("../models/product");
 const cloudinary = require('cloudinary').v2
 cloudinary.config(process.env.CLOUDINARY_URL);
-const {getIdCloudinary} = require("../helpers/getIdCloudinary");
+const { getIdCloudinary } = require("../helpers/getIdCloudinary");
 
 
 const getProducts = async(req, res) => {
-    const { category="", subcategory="", limit=20, from=0 } = req.query;   
-    
+    const { category="", subcategory="", limit=20, from=0 } = req.query; 
+      
     const categoryUC = category.toUpperCase();
     const subCategoryUC = subcategory.toUpperCase();
 
@@ -58,14 +58,14 @@ const getProducts = async(req, res) => {
 
 const getProductById = async(req, res) => {
 
-    const {id} = req.params;
+    const { id } = req.params;
     try {
         const product = await Product.findById(id);
         if(!product){
             return res.status(400).json({msg: `No existe producto con el id: ${id}`});
         }
         res.status(200).json(product)
-        
+
     } catch (error) {
         res.status(400).json({
             msg: "Error en el servidor"
@@ -94,7 +94,7 @@ const getProductsByDiscount = async(req, res) => {
 };
 
 const saveProduct = async(req, res) => {
-
+    
     const { name, img, talle=[], color=[], user, category="", subcategory="", ...body} = req.body;    
     const info = { name, img, user: req.user._id, category: category.toUpperCase(), subcategory: subcategory.toUpperCase(), talle, color,...body };   
     
@@ -135,11 +135,11 @@ const updateProduct = async(req, res) => {
 const deleteProduct = async(req, res) => {
 
     const { id } = req.params;
-    
+
     const product = await Product.findByIdAndDelete(id);
-    
-    const arrayxd = product.img.map( e => cloudinary.uploader.destroy( getIdCloudinary(e.url) ) );    
-     
+
+    const arrayxd = product.img.map(e => cloudinary.uploader.destroy(getIdCloudinary(e.url)));
+
     res.status(200).json({
         msg: "Producto eliminado"
     });

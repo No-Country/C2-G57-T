@@ -17,8 +17,6 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
 
   //get image
   const onDrop = useCallback((acceptedFiles) => {
-    // console.log("acceptedFiles", acceptedFiles);
-
     acceptedFiles.forEach((file) => {
       setFileUpload((current) =>
         current.concat({
@@ -32,7 +30,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: "image/jpeg, image/png",
+    accept: "image/jpeg, image/png , image/webp",
     noKeyboard: true,
     multiple: true,
     maxFiles: 4,
@@ -77,7 +75,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
       )}
       {fileUpload.some((img) => img.type === "image") && (
         <button
-          className='generalButton'
+          className='generalButton buttonDropzone'
           onClick={() => handleUploadImage(fileUpload)}
         >
           SUBIR A LA TIENDA

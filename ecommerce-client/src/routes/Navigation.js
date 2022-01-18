@@ -28,7 +28,15 @@ export const Navigation = () => {
               <Route path=':id' element={<Shop />} />
               <Route path=':id/:id' element={<ProductView />} />
             </Route>
+            <Route path='skirt'>
+              <Route path=':id' element={<Shop />} />
+              <Route path=':id/:id' element={<ProductView />} />
+            </Route>
             <Route path='dress'>
+              <Route path=':id' element={<Shop />} />
+              <Route path=':id/:id' element={<ProductView />} />
+            </Route>
+            <Route path='pant'>
               <Route path=':id' element={<Shop />} />
               <Route path=':id/:id' element={<ProductView />} />
             </Route>

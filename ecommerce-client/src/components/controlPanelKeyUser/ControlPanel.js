@@ -9,38 +9,38 @@ export const ControlPanel = ({ dataProductView }) => {
 
   const { deleteProduct } = useContext(RegisterProductData);
 
-  const handleDelete = (id) => {
-    deleteProduct(id);
+  const handleDelete = async (id) => {
+    await deleteProduct(id);
     navigate(-1, { replace: true });
   };
 
   return (
     <>
-    <div className='controlPanel'>
-      <div className='container-button-form'>
-        <button
-          onClick={() => handleDelete(dataProductView._id)}
-          className='generalButton'
-        >
-          Borrar articulo
-        </button>
+      <div className='controlPanel'>
+        <div className='container-button-form'>
+          <button
+            onClick={() => handleDelete(dataProductView._id)}
+            className='generalButton'
+          >
+            Borrar articulo
+          </button>
+        </div>
+        <div className='container-button-form'>
+          <button
+            onClick={() => setShowFormUpdate(!showFormUpdate)}
+            className='generalButton'
+          >
+            {showFormUpdate ? "Cerrar panel" : "Actualizar articulo"}
+          </button>
+        </div>
       </div>
-      <div className='container-button-form'>
-        <button
-          onClick={() => setShowFormUpdate(!showFormUpdate)}
-          className='generalButton'
-        >
-          {showFormUpdate ? "Cerrar panel" : "Actualizar articulo"}
-        </button>
-      </div>
-    </div>
 
-    {showFormUpdate && (
-          <FormUpdate
-            dataProductView={dataProductView}
-            setShowFormUpdate={setShowFormUpdate}
-          />
-        )}
+      {showFormUpdate && (
+        <FormUpdate
+          dataProductView={dataProductView}
+          setShowFormUpdate={setShowFormUpdate}
+        />
+      )}
     </>
   );
 };
@@ -93,7 +93,11 @@ const FormUpdate = ({ dataProductView, setShowFormUpdate }) => {
         name='price'
         min='0'
       />
-      <input type='submit' value='Actualizar articulo' className='generalButton' />
+      <input
+        type='submit'
+        value='Actualizar articulo'
+        className='generalButton'
+      />
     </form>
   );
 };
