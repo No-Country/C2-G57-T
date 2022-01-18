@@ -21,16 +21,20 @@ const userSchema = new Schema({
         default: true
     },
     city: {
-        type: String
+        type: String,
+        default: ""
     },
     postalcode: {
-        type: Number
+        type: Number,
+        default: 0
     },
     address: {
-        type: String
+        type: String,
+        default: ""
     },
     province: {
-        type: String
+        type: String,
+        default: ""
     },
     isAdmin: {
         type: Boolean,
