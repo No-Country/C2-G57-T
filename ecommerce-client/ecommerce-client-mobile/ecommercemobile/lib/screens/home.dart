@@ -1,4 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
+import 'package:ecommercemobile/models/products.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
 
@@ -54,11 +55,20 @@ class _HomeState extends State<Home> {
                 ),
               ),
               SizedBox(height: height * 0.01),
-              ImagenCategoria(categoria: 'Destacados', imagenAssets: '14'),
+
+              //TODO: Hacer la navegacion y enviar producto
+
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                        .pushNamed("detail", arguments: productos);
+                  },
+                  child: ImagenCategoria(
+                      categoria: 'Pantalon', imagenAssets: '14')),
               SizedBox(height: height * 0.01),
               ImagenCategoria(categoria: "30% off", imagenAssets: "16"),
               SizedBox(height: height * 0.01),
-              ImagenCategoria(categoria: "Accesorios", imagenAssets: "15"),
+              ImagenCategoria(categoria: "Remeras", imagenAssets: "15"),
               SizedBox(height: height * 0.01),
               ContainerRedesSociales(
                   imagenAssets: '17', icono: Icons.photo_camera_sharp),

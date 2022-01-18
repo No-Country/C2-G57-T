@@ -126,13 +126,9 @@ class _CarritoState extends State<Carrito> {
               ),
               Text("Productos"),
               ListTile(
-                leading: Checkbox(
-                    activeColor: Colors.grey,
-                    value: producto,
-                    onChanged: (valor) {
-                      producto = valor!;
-                      setState(() {});
-                    }),
+                leading: Container(
+                  child: Icon(Icons.production_quantity_limits),
+                ),
                 title: const Text(
                   "Nombre del Producto",
                   style: TextStyle(fontSize: 14),
@@ -140,13 +136,8 @@ class _CarritoState extends State<Carrito> {
                 trailing: Text("Precio"),
               ),
               ListTile(
-                  leading: Checkbox(
-                      activeColor: Colors.grey,
-                      value: producto,
-                      onChanged: (valor) {
-                        producto = valor!;
-                        setState(() {});
-                      }),
+                  leading:
+                      Container(child: Icon(Icons.production_quantity_limits)),
                   title: const Text(
                     "Nombre del Producto",
                     style: TextStyle(fontSize: 14),

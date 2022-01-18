@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.purple))),
         ),
-        initialRoute: "detail",
+        initialRoute: "home",
         routes: {
           "login": (_) => Login(),
           "home": (_) => Home(),
