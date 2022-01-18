@@ -1,7 +1,5 @@
 
-
 const { Schema, model } = require("mongoose");
-
 
 const userSchema = new Schema({
 
@@ -22,6 +20,26 @@ const userSchema = new Schema({
         type: Boolean,
         default: true
     },
+    city: {
+        type: String,
+        default: ""
+    },
+    postalcode: {
+        type: Number,
+        default: 0
+    },
+    address: {
+        type: String,
+        default: ""
+    },
+    province: {
+        type: String,
+        default: ""
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    }
 
 })
 

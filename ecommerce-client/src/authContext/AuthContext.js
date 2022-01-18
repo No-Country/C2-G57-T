@@ -16,6 +16,7 @@ export const AuthContext = ({ children }) => {
     token: localStorage.getItem("token"),
     logged: false,
     status: false,
+    isAdmin: false,
     user: null,
     email: null,
   };

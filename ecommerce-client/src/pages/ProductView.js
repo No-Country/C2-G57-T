@@ -5,11 +5,13 @@ import { clientAxios } from "../config/axios";
 import { CartData } from "../cartContext/Cartcontext";
 import { ControlPanel } from "../components/controlPanelKeyUser/ControlPanel";
 import { RegisterProductData } from "../registerProductContext/RegisterProductContext";
+import { UserData } from "../authContext/AuthContext";
 
 export const ProductView = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
+  const { state } = useContext(UserData)
   const { addProductCart, msg } = useContext(CartData);
   const { newProductUpdate } = useContext(RegisterProductData);
   const [dataProductView, setDataProductView] = useState("");
@@ -133,7 +135,7 @@ export const ProductView = () => {
         )}
         {msg && <p style={{ color: "red" }}>{msg}</p>}
         {/* solo lo debe ver el usuario clave */}
-        <ControlPanel dataProductView={dataProductView} />
+       {state.isAdmin && <ControlPanel dataProductView={dataProductView} />}
       </div>
     </div>
   );

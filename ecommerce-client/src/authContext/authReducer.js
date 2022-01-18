@@ -12,6 +12,7 @@ export const authReducer = (state, action) => {
         logged: true,
         user: action.payload.user.name,
         email: action.payload.user.email,
+        isAdmin: action.payload.user.isAdmin
       };
     case LOGOUT_SUCCESS:
       localStorage.removeItem("token");      
@@ -21,6 +22,7 @@ export const authReducer = (state, action) => {
         token: null,
         logged: false,
         status: false,
+        isAdmin: false,
         user: null,
         email: null,
       };

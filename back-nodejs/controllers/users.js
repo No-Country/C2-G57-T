@@ -20,22 +20,19 @@ const putUser = async (req, res) => {
   const { id } = req.params;
   const { password, ...resto } = req.body;
 
-  console.log("resy", password);
-
-  // TODO validar contra BD
-  if (password) {
-    // Encriptar la contraseña
-    const salt = bcrypt.genSaltSync(10);
-    resto.password = bcrypt.hashSync(password, salt);
-  }
-
-  const user = await User.findByIdAndUpdate(id, resto, { new: true });
-  const userid = await User.findById("61d903dc216780d85f424fa2");
-
-  console.log("user", userid);
-
-  res.json(user);
+    // TODO validar contra BD
+    if (password) {
+        // Encriptar la contraseña
+        const salt = bcrypt.genSaltSync(10);
+        resto.password = bcrypt.hashSync(password, salt);
+    }
+    
+    const user = await User.findByIdAndUpdate(id, resto, {new: true});
+    res.status(200).json(user);
+    res.json(user);
 };
+
+  
 
 const deleteUser = async (req, res) => {
   const { id } = req.params;

@@ -131,11 +131,13 @@ const Sidebar = ({ sidebar }) => {
             <li>
               <Link to={"#"}>CONTACTO</Link>
             </li>
-            <li>
-              <Link to={"/registerproducts"}>
-                INGRESAR PRODUCTOS A LA TIENDA
-              </Link>
-            </li>
+            {state.isAdmin && (
+              <li>
+                <Link to={"/registerproducts"}>
+                  INGRESAR PRODUCTOS A LA TIENDA
+                </Link>
+              </li>
+            )}
             <li>
               <Link to={"/login"}>
                 INGRESAR / <span onClick={handleLogOut}>CERRAR SESION</span>
