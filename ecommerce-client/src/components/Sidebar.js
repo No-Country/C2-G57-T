@@ -32,16 +32,6 @@ const Sidebar = ({ sidebar }) => {
             <li>
               <Link to={"/"}>HOME</Link>
             </li>
-            <li
-              data-bs-toggle='collapse'
-              href='#collapse-indumentaria'
-              role='button'
-              aria-expanded='false'
-              aria-controls='collapse-indumentaria'
-            >
-              INDUMENTARIA <i className='fas fa-chevron-right'></i>
-            </li>
-            <div className='collapse' id='collapse-indumentaria'>
               <ul>
                 <li
                   data-bs-toggle='collapse'
@@ -120,10 +110,9 @@ const Sidebar = ({ sidebar }) => {
                   </ul>
                 </div>
               </ul>
-            </div>
 
             <li>
-              <Link to={"dress/product/destacados"}>PRODUCTOS DESTACADOS</Link>
+              <Link to={"dress/product/destacados"}>DESTACADOS</Link>
             </li>
             <li>
               <Link to={"#"}>OFERTAS</Link>
