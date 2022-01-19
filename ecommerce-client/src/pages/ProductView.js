@@ -11,7 +11,7 @@ export const ProductView = () => {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { state } = useContext(UserData)
+  const { state } = useContext(UserData);
   const { addProductCart, msg } = useContext(CartData);
   const { newProductUpdate } = useContext(RegisterProductData);
   const [dataProductView, setDataProductView] = useState("");
@@ -59,8 +59,6 @@ export const ProductView = () => {
   };
 
   const talle = dataProductView.talle[0].split(",");
-
-  console.log(dataProductView.img)
 
   return (
     <div className='productViewContainer container__page'>
@@ -135,7 +133,7 @@ export const ProductView = () => {
         )}
         {msg && <p style={{ color: "red" }}>{msg}</p>}
         {/* solo lo debe ver el usuario clave */}
-       {state.isAdmin && <ControlPanel dataProductView={dataProductView} />}
+        {state.isAdmin && <ControlPanel dataProductView={dataProductView} />}
       </div>
     </div>
   );

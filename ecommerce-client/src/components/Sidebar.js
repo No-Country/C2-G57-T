@@ -123,7 +123,7 @@ const Sidebar = ({ sidebar }) => {
             </div>
 
             <li>
-              <Link to={"#"}>PRODUCTOS DESTACADOS</Link>
+              <Link to={"dress/product/destacados"}>PRODUCTOS DESTACADOS</Link>
             </li>
             <li>
               <Link to={"#"}>OFERTAS</Link>

@@ -8,7 +8,7 @@ export const RegisterProductData = createContext({
 
 export const RegisterProductContext = ({ children }) => {
   const [newProductUpdate, setNewProductUpdate] = useState({});
-  const { error, msg , sendError, message } = useError()
+  const { sendError, message } = useError();
 
   const imageInfoProduct = async (images, info, size) => {
     try {
@@ -20,6 +20,7 @@ export const RegisterProductContext = ({ children }) => {
       bodyFormData.append("description", info.description);
       bodyFormData.append("category", info.category);
       bodyFormData.append("subcategory", info.subcategory);
+      bodyFormData.append("destacado", info.destacados);
       bodyFormData.append("talle", size);
 
       await clientAxios
@@ -32,8 +33,7 @@ export const RegisterProductContext = ({ children }) => {
     } catch (error) {
       console.log("error", error.response.data.msg);
       sendError();
-      message(error.response.data.msg)
-      
+      message(error.response.data.msg);
     }
   };
 

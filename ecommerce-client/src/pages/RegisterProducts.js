@@ -14,7 +14,7 @@ export const RegisterProducts = () => {
 
   const { error, msg, sendError, message } = useError();
 
-  const { values, handleInputChange, reset } = useForm({
+  const { values, handleInputChange, reset, handleInputCheckbox } = useForm({
     name: "",
     description: "",
     price: "",
@@ -22,6 +22,7 @@ export const RegisterProducts = () => {
     stock: "",
     category: "",
     subcategory: "",
+    destacados: "",
   });
 
   const handleUploadImage = () => {
@@ -48,6 +49,7 @@ export const RegisterProducts = () => {
           values={values}
           setSize={setSize}
           handleInputChange={handleInputChange}
+          handleInputCheckbox={handleInputCheckbox}
         />
         <Dropzone
           setFileUpload={setFileUpload}

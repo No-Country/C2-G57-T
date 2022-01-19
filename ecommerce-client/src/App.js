@@ -10,8 +10,6 @@ function App() {
     tokenAuth(token);
   }
 
-  console.log("token ok", token);
-
   return (
     <AuthContext>
       <RegisterProductContext>

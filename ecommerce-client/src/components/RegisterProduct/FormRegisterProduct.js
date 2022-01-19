@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { sendSubtype } from "./../../helpers/sedSubtype";
 
-export const FormRegisterProduct = ({ values, handleInputChange, setSize }) => {
+export const FormRegisterProduct = ({ values, handleInputChange, setSize, handleInputCheckbox }) => {
   const [subType, setSubType] = useState([]);
 
   const [check, setCheck] = useState({
@@ -132,6 +132,20 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize }) => {
             ))
           )}
       </select>
+      <div className='checkbox-info'>
+                <label className='label' htmlFor="check">
+                  Destacado
+                </label>
+                <input
+                  type='checkbox'
+                  value={values.destacados}
+                  checked={values.destacados}
+                  onChange={handleInputCheckbox}
+                  name="destacados"
+                  className='option-input checkbox'
+                  id={check}
+                />
+              </div>
     </form>
   );
 };

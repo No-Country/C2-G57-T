@@ -11,9 +11,8 @@ const LoginInputs = () => {
     if (state.logged) {
       navigate("/");
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
-
-  console.log("state", state.logged);
 
   const { values, handleInputChange, reset } = useForm({
     email: "c@c.com",

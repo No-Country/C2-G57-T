@@ -14,5 +14,12 @@ export const useForm = (initialState = {}) => {
     });
   };
 
-  return { values, handleInputChange, reset };
+  const handleInputCheckbox = ({ target }) => {
+    setValues({
+      ...values,
+      [target.name]: target.checked,
+    });
+  };
+
+  return { values, handleInputChange, reset, handleInputCheckbox };
 };

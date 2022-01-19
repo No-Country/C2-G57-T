@@ -5,6 +5,7 @@ export const authReducer = (state, action) => {
     case LOGIN_SUCCESS:
       localStorage.setItem("token", action.payload.token);      
       localStorage.setItem("user", action.payload.user.name);      
+      localStorage.setItem("isA", action.payload.user.isAdmin);      
       return {
         ...state,
         token: action.payload.token,
@@ -17,6 +18,7 @@ export const authReducer = (state, action) => {
     case LOGOUT_SUCCESS:
       localStorage.removeItem("token");      
       localStorage.removeItem("user");      
+      localStorage.removeItem("isA");      
       return {
         ...state,
         token: null,
