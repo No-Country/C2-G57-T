@@ -1,3 +1,4 @@
+import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/login_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/screens/screens.dart';
@@ -16,7 +17,11 @@ class MyApp extends StatelessWidget {
           create: (_) => LoginFormProvider(),
           lazy: false,
         ),
-        ChangeNotifierProvider(create: (_) => ProductProvider())
+        ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(
+          create: (_) => FiltradoProducto(),
+          lazy: false,
+        )
       ],
       child: MaterialApp(
         title: 'Material App',

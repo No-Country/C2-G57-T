@@ -45,7 +45,7 @@ class _HomeState extends State<Home> {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () => Navigator.pushNamed(context, "detail"),
-                      child: Image.asset("assets/${index + 10}.jpg",
+                      child: Image.asset("assets/${index + 19}.jpg",
                           fit: BoxFit.contain),
                     );
                   },

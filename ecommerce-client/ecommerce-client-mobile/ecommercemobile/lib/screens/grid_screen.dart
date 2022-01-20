@@ -27,6 +27,7 @@ class GridScreen extends StatelessWidget {
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (_, index) {
             final producto = productos[index];
+
             return GestureDetector(
               onTap: () =>
                   Navigator.pushNamed(context, "detail", arguments: producto),
