@@ -21,7 +21,8 @@ class _DetailState extends State<Detail> {
   bool seleccionar1 = false;
   bool seleccionar2 = false;
   bool seleccionar3 = false;
-
+  String talleSeleccionado = "";
+  String colorSeleccionado = "";
   @override
   Widget build(BuildContext context) {
     final Product producto =
@@ -172,6 +173,7 @@ class _DetailState extends State<Detail> {
                       children: [
                         GestureDetector(
                           onTap: () {
+                            talleSeleccionado = producto.talle1;
                             seleccionar2 = !seleccionar2;
                             seleccionar3 = false;
                             setState(() {});
@@ -187,6 +189,7 @@ class _DetailState extends State<Detail> {
                         SizedBox(width: 15),
                         GestureDetector(
                           onTap: () {
+                            talleSeleccionado = producto.talle2;
                             seleccionar3 = !seleccionar3;
                             seleccionar2 = false;
                             setState(() {});
@@ -198,8 +201,6 @@ class _DetailState extends State<Detail> {
                                   style: TextStyle(fontSize: 20))),
                         ),
                         SizedBox(width: 15),
-                        BotonColorTalle(
-                            child: Text("XXL", style: TextStyle(fontSize: 20))),
                       ],
                     ),
                     Text("Cantidad"),
@@ -246,7 +247,8 @@ class _DetailState extends State<Detail> {
                           ),
                           onPressed: () {
                             setState(() {});
-                            mostradDialogoCompra(context, producto, cantidad);
+                            mostradDialogoCompra(
+                                context, producto, cantidad, talleSeleccionado);
                           },
                           icon: Icon(Icons.shopping_cart_outlined),
                           label: Text("COMPRAR")),
@@ -271,8 +273,8 @@ class _DetailState extends State<Detail> {
     );
   }
 
-  Future<dynamic> mostradDialogoCompra(
-      BuildContext context, Product producto, int cantidad) {
+  Future<dynamic> mostradDialogoCompra(BuildContext context, Product producto,
+      int cantidad, String talleSeleccionado) {
     return showDialog(
       barrierDismissible: true,
       context: context,
@@ -319,6 +321,7 @@ class _DetailState extends State<Detail> {
                           Text("${producto.color1}"),
                           Text("\$${producto.price}"),
                           Text("Cantidad: ${cantidad}"),
+                          Text("Talle: ${talleSeleccionado}")
                         ],
                       )
                     ],
@@ -333,6 +336,8 @@ class _DetailState extends State<Detail> {
                           productProvider.carritoItem++;
                           productProvider.productsList.add(producto);
                           productProvider.cantidadProducto.add(cantidad);
+                          productProvider.talleSeleccionado
+                              .add(talleSeleccionado);
                           productProvider.pagoTotal +=
                               producto.price * cantidad;
                         });

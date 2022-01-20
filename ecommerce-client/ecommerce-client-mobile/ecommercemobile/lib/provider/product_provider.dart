@@ -6,4 +6,5 @@ class ProductProvider extends ChangeNotifier {
   int carritoItem = 0;
   int pagoTotal = 0;
   List<int> cantidadProducto = [];
+  List<String> talleSeleccionado = [];
 }

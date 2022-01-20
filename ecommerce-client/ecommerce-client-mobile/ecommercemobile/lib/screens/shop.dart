@@ -35,7 +35,7 @@ class _ShopState extends State<Shop> {
           child: SafeArea(
             child: Container(
               width: 700,
-              height: 700,
+              height: 550,
               color: Colors.white,
               child: Padding(
                 padding: const EdgeInsets.all(25.0),
@@ -90,7 +90,6 @@ class _ShopState extends State<Shop> {
             ),
           ),
         ),
-        bottomNavigationBar: FooterPersonalizado(),
       ),
     );
   }
@@ -126,7 +125,7 @@ class _CarritoState extends State<Carrito> {
                     alignment: Alignment.center,
                     height: 100,
                     width: 300,
-                    child: Text("No hay producto en el carrito"),
+                    child: Text("No hay productos en el carrito"),
                   ),
                 )
               : Column(
@@ -139,6 +138,8 @@ class _CarritoState extends State<Carrito> {
                               productProvider.productsList[index];
                           final int cantidad =
                               productProvider.cantidadProducto[index];
+                          final String talleSeleccionado =
+                              productProvider.talleSeleccionado[index];
 
                           return Dismissible(
                             background: Container(
@@ -148,7 +149,11 @@ class _CarritoState extends State<Carrito> {
                             onDismissed: (DismissDirection direction) {
                               setState(() {
                                 productProvider.productsList.removeAt(index);
+                                productProvider.cantidadProducto
+                                    .removeAt(index);
                                 productProvider.carritoItem--;
+                                productProvider.talleSeleccionado
+                                    .removeAt(index);
                                 productProvider.pagoTotal -=
                                     producto.price * cantidad;
                               });
@@ -164,9 +169,16 @@ class _CarritoState extends State<Carrito> {
                                   ),
                                   title: Text(
                                     producto.name,
-                                    style: TextStyle(fontSize: 14),
+                                    style: TextStyle(fontSize: 18),
                                   ),
-                                  subtitle: Text("Cantidad: ${cantidad}"),
+                                  subtitle: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Cantidad: ${cantidad}"),
+                                      Text("Talle: ${talleSeleccionado}")
+                                    ],
+                                  ),
                                   trailing: Text("\$${producto.price}"),
                                 ),
                                 Divider(
@@ -184,7 +196,9 @@ class _CarritoState extends State<Carrito> {
                     Align(
                       alignment: Alignment.bottomRight,
                       child: Text("Total: \$${productProvider.pagoTotal}"),
-                    )
+                    ),
+                    ElevatedButton(
+                        onPressed: () {}, child: Text("Finalizar compra"))
                   ],
                 ),
         ),
