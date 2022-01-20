@@ -1,7 +1,9 @@
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class GridScreen extends StatelessWidget {
@@ -10,6 +12,12 @@ class GridScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
+
+    //TODO: problema para enviar los productos por categoria
+    // final List<Product> productos =
+    //     ModalRoute.of(context)!.settings.arguments as List<Product>;
+
+    final filtradoProducto = Provider.of<FiltradoProducto>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -22,11 +30,11 @@ class GridScreen extends StatelessWidget {
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: GridView.builder(
-          itemCount: productos.length,
+          itemCount: filtradoProducto.productosRemera.length,
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (_, index) {
-            final producto = productos[index];
+            final producto = filtradoProducto.productosRemera[index];
 
             return GestureDetector(
               onTap: () =>
@@ -40,7 +48,7 @@ class GridScreen extends StatelessWidget {
                     color: Colors.grey,
                     child: FadeInImage(
                       placeholder: AssetImage("assets/loading.gif"),
-                      image: AssetImage("assets/${index + 4}.jpg"),
+                      image: AssetImage("${producto.imagen}"),
                     ),
                   ),
                   Text(producto.name),

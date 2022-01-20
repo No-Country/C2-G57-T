@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final productProvider = Provider.of<ProductProvider>(context);
+    final filtradoProducto = Provider.of<FiltradoProducto>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -60,8 +62,8 @@ class _HomeState extends State<Home> {
 
               GestureDetector(
                   onTap: () {
-                    Navigator.of(context)
-                        .pushNamed("detail", arguments: productos);
+                    Navigator.of(context).pushNamed("detail",
+                        arguments: filtradoProducto.productosRemera);
                   },
                   child: ImagenCategoria(
                       categoria: 'Pantalon', imagenAssets: '14')),
