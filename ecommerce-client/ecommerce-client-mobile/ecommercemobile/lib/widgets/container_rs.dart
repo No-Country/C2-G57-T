@@ -16,23 +16,21 @@ class ContainerRedesSociales extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Center(
         child: Container(
-          height: 100,
           width: double.infinity,
           child: Stack(
             children: [
               Container(
-                height: 100,
                 width: double.infinity,
                 child: FadeInImage(
                   placeholder: AssetImage("assets/loading.gif"),
                   image: AssetImage("assets/${imagenAssets}.jpg"),
-                  height: 100,
+                  height: 50,
                   fit: BoxFit.cover,
                 ),
               ),
               Center(
                 child: Container(
-                  height: 50,
+                  height: 20,
                   width: 150,
                   alignment: Alignment.center,
                   child: Icon(icono, size: 50, color: Colors.white),
