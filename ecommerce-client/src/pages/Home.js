@@ -7,7 +7,6 @@ import CardHome from "../components/CardHome";
 // images
 import section01 from "../images/sections/section01.jpg";
 import section02 from "../images/sections/section02.jpg";
-import section03 from "../images/sections/section03.jpg";
 import { tokenAuth } from "./../config/authTokenHeaders";
 
 const Home = () => {
@@ -21,8 +20,7 @@ const Home = () => {
         <Carousel />
         <div className='sections-home'>
           <CardHome name='DESTACADOS' img={section01} uri="dress/product/destacados" />
-          <CardHome name='10% 20% 30% OFF' img={section02} uri='dress/product/discount' />
-          <CardHome name='ACCESORIOS' img={section03} uri='#' />
+          <CardHome name='10% 20% 30% OFF' img={section02} uri='dress/product/discount' />          
         </div>
       </div>
     </>

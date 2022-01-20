@@ -15,7 +15,7 @@
     align-items: center;
     padding: 5px 10px;
     border-radius: 10px;
-    background: #00A19D;
+    background: v.$primario;
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
     -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
     -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
@@ -40,37 +40,9 @@
     }
   
     a {
-      /* img {
-        width: 150px;
+      img {
+        width: 180px;
         height: 40px;
-        object-fit: contain;
-      } */
-      span {
-        position: relative;
-        font-size: 2rem;
-        font-weight: bold;
-        font-family: 'The Nautigal', cursive;
-        color: #FFB344;
-
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 20px;
-          width: 130px;
-          height: 45px;
-          border: 2px solid #212121;
-        }
-
-        &::after {
-          content: '';
-          position: absolute;
-          top: -6px;
-          right: 20px;
-          width: 130px;
-          height: 45px;
-          border: 2px solid #666;
-        }
       }
     }
   

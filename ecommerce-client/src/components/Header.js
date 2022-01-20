@@ -5,7 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
 // images
-//import logo from "../images/logo.png";
+import logo from "../images/logo.png";
 import { CartDetailModal } from "./cart/CartDetailModal";
 import { CartData } from "../cartContext/Cartcontext";
 
@@ -34,8 +34,7 @@ const Header = () => {
           <i className='fas fa-bars'></i>
         </div>
         <Link to={"/"}>
-          {/* <img src={logo} alt='logo' /> */}
-          <span>Mujeres Reales</span>
+          {<img src={logo} alt='logo' />}
         </Link>
         <div className='icons-header'>
       

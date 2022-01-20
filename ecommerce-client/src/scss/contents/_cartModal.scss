@@ -1,3 +1,5 @@
+@use "../base/variables" as v;
+
 .CartModal {
   position: fixed;
   top: 70px;
@@ -6,7 +8,8 @@
   height: 100%;
   padding: 20px 10px;
   border-radius: 20px 0 0 20px;
-  background-color: #FFF8E5;
+  color: v.$color-letter;
+  background: v.$primario;
   box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
   -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
@@ -22,16 +25,12 @@
     border: none;
     font-size: .9rem;
     font-weight: bold;
+    color: v.$color-letter;
     background: transparent;
 
     i {
-      color: red;
+      color: v.$danger;
     }
-    /* &--endBuy {
-      border: none;
-      width: 100%;
-      padding: 0.5rem;
-    } */
   }
 
   .aviso_cart {
@@ -48,7 +47,7 @@
   justify-content: space-between;
   gap: 10px;
   align-items: center;
-  border-bottom: 1px solid #e1e1e1;
+  border-bottom: 1px solid v.$color-icon;
   padding: 10px 0;
 
   &__img {
@@ -62,6 +61,13 @@
     display: flex;
     flex-direction: column;
     font-size: .8rem;
+
+    span {
+      padding-inline-start: 10px;
+      margin-bottom: 1px;
+      border-radius: 15px;
+      background: rgba(0,0,0,0.3);
+    }
   }
 
   &__button {
