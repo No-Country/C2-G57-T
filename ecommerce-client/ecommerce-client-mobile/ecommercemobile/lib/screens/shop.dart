@@ -28,41 +28,7 @@ class _ShopState extends State<Shop> {
           backgroundColor: Colors.purple[200],
           centerTitle: true,
           title: const Text("Logo de la marca\nSlogan"),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Stack(
-                alignment: AlignmentDirectional.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(
-                        context,
-                        "shop",
-                      );
-                    },
-                    child: Icon(
-                      Icons.shopping_cart,
-                      size: 30,
-                    ),
-                  ),
-                  Positioned(
-                    top: 0,
-                    right: 0,
-                    left: 20,
-                    child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(100),
-                          color: Colors.black),
-                      child: Text("${productProvider.carritoItem}",
-                          style: TextStyle(color: Colors.white, fontSize: 10)),
-                    ),
-                  )
-                ],
-              ),
-            )
-          ],
+          actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: Padding(
           padding: const EdgeInsets.all(15.0),
