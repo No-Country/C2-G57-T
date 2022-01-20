@@ -246,7 +246,7 @@ class _DetailState extends State<Detail> {
                         children: [
                           IconButton(
                               icon: Icon(
-                                Icons.minimize_rounded,
+                                Icons.remove,
                                 size: 20,
                               ),
                               onPressed: () {

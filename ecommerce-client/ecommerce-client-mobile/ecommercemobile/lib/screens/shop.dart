@@ -154,49 +154,73 @@ class _CarritoState extends State<Carrito> {
         decoration: BoxDecoration(border: Border.all(color: Colors.black)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  itemCount: productProvider.productsList.length,
-                  itemBuilder: (context, index) {
-                    final Product producto =
-                        productProvider.productsList[index];
-                    final int cantidad =
-                        productProvider.cantidadProducto[index];
+          child: productProvider.productsList.isEmpty
+              ? Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 300,
+                    child: Text("No hay producto en el carrito"),
+                  ),
+                )
+              : Column(
+                  children: [
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: productProvider.productsList.length,
+                        itemBuilder: (context, index) {
+                          final Product producto =
+                              productProvider.productsList[index];
+                          final int cantidad =
+                              productProvider.cantidadProducto[index];
 
-                    return Column(
-                      children: [
-                        ListTile(
-                          leading: Container(
-                            child: FadeInImage(
-                                placeholder: AssetImage("assets/loading.gif"),
-                                image: AssetImage(producto.imagen)),
-                          ),
-                          title: Text(
-                            producto.name,
-                            style: TextStyle(fontSize: 14),
-                          ),
-                          subtitle: Text("Cantidad: ${cantidad}"),
-                          trailing: Text("${producto.price}"),
-                        ),
-                        Divider(
-                          thickness: 2.0,
-                        ),
-                        SizedBox(
-                          height: 10.0,
-                        )
-                      ],
-                    );
-                  },
+                          return Dismissible(
+                            background: Container(
+                              color: Colors.green,
+                            ),
+                            key: ValueKey<Product>(producto),
+                            onDismissed: (DismissDirection direction) {
+                              setState(() {
+                                productProvider.productsList.removeAt(index);
+                                productProvider.carritoItem--;
+                                productProvider.pagoTotal -=
+                                    producto.price * cantidad;
+                              });
+                            },
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  leading: Container(
+                                    child: FadeInImage(
+                                        placeholder:
+                                            AssetImage("assets/loading.gif"),
+                                        image: AssetImage(producto.imagen)),
+                                  ),
+                                  title: Text(
+                                    producto.name,
+                                    style: TextStyle(fontSize: 14),
+                                  ),
+                                  subtitle: Text("Cantidad: ${cantidad}"),
+                                  trailing: Text("\$${producto.price}"),
+                                ),
+                                Divider(
+                                  thickness: 2.0,
+                                ),
+                                SizedBox(
+                                  height: 10.0,
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Text("Total: \$${productProvider.pagoTotal}"),
+                    )
+                  ],
                 ),
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: Text("Total: \$${productProvider.pagoTotal}"),
-              )
-            ],
-          ),
         ),
       ),
     );
