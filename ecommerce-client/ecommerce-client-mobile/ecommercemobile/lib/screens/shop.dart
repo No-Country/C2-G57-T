@@ -162,6 +162,8 @@ class _CarritoState extends State<Carrito> {
                   itemBuilder: (context, index) {
                     final Product producto =
                         productProvider.productsList[index];
+                    final int cantidad =
+                        productProvider.cantidadProducto[index];
 
                     return Column(
                       children: [
@@ -175,6 +177,7 @@ class _CarritoState extends State<Carrito> {
                             producto.name,
                             style: TextStyle(fontSize: 14),
                           ),
+                          subtitle: Text("Cantidad: ${cantidad}"),
                           trailing: Text("${producto.price}"),
                         ),
                         Divider(

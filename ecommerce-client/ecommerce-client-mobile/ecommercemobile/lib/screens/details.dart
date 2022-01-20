@@ -366,6 +366,7 @@ class _DetailState extends State<Detail> {
                         setState(() {
                           productProvider.carritoItem++;
                           productProvider.productsList.add(producto);
+                          productProvider.cantidadProducto.add(cantidad);
                           productProvider.pagoTotal +=
                               producto.price * cantidad;
                         });
