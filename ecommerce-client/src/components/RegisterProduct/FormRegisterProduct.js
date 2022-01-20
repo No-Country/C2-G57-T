@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { sendSubtype } from "./../../helpers/sedSubtype";
 
-export const FormRegisterProduct = ({ values, handleInputChange, setSize, handleInputCheckbox }) => {
+export const FormRegisterProduct = ({
+  values,
+  handleInputChange,
+  setSize,
+  handleInputCheckbox,
+}) => {
   const [subType, setSubType] = useState([]);
 
   const [check, setCheck] = useState({
@@ -33,7 +38,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
     let select = check.options.filter((el) => el.check);
     let endSelect = select.map((id) => id.id);
     setSize(endSelect);
-  };
+  };  
 
   return (
     <form>
@@ -102,7 +107,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
         className='select form-select form-select-lg my-3'
         onChange={handleInputChange}
       >
-        <option value="" disabled>
+        <option value='' disabled>
           Selecciona un tipo de producto
         </option>
 
@@ -114,7 +119,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
 
       <select
         value={values.subcategory}
-        className='select form-select form-select-lg'      
+        className='select form-select form-select-lg'
         name='subcategory'
         // defaultValue={"DEFAULT"}
         onChange={handleInputChange}
@@ -133,19 +138,57 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
           )}
       </select>
       <div className='checkbox-info'>
-                <label className='label' htmlFor="check">
-                  Destacado
-                </label>
-                <input
-                  type='checkbox'
-                  value={values.destacados}
-                  checked={values.destacados}
-                  onChange={handleInputCheckbox}
-                  name="destacados"
-                  className='option-input checkbox'
-                  id={check}
-                />
-              </div>
+        <label className='label' htmlFor='check'>
+          Destacado
+        </label>
+        <input
+          type='checkbox'
+          value={values.destacados}
+          checked={values.destacados}
+          onChange={handleInputCheckbox}
+          name='destacados'
+          className='option-input checkbox'
+          id={check}
+        />
+      </div>
+      <div className='radio-container'>
+        <div className='radio-toolbar'>
+
+          <input
+            type='radio'
+            value="10"
+            name='discount'
+            onChange={handleInputChange}
+            id='a'
+          />
+          <label htmlFor='a' className='labelRadio labelRadio__custom'>
+            10%
+          </label>
+
+          <input
+            type='radio'
+            value="20"
+            name='discount'
+            onChange={handleInputChange}
+            id='e'
+          />
+          <label htmlFor='e' className='labelRadio labelRadio__custom'>
+            20%
+          </label>
+
+          <input
+            type='radio'
+            value="30"
+            name='discount'
+            onChange={handleInputChange}
+            id='j'
+          />
+          <label htmlFor='j' className='labelRadio labelRadio__custom'>
+            30%
+          </label>
+
+        </div>
+      </div>
     </form>
   );
 };

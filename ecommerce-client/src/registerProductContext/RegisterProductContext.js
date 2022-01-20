@@ -21,6 +21,7 @@ export const RegisterProductContext = ({ children }) => {
       bodyFormData.append("category", info.category);
       bodyFormData.append("subcategory", info.subcategory);
       bodyFormData.append("destacado", info.destacados);
+      bodyFormData.append("discount", info.discount);
       bodyFormData.append("talle", size);
 
       await clientAxios

@@ -44,6 +44,10 @@ export const Navigation = () => {
               <Route path='destacados' element={<Shop />} />
               <Route path=':id/:id' element={<ProductView />} />
             </Route>
+            <Route path='product'>
+              <Route path='discount' element={<Shop />} />
+              <Route path=':id/:id' element={<ProductView />} />
+            </Route>
           </Route>
 
           <Route path='registerproducts' element={<RegisterProducts />} />

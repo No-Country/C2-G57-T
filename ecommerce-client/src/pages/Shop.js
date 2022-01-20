@@ -14,9 +14,14 @@ export const Shop = () => {
   let sub = split[3].toUpperCase();
   sub = sub.replace("%20", " ");
 
-  //llamada api destacados
   useEffect(() => {
+    //llamada api destacados
     async function fetchDataDestacado() {
+      const { data } = await clientAxios.get(`/api/products/${sub}`);
+      setDataDestacado(data);
+    }
+    //llamada api oferta
+    async function fetchDataoff() {
       const { data } = await clientAxios.get(`/api/products/${sub}`);
       setDataDestacado(data);
     }
@@ -36,6 +41,8 @@ export const Shop = () => {
 
     if (sub === "DESTACADOS") {
       fetchDataDestacado();
+    } else if (sub === "DISCOUNT") {
+      fetchDataoff();
     } else {
       fetchData();
     }
@@ -61,6 +68,7 @@ export const Shop = () => {
               key={product._id}
               img={product.img}
               id={product._id}
+              product={product}
             />
           ))}
         {dataDestacado.length > 0
@@ -72,6 +80,7 @@ export const Shop = () => {
                 key={product._id}
                 img={product.img}
                 id={product._id}
+                product={product}
               />
             ))
           : null}

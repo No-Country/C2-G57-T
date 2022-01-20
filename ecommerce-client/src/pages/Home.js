@@ -20,8 +20,8 @@ const Home = () => {
       <div className='container__page'>
         <Carousel />
         <div className='sections-home'>
-          <CardHome name='DESTACADOS' img={section01} />
-          <CardHome name='30% OFF' img={section02} uri='#' />
+          <CardHome name='DESTACADOS' img={section01} uri="dress/product/destacados" />
+          <CardHome name='10% 20% 30% OFF' img={section02} uri='dress/product/discount' />
           <CardHome name='ACCESORIOS' img={section03} uri='#' />
         </div>
       </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardHome = ({ name, img }) => {
+const CardHome = ({ name, img, uri }) => {
   return (
     <div className='bg-section'>
       <img src={img} alt='#' />
-      <Link to={"dress/product/destacados"}>{name}</Link>
+      <Link to={uri}>{name}</Link>
     </div>
   );
 };

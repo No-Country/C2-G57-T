@@ -6,6 +6,7 @@ import { CartData } from "../cartContext/Cartcontext";
 import { ControlPanel } from "../components/controlPanelKeyUser/ControlPanel";
 import { RegisterProductData } from "../registerProductContext/RegisterProductContext";
 import { UserData } from "../authContext/AuthContext";
+import { off } from "../helpers/percentage";
 
 export const ProductView = () => {
   const navigate = useNavigate();
@@ -83,12 +84,28 @@ export const ProductView = () => {
             ? dataProductView.description
             : newProductUpdate.description}
         </h2>
-        <h2 className='productViewInfo__price'>
-          $
-          {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.price
-            : newProductUpdate.price}
-        </h2>
+        <div className='productViewInfo__discountFlex'>
+          <h2
+            className={
+              dataProductView.discount > 0
+                ? "productViewInfo__price priceOFF"
+                : ""
+            }
+          >
+            $
+            {Object.entries(newProductUpdate).length === 0
+              ? dataProductView.price
+              : newProductUpdate.price}
+          </h2>
+          {dataProductView.discount > 0 && (
+            <span>{dataProductView.discount} OFF!</span>
+          )}
+        </div>
+        {dataProductView.discount > 0
+          ? Object.entries(newProductUpdate).length === 0
+            ? off(dataProductView.price, dataProductView.discount)
+            : off(newProductUpdate.price, dataProductView.discount)
+          : null}
         <div className='radio-container'>
           {talle.map((s, i) => (
             <div key={s} className='radio-toolbar'>

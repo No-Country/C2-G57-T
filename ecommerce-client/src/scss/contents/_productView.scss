@@ -148,7 +148,17 @@
   }
 }
 
-
+.productViewInfo__discountFlex{
+  display: flex;
+  align-items: center;
+  h2{
+    margin: 0;
+  }
+  span{
+    margin-left: 4rem;
+    font-size: 1.8rem;
+  }
+}
 
 
 
