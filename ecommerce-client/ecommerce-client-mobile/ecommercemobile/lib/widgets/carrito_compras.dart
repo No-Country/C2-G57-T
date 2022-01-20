@@ -35,8 +35,7 @@ class CarritoCompras extends StatelessWidget {
             child: Container(
               alignment: Alignment.center,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(100),
-                  color: Colors.black),
+                  borderRadius: BorderRadius.circular(100), color: Colors.red),
               child: Text("${productProvider.carritoItem}",
                   style: TextStyle(color: Colors.white, fontSize: 10)),
             ),

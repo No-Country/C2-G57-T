@@ -143,7 +143,7 @@ class _CarritoState extends State<Carrito> {
 
                           return Dismissible(
                             background: Container(
-                              color: Colors.green,
+                              color: Colors.purple,
                             ),
                             key: ValueKey<Product>(producto),
                             onDismissed: (DismissDirection direction) {
