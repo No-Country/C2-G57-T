@@ -62,15 +62,27 @@ class _HomeState extends State<Home> {
 
               GestureDetector(
                   onTap: () {
-                    Navigator.of(context).pushNamed("detail",
-                        arguments: filtradoProducto.productosRemera);
+                    Navigator.of(context).pushNamed("grid",
+                        arguments: filtradoProducto.productosPantalon);
                   },
                   child: ImagenCategoria(
                       categoria: 'Pantalon', imagenAssets: '14')),
               SizedBox(height: height * 0.01),
-              ImagenCategoria(categoria: "30% off", imagenAssets: "16"),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("grid",
+                        arguments: filtradoProducto.productosFalda);
+                  },
+                  child:
+                      ImagenCategoria(categoria: "Faldas", imagenAssets: "16")),
               SizedBox(height: height * 0.01),
-              ImagenCategoria(categoria: "Remeras", imagenAssets: "15"),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed("grid",
+                        arguments: filtradoProducto.productosRemera);
+                  },
+                  child: ImagenCategoria(
+                      categoria: "Remeras", imagenAssets: "15")),
               SizedBox(height: height * 0.01),
               ContainerRedesSociales(
                   imagenAssets: '17', icono: Icons.photo_camera_sharp),
@@ -97,39 +109,34 @@ class ImagenCategoria extends StatelessWidget {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     final width = MediaQuery.of(context).size.width;
-    return GestureDetector(
-      onTap: () {
-        Navigator.pushNamed(context, "grid");
-      },
-      child: Center(
-        child: Container(
-          height: height * 0.5,
-          width: width * 0.95,
-          child: Stack(
-            children: [
-              Container(
+    return Center(
+      child: Container(
+        height: height * 0.5,
+        width: width * 0.95,
+        child: Stack(
+          children: [
+            Container(
+              height: height * 0.5,
+              width: width * 1,
+              child: FadeInImage(
+                placeholder: AssetImage("assets/loading.gif"),
+                image: AssetImage("assets/${imagenAssets}.jpg"),
                 height: height * 0.5,
-                width: width * 1,
-                child: FadeInImage(
-                  placeholder: AssetImage("assets/loading.gif"),
-                  image: AssetImage("assets/${imagenAssets}.jpg"),
-                  height: height * 0.5,
-                  fit: BoxFit.fill,
-                ),
+                fit: BoxFit.fill,
               ),
-              Center(
-                child: Container(
-                    height: 50,
-                    width: 150,
-                    color: Colors.white,
-                    alignment: Alignment.center,
-                    child: Text(
-                      categoria,
-                      style: TextStyle(color: Colors.black, fontSize: 20.0),
-                    )),
-              ),
-            ],
-          ),
+            ),
+            Center(
+              child: Container(
+                  height: 50,
+                  width: 150,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Text(
+                    categoria,
+                    style: TextStyle(color: Colors.black, fontSize: 20.0),
+                  )),
+            ),
+          ],
         ),
       ),
     );

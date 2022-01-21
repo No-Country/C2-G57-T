@@ -14,8 +14,8 @@ class GridScreen extends StatelessWidget {
     final productProvider = Provider.of<ProductProvider>(context);
 
     //TODO: problema para enviar los productos por categoria
-    // final List<Product> productos =
-    //     ModalRoute.of(context)!.settings.arguments as List<Product>;
+    final productos =
+        ModalRoute.of(context)!.settings.arguments as List<Product>;
 
     final filtradoProducto = Provider.of<FiltradoProducto>(context);
 
@@ -30,11 +30,11 @@ class GridScreen extends StatelessWidget {
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: GridView.builder(
-          itemCount: filtradoProducto.productosRemera.length,
+          itemCount: filtradoProducto.productosPantalon.length,
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (_, index) {
-            final producto = filtradoProducto.productosRemera[index];
+            final producto = productos[index];
 
             return GestureDetector(
               onTap: () =>
@@ -43,7 +43,7 @@ class GridScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                    height: 150,
+                    height: 140,
                     width: 150,
                     color: Colors.grey,
                     child: FadeInImage(
@@ -52,7 +52,7 @@ class GridScreen extends StatelessWidget {
                     ),
                   ),
                   Text(producto.name),
-                  Text(producto.price.toString())
+                  Text(producto.price.toString()),
                 ],
               ),
             );

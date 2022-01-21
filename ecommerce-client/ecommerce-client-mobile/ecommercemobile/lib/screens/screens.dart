@@ -1,6 +1,6 @@
-export 'package:ecommercemobile/screens/details.dart';
-export 'package:ecommercemobile/screens/home.dart';
-export 'package:ecommercemobile/screens/login.dart';
-export 'package:ecommercemobile/screens/shop.dart';
+export 'package:ecommercemobile/screens/details._screendart';
+export 'package:ecommercemobile/screens/home_screen.dart';
+export 'package:ecommercemobile/screens/login_screen.dart';
+export 'package:ecommercemobile/screens/shop_screen.dart';
 export 'package:ecommercemobile/screens/grid_screen.dart';
-export 'package:ecommercemobile/screens/pay.dart';
+export 'package:ecommercemobile/screens/pay_screen.dart';

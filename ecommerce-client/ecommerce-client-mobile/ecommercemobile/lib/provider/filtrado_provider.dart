@@ -8,10 +8,6 @@ class FiltradoProducto extends ChangeNotifier {
   List<Product> productosVestido = [];
 
   FiltradoProducto() {
-    // print(productoFiltrado);
-    // print(productoFiltrado[0].description);
-    // print(productoFiltrado[1].description);
-    // print(productoFiltrado[2].description);
     filtrarPorCategoria("Pantalon", productosPantalon);
     filtrarPorCategoria("Remera", productosRemera);
     filtrarPorCategoria("Falda", productosFalda);
