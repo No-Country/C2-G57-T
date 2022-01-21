@@ -38,7 +38,7 @@ export const FormRegisterProduct = ({
     let select = check.options.filter((el) => el.check);
     let endSelect = select.map((id) => id.id);
     setSize(endSelect);
-  };  
+  };
 
   return (
     <form>
@@ -153,40 +153,38 @@ export const FormRegisterProduct = ({
       </div>
       <div className='radio-container'>
         <div className='radio-toolbar'>
-
           <input
             type='radio'
-            value="10"
+            value='10'
             name='discount'
             onChange={handleInputChange}
-            id='a'
+            id='ten'
           />
-          <label htmlFor='a' className='labelRadio labelRadio__custom'>
+          <label htmlFor='ten' className='labelRadio labelRadio__custom'>
             10%
           </label>
 
           <input
             type='radio'
-            value="20"
+            value='20'
             name='discount'
             onChange={handleInputChange}
-            id='e'
+            id='twenty'
           />
-          <label htmlFor='e' className='labelRadio labelRadio__custom'>
+          <label htmlFor='twenty' className='labelRadio labelRadio__custom'>
             20%
           </label>
 
           <input
             type='radio'
-            value="30"
+            value='30'
             name='discount'
             onChange={handleInputChange}
-            id='j'
+            id='thirty'
           />
-          <label htmlFor='j' className='labelRadio labelRadio__custom'>
+          <label htmlFor='thirty' className='labelRadio labelRadio__custom'>
             30%
           </label>
-
         </div>
       </div>
     </form>

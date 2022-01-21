@@ -10,6 +10,7 @@ import { RegisterProducts } from "../pages/RegisterProducts";
 import Dress from "./../pages/Dress";
 import { Shop } from "./../pages/Shop";
 import { ProductView } from "./../pages/ProductView";
+import { EndBuy } from "../pages/EndBuy";
 
 export const Navigation = () => {
   //pedir endpoint para mantener el usuario
@@ -51,6 +52,7 @@ export const Navigation = () => {
           </Route>
 
           <Route path='registerproducts' element={<RegisterProducts />} />
+          <Route path='endbuy' element={<EndBuy />} />
 
           <Route path='*' element={<Home />} />
         </Route>

@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserData } from "../authContext/AuthContext";
+import { CartData } from "../cartContext/Cartcontext";
 
 const Sidebar = ({ sidebar }) => {
   const { state, logOut, user } = useContext(UserData);
+  const { clearCart } = useContext(CartData);
 
   const handleLogOut = () => {
     logOut();
+    clearCart();
   };
 
   return (

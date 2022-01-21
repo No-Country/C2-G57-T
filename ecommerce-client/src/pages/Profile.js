@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { UserData } from "../authContext/AuthContext";
 import { useForm } from "./../hooks/useForm";
 
-export const Profile = () => {
+export const Profile = ({ type }) => {
   const { state } = useContext(UserData);
   const { values, handleInputChange, reset } = useForm({
     userName: state.user || "",
@@ -44,15 +44,16 @@ export const Profile = () => {
                 type='text'
                 value={values.email}
               />
-              <input
-                placeholder='Contraseña'
-                name='password'
-                type='password'
-                onChange={handleInputChange}
-                value={values.password}
-              />
+              {!type && (
+                <input
+                  placeholder='Contraseña'
+                  name='password'
+                  type='password'
+                  onChange={handleInputChange}
+                  value={values.password}
+                />
+              )}
             </div>
-
             <div className='profile__fieldContainer'>
               <p>Datos personales</p>
               <input
