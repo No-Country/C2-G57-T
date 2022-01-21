@@ -2,6 +2,18 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const mail = require("../helpers/sendGrid");
 
+
+const getUserById = async(req, res) => {
+
+    const {id} = req.params;
+    const user = await User.findById(id);
+    if(!user){
+        return res.status(400).json({msg: `No existe usuario con el ID ${id}`});
+    }
+
+    res.status(200).json(user);
+};
+
 const postUser = async(req, res) => {
 
     const { name, email, password } = req.body;
@@ -15,11 +27,9 @@ const postUser = async(req, res) => {
     // Guardar en BD
     await user.save();
 
-
-    res.json({
+    res.status(201).json({
         user
     });
-
 };
 
 const putUser = async(req, res) => {
@@ -50,6 +60,7 @@ const deleteUser = async(req, res) => {
 }
 
 module.exports = {
+    getUserById,
     postUser,
     putUser,
     deleteUser

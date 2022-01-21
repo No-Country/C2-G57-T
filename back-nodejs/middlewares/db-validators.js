@@ -3,7 +3,7 @@ const User = require("../models/user");
 const userExists = async(id)=> {
     const user = await User.findById(id);
     if(!user){
-        throw new Error(`ID: ${id} doesn't exist`)
+        throw new Error(`ID: ${id} no existe`)
     }
 };
 
