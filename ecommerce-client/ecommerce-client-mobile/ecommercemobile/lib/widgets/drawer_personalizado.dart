@@ -154,7 +154,8 @@ class _DrawerPersonalizadoState extends State<DrawerPersonalizado> {
           ),
           if (talles)
             BuscadorIndumentaria(
-                titulo: 'L', rutaProvider: filtradoProducto.productosTalleL),
+                titulo: 'L',
+                rutaProvider: filtradoProducto.productosTalleLPrueba),
           if (talles)
             BuscadorIndumentaria(
                 titulo: 'XL', rutaProvider: filtradoProducto.productosTalleXL),

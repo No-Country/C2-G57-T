@@ -6,19 +6,17 @@ class FiltradoProducto extends ChangeNotifier {
   List<Product> productosRemera = [];
   List<Product> productosFalda = [];
   List<Product> productosVestido = [];
-  List<Product> productosTalleL = [];
   List<Product> productosTalleXL = [];
   List<Product> productosTalleXXL = [];
+  List<Product> productosTalleLPrueba = [];
 
   FiltradoProducto() {
     filtrarPorCategoria("Pantalon", productosPantalon);
     filtrarPorCategoria("Remera", productosRemera);
     filtrarPorCategoria("Falda", productosFalda);
     filtrarPorCategoria("Vestido", productosVestido);
-    filtrarPorTalle("L", productosTalleL);
+    filtrarPorTalleEspecial("L", productosTalleLPrueba);
     filtrarPorTalle("XL", productosTalleXL);
-
-    //TODO: Revisar talle XXL
     filtrarPorTalle("XXL", productosTalleXXL);
 
     verProductosPorCategoria();
@@ -40,7 +38,20 @@ class FiltradoProducto extends ChangeNotifier {
   filtrarPorTalle(String talle, List<Product> listaDeProductosCategoria) {
     final filtroProductos = productos
         .where((producto) =>
-            producto.talle1.contains(talle) && producto.talle2.contains(talle))
+            producto.talle1.contains(talle) || producto.talle2.contains(talle))
+        .toList();
+
+    filtroProductos.forEach((product) {
+      listaDeProductosCategoria.add(product);
+    });
+  }
+
+  filtrarPorTalleEspecial(
+      String talle, List<Product> listaDeProductosCategoria) {
+    final filtroProductos = productos
+        .where((producto) =>
+            producto.talle1.startsWith(talle) ||
+            producto.talle2.startsWith(talle))
         .toList();
 
     filtroProductos.forEach((product) {
@@ -57,11 +68,15 @@ class FiltradoProducto extends ChangeNotifier {
     print(productosFalda.length);
     print("Vestido");
     print(productosVestido.length);
-    print("productos L");
-    print(productosTalleL.length);
+    print("productos talle L");
+    print(productosTalleLPrueba.length);
     print("productos XL");
     print(productosTalleXL.length);
     print("productos XXL");
     print(productosTalleXXL.length);
+    print("Total de productos del catalogo:  ${productos.length}");
+    for (Product producto in productos) {
+      print(producto.name + "  " + producto.talle1 + "  " + producto.talle2);
+    }
   }
 }

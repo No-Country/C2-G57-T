@@ -218,6 +218,7 @@ class _DetailState extends State<Detail> {
                               ),
                               onPressed: () {
                                 setState(() {
+                                  if (cantidad == 0) return;
                                   cantidad--;
                                 });
                               }),

@@ -3,7 +3,7 @@ import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:provider/provider.dart';
 
 class GridScreen extends StatelessWidget {
@@ -13,11 +13,8 @@ class GridScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productProvider = Provider.of<ProductProvider>(context);
 
-    //TODO: problema para enviar los productos por categoria
     final productos =
         ModalRoute.of(context)!.settings.arguments as List<Product>;
-
-    final filtradoProducto = Provider.of<FiltradoProducto>(context);
 
     return SafeArea(
       child: Scaffold(
