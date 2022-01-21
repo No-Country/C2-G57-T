@@ -78,7 +78,9 @@ class _DrawerPersonalizadoState extends State<DrawerPersonalizado> {
           ),
           Padding(
             padding: const EdgeInsets.only(left: 25),
-            child: Text("Home"),
+            child: GestureDetector(
+                onTap: () => Navigator.of(context).pushNamed("home"),
+                child: Text("Home")),
           ),
           TextButton(
             onPressed: () {

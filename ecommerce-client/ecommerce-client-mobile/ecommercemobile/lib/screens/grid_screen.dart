@@ -43,21 +43,32 @@ class GridScreen extends StatelessWidget {
             return GestureDetector(
               onTap: () =>
                   Navigator.pushNamed(context, "detail", arguments: producto),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 140,
-                    width: 150,
-                    color: Colors.grey,
-                    child: FadeInImage(
-                      placeholder: AssetImage("assets/loading.gif"),
-                      image: AssetImage("${producto.imagen}"),
+              child: Card(
+                elevation: 5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      height: 140,
+                      width: double.infinity,
+                      child: FadeInImage(
+                        placeholder: AssetImage("assets/loading.gif"),
+                        image: AssetImage("${producto.imagen}"),
+                      ),
                     ),
-                  ),
-                  Text(producto.name),
-                  Text(producto.price.toString()),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(producto.name),
+                            Text("${producto.price}")
+                          ]),
+                    ),
+                  ],
+                ),
               ),
             );
           },
