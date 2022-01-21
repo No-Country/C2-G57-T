@@ -17,9 +17,10 @@
   
   input {
     height: 40px;
-    border: 2px solid #E05D5D;
+    border: none;
+    border-bottom: 1px solid v.$primario;
     padding-left: 20px;
-    border-radius: 1rem;
+    border-radius: 10px;
     box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
@@ -40,90 +41,30 @@
   gap: 10px;
   justify-content: center;
   align-items: center;
-}
+  margin-top: 40px;
 
-.checkboxContainer--register {
-  font-size: .8rem;
-}
-
-.checkbox-info {
-  position: relative;
-}
-
-.label {
-  position: absolute;
-  top: -10px;
-  left: 14px;
-}
-
-@keyframes click-wave {
-  0% {
-    height: 40px;
-    width: 40px;
-    opacity: 0.35;
+  .checkbox-info {
     position: relative;
+  
+    .label {
+      position: absolute;
+      top: -20px;
+      left: 0;
+      width: 20px;
+      height: 20px;
+      text-align: center;
+    }
   }
-  100% {
-    height: 200px;
-    width: 200px;
-    margin-left: -80px;
-    margin-top: -80px;
-    opacity: 0;
+}
+
+.checkbox-destacado {
+  .checkbox-info {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    margin: 20px 0;
   }
 }
-
-.option-input {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  -o-appearance: none;
-  appearance: none;
-  position: relative;
-  top: 13.33333px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  height: 40px;
-  width: 40px;
-  transition: all 0.15s ease-out 0s;
-  background: #cbd1d8;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  margin-right: 0.5rem;
-  outline: none;
-  position: relative;
-  // z-index: 1000;
-  margin: 0;
-}
-.option-input:hover {
-  background: #9faab7;
-}
-.option-input:checked {
-  background: pink;
-  padding-left: 0;
-}
-.option-input:checked::before {
-  content: 'x';
-  font-size: 1.5rem;
-  color: #000;
-  position: absolute;
-  top: 2px;
-  left: 12px;
-}
-
-.option-input:checked::after {
-  -webkit-animation: click-wave 0.65s;
-  -moz-animation: click-wave 0.65s;
-  animation: click-wave 0.65s;
-  background: #9760a3;
-  content: "";
-  display: block;
-  position: relative;
-  z-index: 100;
-}
-
 
 .labelRadio__custom{
   width: 50px !important;

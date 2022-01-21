@@ -8,6 +8,9 @@ import { RegisterProductData } from "../registerProductContext/RegisterProductCo
 import { UserData } from "../authContext/AuthContext";
 import { off } from "../helpers/percentage";
 
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+
 export const ProductView = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -79,33 +82,44 @@ export const ProductView = () => {
             ? dataProductView.name
             : newProductUpdate.name}
         </h2>
-        <h2 className='productViewInfo__description'>
+        <p className='productViewInfo__description'>
           {Object.entries(newProductUpdate).length === 0
             ? dataProductView.description
             : newProductUpdate.description}
-        </h2>
+        </p>
+
+        {dataProductView.discount > 0
+        ? Object.entries(newProductUpdate).length === 0
+        ? off(dataProductView.price, dataProductView.discount)
+        : off(newProductUpdate.price, dataProductView.discount)
+        : null}
+          
         <div className='productViewInfo__discountFlex'>
-          <h2
-            className={
-              dataProductView.discount > 0
-                ? "productViewInfo__price priceOFF"
-                : ""
-            }
-          >
-            $
-            {Object.entries(newProductUpdate).length === 0
-              ? dataProductView.price
-              : newProductUpdate.price}
-          </h2>
+          {dataProductView.discount > 0 ? 
+          <h5
+          className={
+            dataProductView.discount > 0
+              ? "productViewInfo__price priceOFF"
+              : ""
+          }
+        >
+          $
+          {Object.entries(newProductUpdate).length === 0
+            ? toThousand(dataProductView.price)
+            : newProductUpdate.price}
+        </h5> :
+        <h2>
+          $
+          {Object.entries(newProductUpdate).length === 0
+            ? toThousand(dataProductView.price)
+            : newProductUpdate.price}
+        </h2>}
+          
           {dataProductView.discount > 0 && (
-            <span>{dataProductView.discount} OFF!</span>
+            <span>{dataProductView.discount}% OFF</span>
           )}
         </div>
-        {dataProductView.discount > 0
-          ? Object.entries(newProductUpdate).length === 0
-            ? off(dataProductView.price, dataProductView.discount)
-            : off(newProductUpdate.price, dataProductView.discount)
-          : null}
+        
         <div className='radio-container'>
           {talle.map((s, i) => (
             <div key={s} className='radio-toolbar'>
