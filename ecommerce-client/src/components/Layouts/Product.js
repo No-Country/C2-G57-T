@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { off } from "../../helpers/percentage";
 
+//si el producto esta en oferta mostrara el precio oferta
 const Product = ({ img, title, price, id, product }) => {
   const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 

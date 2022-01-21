@@ -6,15 +6,16 @@ import { CardProductCart } from "./CardProductCart";
 export const CartDetailModal = ({cartModal}) => {
   const navigate = useNavigate();
   const { state, setShowOpenModalCart } = useContext(CartData);
-  
+
+  //corrobora si hay un usuario logueado
   const handleEndBuy = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     setShowOpenModalCart(false);
-    if (state.products.length === 0)return
-    if(token){
+    if (state.products.length === 0) return;
+    if (token) {
       navigate("/endbuy");
-    }else{
-      navigate("/login");      
+    } else {
+      navigate("/login");
     }
   };
 

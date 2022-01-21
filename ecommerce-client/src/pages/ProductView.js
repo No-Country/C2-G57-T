@@ -23,9 +23,14 @@ export const ProductView = () => {
   const [size, setSize] = useState("");
   const [error, setError] = useState(false);
 
+  //llamada a la api por id
   useEffect(() => {
     async function fetchData() {
       const { data } = await clientAxios.get(`/api/products/${id}`);
+
+      if (data.discount > 0) {
+        Object.assign(data, { offer: off(data.price, data.discount) });
+      }
       setDataProductView(data);
     }
     fetchData();
@@ -37,13 +42,16 @@ export const ProductView = () => {
 
   if (!dataProductView) return null;
 
+  //toma el value del input de cantidad
   const handleChange = (e) => {
     setQuantity(e.target.value);
   };
+  //toma el value de los radio buttons
   const handleChangeSize = (e) => {
     setSize(e.target.value);
   };
 
+  //envia la informacion de la compra
   const handleBuy = () => {
     if (!quantity || quantity <= 0 || size === "") {
       setError(true);
@@ -62,12 +70,14 @@ export const ProductView = () => {
     navigate(-1);
   };
 
+  const { description, discount, img, name, price } = dataProductView;
+
   const talle = dataProductView.talle[0].split(",");
 
   return (
     <div className='productViewContainer container__page'>
       <div className='grid-productView'>
-        {dataProductView.img.map((image) => (
+        {img.map((image) => (
           <img
             src={image.url}
             alt={image._id}
@@ -79,12 +89,12 @@ export const ProductView = () => {
       <div className='productViewInfo'>
         <h2 className='productViewInfo__name'>
           {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.name
+            ? name
             : newProductUpdate.name}
         </h2>
         <p className='productViewInfo__description'>
           {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.description
+            ? description
             : newProductUpdate.description}
         </p>
 

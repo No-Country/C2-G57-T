@@ -1,6 +1,8 @@
 import React from "react";
 import { useForm } from "../hooks/useForm";
 
+
+//componente cargado dentro del acordion en el fin de la compra
 export const DataSend = () => {
   const { handleInputChange } = useForm();
 

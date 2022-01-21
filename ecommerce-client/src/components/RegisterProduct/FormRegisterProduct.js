@@ -26,6 +26,7 @@ export const FormRegisterProduct = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.category]);
 
+  //genera un arreglo con los talles seleccionados
   const onSeleccion = (e) => {
     let { name } = e.target;
     let options = [...check.options];
