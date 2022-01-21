@@ -347,7 +347,7 @@ class _DetailState extends State<Detail> {
                       label: Text("Agregar al carrito")),
                   ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "grid");
+                        Navigator.pushNamed(context, "home");
                       },
                       child: Text("Seguir Comprando\t\t\t"))
                 ],
