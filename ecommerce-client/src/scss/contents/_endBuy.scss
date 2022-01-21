@@ -1,0 +1,21 @@
+.endBuy__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+.labelRadio__custom--send {
+  border-radius: 0px !important;
+  width: 100% !important;
+}
+
+.cardEnd__flex {
+  display: flex;
+  border-bottom: 1px solid #000;
+  padding: 1rem;
+
+  .cardEnd__img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+  }
+}

@@ -1,10 +1,22 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartData } from "../../cartContext/Cartcontext";
 import { CardProductCart } from "./CardProductCart";
 
 export const CartDetailModal = ({cartModal}) => {
-
+  const navigate = useNavigate();
   const { state, setShowOpenModalCart } = useContext(CartData);
+  
+  const handleEndBuy = () => {
+    const token = localStorage.getItem('token')
+    setShowOpenModalCart(false);
+    if (state.products.length === 0)return
+    if(token){
+      navigate("/endbuy");
+    }else{
+      navigate("/login");      
+    }
+  };
 
   return (
     <>
@@ -14,17 +26,19 @@ export const CartDetailModal = ({cartModal}) => {
             className='CartModal__button'
             onClick={() => setShowOpenModalCart(false)}
           >
-            <i className="far fa-times-circle"></i> Cerrar Carrito 
+            <i className='far fa-times-circle'></i> Cerrar Carrito
           </button>
         </div>
 
         {state.products.length === 0 ? (
-          <p className="aviso_cart">No tienes productos en el carrito</p>
+          <p className='aviso_cart'>No tienes productos en el carrito</p>
         ) : (
           state.products.map((p) => <CardProductCart product={p} key={p._id} />)
         )}
 
-        <button className='generalButton end-purchase'>Finalizar compra</button>
+        <button className='generalButton end-purchase' onClick={handleEndBuy}>
+          Finalizar compra
+        </button>
       </div>
     </>
   );

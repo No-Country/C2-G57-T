@@ -1,4 +1,4 @@
-import { ADD_CART, DELETE_PRODUCT_CART } from "./CartType";
+import { ADD_CART, CLEAR_CART, DELETE_PRODUCT_CART } from "./CartType";
 
 export const cartReducer = (state, action) => {
   switch (action.type) {
@@ -14,6 +14,12 @@ export const cartReducer = (state, action) => {
 
         products: state.products.filter((i) => i._id !== action.payload),
         quantityArticles: state.quantityArticles - 1,
+      };
+    case CLEAR_CART:
+      return {
+        ...state,
+        products: [],
+        quantityArticles: 0,
       };
 
     default:

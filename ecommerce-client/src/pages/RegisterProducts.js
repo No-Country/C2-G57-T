@@ -22,7 +22,8 @@ export const RegisterProducts = () => {
     stock: "",
     category: "",
     subcategory: "",
-    destacados: "",
+    destacados: false,
+    discount: ""
   });
 
   const handleUploadImage = () => {

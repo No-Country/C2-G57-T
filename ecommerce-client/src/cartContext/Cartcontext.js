@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useState } from "react";
 import { cartReducer } from "./CartReduce";
-import { ADD_CART, DELETE_PRODUCT_CART } from "./CartType";
+import { ADD_CART, CLEAR_CART, DELETE_PRODUCT_CART } from "./CartType";
 
 export const CartData = createContext();
 
@@ -10,10 +10,6 @@ export const CartContext = ({ children }) => {
 
   const initialState = {
     products: [],
-    product: "",
-    quantity: "",
-    description: "",
-    image: null,
     quantityArticles: 0,
   };
 
@@ -42,6 +38,12 @@ export const CartContext = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    dispatch({
+      type: CLEAR_CART,
+    });
+  };
+
   return (
     <CartData.Provider
       value={{
@@ -51,6 +53,7 @@ export const CartContext = ({ children }) => {
         deleteProductCart,
         addProductCart,
         setShowOpenModalCart,
+        clearCart,
       }}
     >
       {children}

@@ -1,12 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserData } from "../authContext/AuthContext";
+import { CartData } from "../cartContext/Cartcontext";
 
 const Sidebar = ({ sidebar }) => {
   const { state, logOut, user } = useContext(UserData);
+  const { clearCart } = useContext(CartData);
 
   const handleLogOut = () => {
     logOut();
+    clearCart();
   };
 
   return (
@@ -115,7 +118,7 @@ const Sidebar = ({ sidebar }) => {
               <Link to={"dress/product/destacados"}>DESTACADOS</Link>
             </li>
             <li>
-              <Link to={"#"}>OFERTAS</Link>
+              <Link to={"dress/product/discount"}>OFERTAS</Link>
             </li>
             <li>
               <Link to={"#"}>CONTACTO</Link>
