@@ -4,7 +4,6 @@ import { off } from "../../helpers/percentage";
 
 //si el producto esta en oferta mostrara el precio oferta
 const Product = ({ img, title, price, id, product }) => {
-  const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
   return (
     <Link to={id} className='card-product'>
@@ -13,7 +12,7 @@ const Product = ({ img, title, price, id, product }) => {
         <span>{title}</span>
         <div className="price">
         <h3>
-          {product.discount > 0 ? off(price, product.discount) : `$${toThousand(price)} ARS`}
+          {product.discount > 0 ? off(price, product.discount) : `$${price} ARS`}
         </h3>
         {product.discount !== 0 ? <span>{product.discount}%</span> : null}
         </div>

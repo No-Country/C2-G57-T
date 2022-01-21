@@ -51,7 +51,7 @@ export const FormRegisterProduct = ({
           type='text'
           value={values.name}
         />
-        <input
+        <textarea
           name='description'
           onChange={handleInputChange}
           placeholder='Descripcion'
