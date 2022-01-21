@@ -35,11 +35,22 @@
       span {
         text-transform: capitalize;
       }
+
+      .price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 10px;
+
+        span {
+          background: v.$color-discount;
+          color: v.$color-letter;
+          padding: 4px 8px;
+          border-radius: 20px;
+        }
+      }
     }
   }
 }
 
 
-.priceOFF{
-  text-decoration: line-through;
-}

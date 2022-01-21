@@ -72,8 +72,17 @@ export const FormRegisterProduct = ({
           type='text'
           value={values.color}
         />
+        
+        <input
+          name='stock'
+          onChange={handleInputChange}
+          placeholder='Stock'
+          type='number'
+          value={values.stock}
+        />
+      </div>
 
-        <div className='checkbox-container'>
+      <div className='checkbox-container'>
           {check.options.map((el) => {
             return (
               <div key={el.id} className='checkbox-info'>
@@ -92,14 +101,6 @@ export const FormRegisterProduct = ({
             );
           })}
         </div>
-        <input
-          name='stock'
-          onChange={handleInputChange}
-          placeholder='Stock'
-          type='number'
-          value={values.stock}
-        />
-      </div>
 
       <select
         value={values.category}
@@ -138,19 +139,22 @@ export const FormRegisterProduct = ({
             ))
           )}
       </select>
-      <div className='checkbox-info'>
-        <label className='label' htmlFor='check'>
-          Destacado
-        </label>
-        <input
-          type='checkbox'
-          value={values.destacados}
-          checked={values.destacados}
-          onChange={handleInputCheckbox}
-          name='destacados'
-          className='option-input checkbox'
-          id={check}
-        />
+
+      <div className="checkbox-destacado">
+        <div className='checkbox-info'>
+          <label className='label' htmlFor='check'>
+            Destacado
+          </label>
+          <input
+            type='checkbox'
+            value={values.destacados}
+            checked={values.destacados}
+            onChange={handleInputCheckbox}
+            name='destacados'
+            className='option-input checkbox'
+            id={check}
+          />
+        </div>
       </div>
       <div className='radio-container'>
         <div className='radio-toolbar'>

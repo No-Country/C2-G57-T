@@ -60,7 +60,7 @@ input:focus {
   padding: 8px 16px;
   background-color: #ffb344;
   border: none;
-  border-radius: 20px;
+  border-radius: 10px;
   transition: all 0.3s ease;
 
   &:hover {
@@ -70,9 +70,10 @@ input:focus {
 
 .generalInput {
   height: 40px;
-  border: 2px solid #e05d5d;
+  border: none;
+  border-bottom: 1px solid v.$primario;
   padding-left: 20px;
-  border-radius: 1rem;
+  border-radius: 10px;
   box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
   -webkit-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
@@ -87,11 +88,10 @@ input:focus {
 }
 
 .radio-toolbar label {
-  margin: 0.5rem 0;
-  margin-right: 0.5rem;
+  margin-right: .5rem;
   display: inline-block;
   background-color: #000;
-  color: #fff;
+  color: v.$color-letter;
   padding: 4px 11px;
   font-family: Arial;
   font-size: 16px;
@@ -100,10 +100,10 @@ input:focus {
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  line-height: 2;
+  line-height: 40px;
 }
 
 .radio-toolbar input[type="radio"]:checked + label {
-  background-color: pink;
-  color: #000;
+  background-color: v.$primario;
+  color: v.$color-letter;
 }

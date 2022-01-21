@@ -6,6 +6,7 @@
   margin: 0 auto;
   padding-bottom: 4rem;
   background: #FFF8E5;
+  color: v.$color-letter;
 
   &__container {
     max-width: 700px;
@@ -18,10 +19,11 @@
     flex: 1;
     padding: 1rem;
     border: none;
-    border-radius: 20px 20px 0 0;
+    border-radius: 10px 10px 0 0;
 
     &--active{
-        background-color: #FFB344;
+      color: v.$color-letter;
+      background-color: v.$primario;
     }
 
   }
@@ -31,7 +33,7 @@
     max-width: 700px;
     display: flex;
     flex-direction: column;
-    background-color: #FFB344;
+    background-color: v.$primario;
     border-radius: 0 0 20px 20px;
     padding: 2rem;
 
@@ -42,7 +44,7 @@
     input {
       margin: 0rem 0 1rem 0;
       border: none;
-      border-radius: 20px;
+      border-radius: 10px;
       padding: 1rem;
 
       &:nth-child(7) {
@@ -56,10 +58,15 @@
     align-items: center;
     margin-bottom: 1rem;
     font-size: .8rem;
+
+    a {
+      color: v.$color-letter-sec;
+    }
   }
 
   &__inputSubmit {
-    text-transform: uppercase;
+    text-transform: capitalize;
+    background: v.$color-letter-sec;
   }
 }
 
@@ -78,3 +85,9 @@
   height: 20px;
   margin: 0px 0.5rem 0 0 !important;
 }
+
+.checkboxContainer--register {
+  font-size: .8rem;
+}
+
+

@@ -11,10 +11,13 @@ const Product = ({ img, title, price, id, product }) => {
       {img.length > 0 && <img src={img[0].url} alt='#' />}
       <div className='detail'>
         <span>{title}</span>
-        <span className={product.discount > 0 ? "priceOFF" : ""}>
-          ${toThousand(price)} ARS
-        </span>
-        {product.discount > 0 && <span>${off(price, product.discount)} ARS</span>}
+        <div className="price">
+        <h3>
+          {product.discount > 0 ? off(price, product.discount) : `$${toThousand(price)} ARS`}
+        </h3>
+        {product.discount !== 0 ? <span>{product.discount}%</span> : null}
+        </div>
+        
       </div>
     </Link>
   );

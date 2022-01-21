@@ -9,15 +9,17 @@
   padding: 1rem 0;
   
   .grid-productView {
+    width: 100%;
     display: grid;
     grid-template-areas: 'a a a' 'b c d';
-    grid-template-rows: auto;
-    gap: .3rem;
+    grid-template-rows: 350px 150px;
+    gap: .2rem;
     
     .img-productView {
       width: 100%;
       object-fit: cover;
       object-position: top;
+      border-radius: 10px;
       
       &:nth-child(1) {
         grid-area: a;
@@ -61,13 +63,24 @@
         }
       }
     }
+
+    @media screen and (min-width: 990px) {
+      grid-template-rows: 500px 150px;
+
+      .img-productView {
+        
+        &:nth-child(1) {
+          height: 500px;
+        }
+      }
+    }
   }
 
   .productViewInfo {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    gap: .8rem;
+    gap: .4rem;
     max-width: 350px;
     font-size: .8rem;
     text-transform: capitalize;
@@ -83,8 +96,8 @@
       margin: 0.5rem 0;
       margin-right: 0.5rem;
       display: inline-block;
-      background-color: #000;
-      color: #fff;
+      background-color: v.$negro;
+      color: v.$color-letter;
       padding: 4px 11px;
       font-family: Arial;
       font-size: 16px;
@@ -97,8 +110,8 @@
     }
     
     .radio-toolbar input[type="radio"]:checked + label {
-      background-color: pink;
-      color: #000;
+      background-color: v.$primario;
+      color: v.$color-letter;
     }
   }
 
@@ -108,55 +121,28 @@
     flex-direction: row;
 
     .grid-productView {
-      grid-template-areas: 'a b' 'a c' 'a d';
-
-      .img-productView {
-        &:nth-child(1) {
-          grid-area: a;
-          width: 100%;
-          height: 500px;
-        }
-
-        &:nth-child(2) {
-          height: 163px;
-
-          &:hover {
-            transform: none;
-            transform: scale(1.2);
-          }
-        }
-
-        &:nth-child(3) {
-          height: 163px;
-
-          &:hover {
-            transform: none;
-            transform: scale(1.2);
-          }
-        }
-
-        &:nth-child(4) {
-          height: 163px;
-
-          &:hover {
-            transform: none;
-            transform: scale(1.2);
-          }
-        }
-      }
+      width: 50%;
     }
+    
   }
 }
 
 .productViewInfo__discountFlex{
   display: flex;
-  align-items: center;
-  h2{
-    margin: 0;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+
+  h5 { 
+    font-weight: 300;
+    text-decoration: line-through red;
   }
-  span{
-    margin-left: 4rem;
-    font-size: 1.8rem;
+
+  span {
+    background: v.$color-discount;
+    color: v.$color-letter;
+    padding: 4px 8px;
+    border-radius: 20px;
   }
 }
 
