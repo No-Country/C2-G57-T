@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { CartData } from "../../cartContext/Cartcontext";
 import { CardProductCart } from "./CardProductCart";
 
-//es el modal aside del carrito
-export const CartDetailModal = () => {
+export const CartDetailModal = ({cartModal}) => {
   const navigate = useNavigate();
   const { state, setShowOpenModalCart } = useContext(CartData);
 
@@ -22,8 +21,8 @@ export const CartDetailModal = () => {
 
   return (
     <>
-      <div className='CartModal'>
-        <div className='CartModal__flex'>
+      <div className={ cartModal? 'CartModal CartModal-on' : 'CartModal'}>
+        <div className='CartModal__flex'>       
           <button
             className='CartModal__button'
             onClick={() => setShowOpenModalCart(false)}

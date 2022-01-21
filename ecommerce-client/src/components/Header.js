@@ -53,7 +53,7 @@ const Header = () => {
     </div>
 
       <Sidebar sidebar={showSidebar}/>
-      {showOpenModalCart && <CartDetailModal />}
+      <CartDetailModal cartModal={showOpenModalCart}/>
     </>
   );
 };

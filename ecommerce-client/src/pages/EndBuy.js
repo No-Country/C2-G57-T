@@ -16,6 +16,7 @@ export const EndBuy = () => {
     if (products.length === 0) {
       navigate(-1);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   const total = () => {

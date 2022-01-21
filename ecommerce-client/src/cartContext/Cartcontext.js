@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useState } from "react";
 import { cartReducer } from "./CartReduce";
-import { ADD_CART, CLEAR_CART, DELETE_PRODUCT_CART, PRICE_OFFER } from "./CartType";
+import { ADD_CART, CLEAR_CART, DELETE_PRODUCT_CART } from "./CartType";
 
 export const CartData = createContext();
 
