@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import { CartData } from "../../cartContext/Cartcontext";
 import { CardProductCart } from "./CardProductCart";
 
-export const CartDetailModal = () => {
+export const CartDetailModal = ({cartModal}) => {
 
   const { state, setShowOpenModalCart } = useContext(CartData);
 
   return (
     <>
-      <div className='CartModal'>
+      <div className={ cartModal? 'CartModal CartModal-on' : 'CartModal'}>
         <div className='CartModal__flex'>       
           <button
             className='CartModal__button'
