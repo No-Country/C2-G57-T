@@ -1,4 +1,5 @@
 const Color = require("../models/color");
+
 const saveProduct = async(req, res) => {
 
     const { name } = req.body;

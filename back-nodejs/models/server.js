@@ -14,6 +14,7 @@ class Server {
                 auth: "/api/auth",
                 color: "/api/color",
                 products: "/api/products",
+                shoppingCart: "/api/shoppingCart",
                 uploads: "/api/uploads"
             }
             // Conectar DB
@@ -31,8 +32,8 @@ class Server {
         this.app.use(express.json());
         // Subida de archivos con fileupload
         this.app.use(fileUpload({
-            useTempFiles : true,
-            tempFileDir : '/tmp/',
+            useTempFiles: true,
+            tempFileDir: '/tmp/',
             createParentPath: true
         }));
     }
@@ -40,6 +41,7 @@ class Server {
     routes() {
         this.app.use(this.paths.users, require("../routes/users"));
         this.app.use(this.paths.auth, require("../routes/auth"));
+        this.app.use(this.paths.shoppingCart, require("../routes/shoppingCart"));
         this.app.use(this.paths.products, require("../routes/product"));
         this.app.use(this.paths.uploads, require("../routes/uploads"));
         this.app.use(this.paths.color, require("../routes/color"));
