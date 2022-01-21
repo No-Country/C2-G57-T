@@ -10,7 +10,6 @@ export const UserData = createContext({
 export const AuthContext = ({ children }) => {
   const user = localStorage.getItem("user");
   // const isA = localStorage.getItem("isA");
-  
 
   const initialState = {
     token: localStorage.getItem("token"),

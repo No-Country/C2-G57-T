@@ -11,7 +11,6 @@ export const EndBuy = () => {
 
   const { state } = useContext(CartData);
   const { products } = state;
-  console.log("state", state);
 
   useEffect(() => {
     if (products.length === 0) {
@@ -21,7 +20,11 @@ export const EndBuy = () => {
 
   const total = () => {
     const total = products.reduce(
-      (acc, product) => acc + (product.price * product.quantity),
+      (acc, product) =>
+        acc +
+        (product.offer
+          ? product.offer * product.quantity
+          : product.price * product.quantity),
       0
     );
 
