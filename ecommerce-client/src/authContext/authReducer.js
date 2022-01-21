@@ -3,9 +3,9 @@ import { LOGIN_SUCCESS, LOGOUT_SUCCESS } from "./TypesAuth";
 export const authReducer = (state, action) => {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      localStorage.setItem("token", action.payload.token);      
-      localStorage.setItem("user", action.payload.user.name);      
-      localStorage.setItem("isA", action.payload.user.isAdmin);      
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("user", action.payload.user.name);
+      localStorage.setItem("isA", action.payload.user.isAdmin);
       return {
         ...state,
         token: action.payload.token,
@@ -13,12 +13,12 @@ export const authReducer = (state, action) => {
         logged: true,
         user: action.payload.user.name,
         email: action.payload.user.email,
-        isAdmin: action.payload.user.isAdmin
+        isAdmin: action.payload.user.isAdmin,
       };
     case LOGOUT_SUCCESS:
-      localStorage.removeItem("token");      
-      localStorage.removeItem("user");      
-      localStorage.removeItem("isA");      
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      localStorage.removeItem("isA");
       return {
         ...state,
         token: null,
@@ -28,9 +28,6 @@ export const authReducer = (state, action) => {
         user: null,
         email: null,
       };
-     
-
-
 
     default:
       return state;

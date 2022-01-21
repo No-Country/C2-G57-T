@@ -23,9 +23,10 @@ export const RegisterProducts = () => {
     category: "",
     subcategory: "",
     destacados: false,
-    discount: ""
+    discount: "",
   });
 
+  //envia los datos al back de imagenes y valores de inputs
   const handleUploadImage = () => {
     const validation = validationProduct(values, size, fileUpload);
 

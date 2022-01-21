@@ -3,18 +3,20 @@ import { useNavigate } from "react-router-dom";
 import { CartData } from "../../cartContext/Cartcontext";
 import { CardProductCart } from "./CardProductCart";
 
+//es el modal aside del carrito
 export const CartDetailModal = () => {
   const navigate = useNavigate();
   const { state, setShowOpenModalCart } = useContext(CartData);
-  
+
+  //corrobora si hay un usuario logueado
   const handleEndBuy = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     setShowOpenModalCart(false);
-    if (state.products.length === 0)return
-    if(token){
+    if (state.products.length === 0) return;
+    if (token) {
       navigate("/endbuy");
-    }else{
-      navigate("/login");      
+    } else {
+      navigate("/login");
     }
   };
 
