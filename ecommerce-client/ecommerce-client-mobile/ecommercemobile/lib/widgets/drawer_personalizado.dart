@@ -1,4 +1,6 @@
+import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class OpcionesDrawer extends StatelessWidget {
   const OpcionesDrawer({
@@ -18,15 +20,21 @@ class OpcionesDrawer extends StatelessWidget {
 }
 
 class BuscadorIndumentaria extends StatelessWidget {
-  const BuscadorIndumentaria({Key? key, required this.titulo})
+  const BuscadorIndumentaria(
+      {Key? key, required this.titulo, required this.rutaProvider})
       : super(key: key);
 
   final String titulo;
+  final Object rutaProvider;
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(titulo),
+    return GestureDetector(
+      onTap: () =>
+          Navigator.of(context).pushNamed("grid", arguments: rutaProvider),
+      child: ListTile(
+        title: Text(titulo),
+      ),
     );
   }
 }
@@ -46,6 +54,8 @@ class _DrawerPersonalizadoState extends State<DrawerPersonalizado> {
 
   @override
   Widget build(BuildContext context) {
+    final filtradoProducto = Provider.of<FiltradoProducto>(context);
+
     return Drawer(
       child: ListView(
         children: [
@@ -81,58 +91,58 @@ class _DrawerPersonalizadoState extends State<DrawerPersonalizado> {
           ),
           if (indumentaria)
             BuscadorIndumentaria(
-              titulo: 'Remeras',
-            ),
+                titulo: 'Remeras',
+                rutaProvider: filtradoProducto.productosRemera),
           if (indumentaria)
             BuscadorIndumentaria(
-              titulo: 'Faldas',
-            ),
+                titulo: 'Faldas',
+                rutaProvider: filtradoProducto.productosFalda),
           if (indumentaria)
             BuscadorIndumentaria(
-              titulo: 'Vestidos',
-            ),
+                titulo: 'Vestidos',
+                rutaProvider: filtradoProducto.productosVestido),
           if (indumentaria)
             BuscadorIndumentaria(
-              titulo: 'Pantalones',
-            ),
-          TextButton(
-            onPressed: () {
-              setState(() {});
-              accesorios ? accesorios = false : accesorios = true;
-            },
-            child: OpcionesDrawer(
-              titulo: 'Accesorios',
-            ),
-          ),
-          if (accesorios)
-            BuscadorIndumentaria(
-              titulo: 'Aros',
-            ),
-          if (accesorios)
-            BuscadorIndumentaria(
-              titulo: 'Collares',
-            ),
-          TextButton(
-            onPressed: () {
-              setState(() {});
-              colores ? colores = false : colores = true;
-            },
-            child: OpcionesDrawer(
-              titulo: 'Colores',
-            ),
-          ),
-          if (colores)
-            BuscadorIndumentaria(
-              titulo: 'Blanco',
-            ),
-          if (colores)
-            BuscadorIndumentaria(
-              titulo: 'Negro',
-            ),
-          if (colores)
-            BuscadorIndumentaria(
-              titulo: 'Azul',
-            ),
+                titulo: 'Pantalones',
+                rutaProvider: filtradoProducto.productosPantalon),
+          // TextButton(
+          //   onPressed: () {
+          //     setState(() {});
+          //     accesorios ? accesorios = false : accesorios = true;
+          //   },
+          //   child: OpcionesDrawer(
+          //     titulo: 'Accesorios',
+          //   ),
+          // ),
+          // if (accesorios)
+          //   BuscadorIndumentaria(
+          //     titulo: 'Aros',
+          //   ),
+          // if (accesorios)
+          //   BuscadorIndumentaria(
+          //     titulo: 'Collares',
+          //   ),
+          // TextButton(
+          //   onPressed: () {
+          //     setState(() {});
+          //     colores ? colores = false : colores = true;
+          //   },
+          //   child: OpcionesDrawer(
+          //     titulo: 'Colores',
+          //   ),
+          // ),
+          // if (colores)
+          //   BuscadorIndumentaria(
+          //     titulo: 'Blanco',
+          //   ),
+          // if (colores)
+          //   BuscadorIndumentaria(
+          //     titulo: 'Negro',
+          //   ),
+          // if (colores)
+          //   BuscadorIndumentaria(
+          //     titulo: 'Azul',
+          //   ),
           TextButton(
             onPressed: () {
               setState(() {});
@@ -144,16 +154,13 @@ class _DrawerPersonalizadoState extends State<DrawerPersonalizado> {
           ),
           if (talles)
             BuscadorIndumentaria(
-              titulo: 'L',
-            ),
+                titulo: 'L', rutaProvider: filtradoProducto.productosTalleL),
           if (talles)
             BuscadorIndumentaria(
-              titulo: 'XL',
-            ),
+                titulo: 'XL', rutaProvider: filtradoProducto.productosTalleXL),
           if (talles)
             BuscadorIndumentaria(
-              titulo: 'XXL',
-            )
+                titulo: 'XXL', rutaProvider: filtradoProducto.productosTalleXXL)
         ],
       ),
     );

@@ -7,7 +7,6 @@ class Product {
   final String description;
   final String talle1;
   final String talle2;
-
   final String color1;
   final String color2;
   final String category;
@@ -68,7 +67,7 @@ List<Product> productos = [
       category: "Ropa Mujer",
       subcategory: "Remera",
       imagen: "assets/7.jpg",
-      talle1: "XL",
+      talle1: "XXL",
       talle2: "L",
       color1: "Negro",
       color2: "Gris"),
@@ -80,7 +79,7 @@ List<Product> productos = [
       subcategory: "Remera",
       imagen: "assets/8.jpg",
       talle1: "XL",
-      talle2: "L",
+      talle2: "XXL",
       color1: "Blanco",
       color2: "Gris"),
   Product(
@@ -91,7 +90,7 @@ List<Product> productos = [
       subcategory: "Remera",
       imagen: "assets/9.jpg",
       talle1: "XL",
-      talle2: "L",
+      talle2: "XXL",
       color1: "Negro",
       color2: "Gris"),
   Product(

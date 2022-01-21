@@ -30,10 +30,17 @@ class GridScreen extends StatelessWidget {
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: GridView.builder(
-          itemCount: filtradoProducto.productosPantalon.length,
+          itemCount: productos.length,
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (_, index) {
+            if (productos.isEmpty) {
+              return Center(
+                child: Container(
+                  child: Text("No hay producto disponible"),
+                ),
+              );
+            }
             final producto = productos[index];
 
             return GestureDetector(
