@@ -3,21 +3,33 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { CardSend } from "../components/CardSend";
 import { DataSend } from "../components/DataSend";
+import { EndBuyData } from "../endBuyContext/EndBuyContext";
+import { useError } from "../hooks/useError";
 import { CartData } from "./../cartContext/Cartcontext";
 import { Profile } from "./Profile";
 
 export const EndBuy = () => {
   const navigate = useNavigate();
+  const { error, msg, sendError, message } = useError();
 
   const { state } = useContext(CartData);
+  const { state: endBuyState } = useContext(EndBuyData);
+
   const { products } = state;
 
   useEffect(() => {
     if (products.length === 0) {
       navigate(-1);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
+
+  const { addProduct } = useContext(EndBuyData);
+
+  useEffect(() => {
+    addProduct(products);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const total = () => {
     const total = products.reduce(
@@ -30,6 +42,28 @@ export const EndBuy = () => {
     );
 
     return total;
+  };
+
+  const handleEndBuy = () => {
+    if (
+      endBuyState.dataUser.address === "" ||
+      endBuyState.dataUser.city === "" ||
+      endBuyState.dataUser.email === "" ||
+      endBuyState.dataUser.name === "" ||
+      endBuyState.dataUser.postalcode === ""
+    ) {
+      sendError();
+      message("Completa todos tus datos personales");
+      return;
+    } else if (endBuyState.formSend === "") {
+      sendError();
+      message("Elije la forma de envio");
+      return;
+    } else if (endBuyState.product.length === 0) {
+      return console.log("no hay productos para comprar");
+    }
+
+    console.log("tu compra esta ok");
   };
 
   return (
@@ -57,7 +91,7 @@ export const EndBuy = () => {
               data-bs-parent='#accordionExample'
             >
               <div className='accordion-body'>
-                <Profile type={true} />
+                <Profile />
               </div>
             </div>
           </div>
@@ -121,6 +155,14 @@ export const EndBuy = () => {
           <div>Total: $ {total()}</div>
         </div>
       </div>
+      <button
+        onClick={handleEndBuy}
+        className='profile__inputSubmit'
+        style={{ marginTop: "10px" }}
+      >
+        Finalizar Compra
+      </button>
+      {error ? <p className='banner__error banner__error--end'>{msg}</p> : null}
     </div>
   );
 };

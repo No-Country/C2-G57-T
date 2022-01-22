@@ -1,10 +1,25 @@
-import React from "react";
-import { useForm } from "../hooks/useForm";
-
+import React, { useState, useContext, useEffect } from "react";
+import { EndBuyData } from "../endBuyContext/EndBuyContext";
 
 //componente cargado dentro del acordion en el fin de la compra
 export const DataSend = () => {
-  const { handleInputChange } = useForm();
+  const [formSend, setFormSend] = useState({
+    formSend: "",
+  });
+
+  const { addFormSend } = useContext(EndBuyData);
+
+  const handleInputChange = (e) => {
+    setFormSend({
+      ...formSend,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  useEffect(() => {
+    addFormSend(formSend.formSend);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formSend]);
 
   return (
     <div>
@@ -15,7 +30,7 @@ export const DataSend = () => {
           <input
             type='radio'
             value='sendAddress'
-            name='discount'
+            name='formSend'
             onChange={handleInputChange}
             id='ten'
           />
@@ -26,7 +41,7 @@ export const DataSend = () => {
           <input
             type='radio'
             value='retirementCompany'
-            name='discount'
+            name='formSend'
             onChange={handleInputChange}
             id='twenty'
           />
@@ -40,7 +55,7 @@ export const DataSend = () => {
           <input
             type='radio'
             value='retirementMail'
-            name='discount'
+            name='formSend'
             onChange={handleInputChange}
             id='thirty'
           />

@@ -1,24 +1,21 @@
 .profile {
-
-    &__page{
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 2rem 0 0 0;
-    }
-
+  &__page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 0 0 0;
+  }
 
   &__container {
     border-radius: 20px;
     padding: 1rem;
     background: #cdcdcd;
-    box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.5);
-    -webkit-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.5);
-    -moz-box-shadow: -2px 2px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: -2px 2px 5px 0px rgba(0, 0, 0, 0.5);
 
     .profile__fieldContainer {
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid #212121;
       &:nth-child(3) {
         border: none;
       }
@@ -28,7 +25,7 @@
       }
       input {
         margin: 0rem 0 1rem 0;
-        padding: .5rem;
+        padding: 0.5rem;
         border: none;
         border-bottom: 1px solid #cdcdcd;
         border-radius: 10px;
@@ -37,10 +34,10 @@
   }
 }
 
-.profile__inputSubmit{
+.profile__inputSubmit {
   width: 100%;
-  padding: .5rem;
+  padding: 0.5rem;
   border: none;
   border-radius: 10px;
-  background: #FFB344;
+  background: #ffb344;
 }
