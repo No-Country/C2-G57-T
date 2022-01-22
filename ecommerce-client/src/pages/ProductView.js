@@ -78,11 +78,11 @@ export const ProductView = () => {
             ? dataProductView.name
             : newProductUpdate.name}
         </h2>
-        <h2 className='productViewInfo__description'>
+        <h3 className='productViewInfo__description'>
           {Object.entries(newProductUpdate).length === 0
             ? dataProductView.description
             : newProductUpdate.description}
-        </h2>
+        </h3>
         <h2 className='productViewInfo__price'>
           $
           {Object.entries(newProductUpdate).length === 0
@@ -117,14 +117,14 @@ export const ProductView = () => {
           className='productViewInfo__button generalButton'
           onClick={handleBuy}
         >
-          Comprar
+          COMPRAR
         </button>
 
         <button
           className='productViewInfo__button generalButton'
           onClick={handleBack}
         >
-          Volver a la tienda
+          VOLVER A LA TIENDA
         </button>
         {error && (
           <p style={{ color: "red" }}>

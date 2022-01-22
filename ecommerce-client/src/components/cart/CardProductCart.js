@@ -16,7 +16,7 @@ export const CardProductCart = ({ product }) => {
         alt={product.name}
       />
       <div className='productCart__info'>
-        <span>Producto: {product.name}</span>
+        <span>{product.name}</span>
         <span>Cantidad: {product.quantity}</span>
         <span>Talle: {product.size}</span>
         <span>Precio: ${product.price}</span>
