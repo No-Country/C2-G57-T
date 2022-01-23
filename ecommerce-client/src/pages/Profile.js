@@ -1,115 +1,138 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserData } from "../authContext/AuthContext";
-import { useForm } from "./../hooks/useForm";
+import { clientAxios } from "../config/axios";
+import { Formik } from "formik";
+import { EndBuyData } from "../endBuyContext/EndBuyContext";
 
-export const Profile = () => {
-  const { state } = useContext(UserData);
-  const { values, handleInputChange, reset } = useForm({
-    userName: state.user || "",
-    email: state.email || "",
-    password: "",
-    name: "",
-    surname: "",
-    city: "",
-    address: "",
-    cp: "",
-    pay: "",
-  });
+export const Profile = ({ type }) => {
+  const [dataUser, setDataUser] = useState("");
+  const { updateUser } = useContext(UserData);
+  const { addDataUser } = useContext(EndBuyData);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const fetchData = async () => {
+      const id = localStorage.getItem("ID");
+      const { data } = await clientAxios.get(`/api/users/${id}`);
+      setDataUser(data);
+    };
 
-    console.log("values", values);
-    reset();
-  };
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    addDataUser(dataUser);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dataUser]);
+
+  if (!dataUser) return null;
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div className='container__page'>
-        <div className='profile__page'>
-          <div className='profile__container'>
-            <div className='profile__fieldContainer'>
-              <p>Tu perfil</p>
-              <input
+    <Formik
+      // validationSchema={validationSchema}
+      enableReinitialize
+      initialValues={dataUser}
+      onSubmit={async (values) => {
+        console.log("submit", values);
+        try {
+          const id = localStorage.getItem("ID");
+          updateUser(id, values);
+          setDataUser(values);
+        } catch (error) {
+          console.log(error);
+        }
+      }}
+    >
+      {(props) => {
+        return (
+          <form onSubmit={props.handleSubmit}>
+            <div className='container__page'>
+              <div className='profile__page'>
+                <div className='profile__container'>
+                  <div className='profile__fieldContainer'>
+                    <p>Tu perfil</p>
+                    {/* <input
                 name='userName'
                 placeholder='Nombre de Usuario'
-                onChange={handleInputChange}
+                onChange={props.handleChange}
                 type='text'
-                value={values.userName}
-              />
-              <input
-                name='email'
-                onChange={handleInputChange}
-                placeholder='Email'
-                type='text'
-                value={values.email}
-              />
-              <input
-                placeholder='Contraseña'
-                name='password'
-                type='password'
-                onChange={handleInputChange}
-                value={values.password}
-              />
-            </div>
-
-            <div className='profile__fieldContainer'>
-              <p>Datos personales</p>
-              <input
-                name='name'
-                type='text'
-                onChange={handleInputChange}
-                placeholder='Nombre'
-                value={values.name}
-              />
-              <input
+                value={props.values.userName}
+              /> */}
+                    <input
+                      name='email'
+                      onChange={props.handleChange}
+                      placeholder={!dataUser.email ? "Email" : dataUser.email}
+                      type='text'
+                      value={props.values.email}
+                    />
+                    {/* {!type && (
+                <input
+                  placeholder='Contraseña'
+                  name='password'
+                  type='text'
+                  onChange={handleInputChange}
+                  value={values.password}
+                />
+              )} */}
+                  </div>
+                  <div className='profile__fieldContainer'>
+                    <p>Datos personales</p>
+                    <input
+                      name='name'
+                      type='text'
+                      onChange={props.handleChange}
+                      placeholder='Nombre'
+                      value={props.values.name}
+                    />
+                    {/* <input
                 name='surname'
-                onChange={handleInputChange}
+                onChange={props.handleChange}
                 placeholder='Apellido'
                 type='text'
-                value={values.surname}
-              />
-              <input
-                name='city'
-                onChange={handleInputChange}
-                placeholder='Ciudad'
-                type='text'
-                value={values.city}
-              />
-              <input
-                name='address'
-                onChange={handleInputChange}
-                placeholder='Direccion'
-                type='text'
-                value={values.address}
-              />
-              <input
-                placeholder='Codigo postal'
-                name='cp'
-                value={values.cp}
-                type='number'
-                onChange={handleInputChange}
-              />
-            </div>
-
-            <div className='profile__fieldContainer'>
+                value={props.values.surname}
+              /> */}
+                    <input
+                      name='city'
+                      onChange={props.handleChange}
+                      placeholder='Ciudad'
+                      type='text'
+                      value={props.values.city}
+                    />
+                    <input
+                      name='address'
+                      onChange={props.handleChange}
+                      placeholder='Direccion'
+                      type='text'
+                      value={props.values.address}
+                    />
+                    <input
+                      placeholder='Codigo postal'
+                      name='postalcode'
+                      value={props.values.postalcode}
+                      type='number'
+                      onChange={props.handleChange}
+                    />
+                  </div>
+                  {/* <div className='profile__fieldContainer'>
               <p>Medios de pago</p>
               <input
                 placeholder='Tarjeta de Credito'
                 name='pay'
-                value={values.pay}
+                value={props.values.pay}
                 type='number'
-                onChange={handleInputChange}
+                onChange={props.handleChange}
               />
+            </div> */}
+                  <input
+                    type='submit'
+                    className='profile__inputSubmit'
+                    value='Actualizar perfil'
+                  />
+                </div>
+              </div>
             </div>
-            <input
-              type='submit'
-              className='profile__inputSubmit'
-              value='Actualizar perfil'
-            />
-          </div>
-        </div>
-      </div>
-    </form>
+          </form>
+        );
+      }}
+    </Formik>
   );
 };

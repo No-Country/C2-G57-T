@@ -69,8 +69,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
             </div>
           </>
         )}
-      </div>
-      {error && (
+        {error && (
         <p className='banner__error'>No puedes colocar mas de 4 imagenes</p>
       )}
       {fileUpload.some((img) => img.type === "image") && (
@@ -78,9 +77,11 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
           className='generalButton buttonDropzone'
           onClick={() => handleUploadImage(fileUpload)}
         >
-          SUBIR A LA TIENDA
+          Subir a la tienda
         </button>
       )}
+      </div>
+      
     </div>
   );
 };

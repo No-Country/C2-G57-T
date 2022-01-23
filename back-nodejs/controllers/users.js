@@ -1,19 +1,34 @@
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 
-const postUser = async (req, res) => {
-  const { name, email, password } = req.body;
-  const user = new User({ name, email, password });
 
-  // Encriptar la contraseña
-  const salt = bcrypt.genSaltSync(10);
-  user.password = bcrypt.hashSync(password, salt);
+const getUserById = async(req, res) => {
 
-  // Guardar en BD
-  await user.save();
-  res.json({
-    user,
-  });
+    const {id} = req.params;
+    const user = await User.findById(id);
+    if(!user){
+        return res.status(400).json({msg: `No existe usuario con el ID ${id}`});
+    }
+
+    res.status(200).json(user);
+};
+
+const postUser = async(req, res) => {
+
+    const { name, email, password } = req.body;
+    const user = new User({ name, email, password });
+
+    // Encriptar la contraseña    
+    const salt = bcrypt.genSaltSync(10);
+    user.password = bcrypt.hashSync(password, salt);
+    ///envia email
+    mail.sendMail(name, email);
+    // Guardar en BD
+    await user.save();
+
+    res.status(201).json({
+        user
+    });
 };
 
 const putUser = async (req, res) => {
@@ -44,7 +59,8 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
-  postUser,
-  putUser,
-  deleteUser,
-};
+    getUserById,
+    postUser,
+    putUser,
+    deleteUser
+}

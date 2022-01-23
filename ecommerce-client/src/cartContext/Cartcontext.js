@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useState } from "react";
 import { cartReducer } from "./CartReduce";
-import { ADD_CART, DELETE_PRODUCT_CART } from "./CartType";
+import { ADD_CART, CLEAR_CART, DELETE_PRODUCT_CART } from "./CartType";
 
 export const CartData = createContext();
 
@@ -10,15 +10,12 @@ export const CartContext = ({ children }) => {
 
   const initialState = {
     products: [],
-    product: "",
-    quantity: "",
-    description: "",
-    image: null,
-    quantityArticles: 0,
+    quantityArticles: 0,   
   };
 
   const [state, dispatch] = useReducer(cartReducer, initialState);
 
+  //agrega productos al carrito
   const addProductCart = (dataProductView) => {
     if (state.products.some((id) => id._id === dataProductView._id)) {
       setMsg("El articulo ya esta en el carrito");
@@ -35,12 +32,21 @@ export const CartContext = ({ children }) => {
     setShowOpenModalCart(true);
   };
 
+  //borra los productos
   const deleteProductCart = (id) => {
     dispatch({
       type: DELETE_PRODUCT_CART,
       payload: id,
     });
   };
+
+  //limpia el carrito en el logout
+  const clearCart = () => {
+    dispatch({
+      type: CLEAR_CART,
+    });
+  };
+
 
   return (
     <CartData.Provider
@@ -51,6 +57,7 @@ export const CartContext = ({ children }) => {
         deleteProductCart,
         addProductCart,
         setShowOpenModalCart,
+        clearCart,
       }}
     >
       {children}

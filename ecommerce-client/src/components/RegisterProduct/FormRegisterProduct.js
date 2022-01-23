@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { sendSubtype } from "./../../helpers/sedSubtype";
 
-export const FormRegisterProduct = ({ values, handleInputChange, setSize, handleInputCheckbox }) => {
+export const FormRegisterProduct = ({
+  values,
+  handleInputChange,
+  setSize,
+  handleInputCheckbox,
+}) => {
   const [subType, setSubType] = useState([]);
 
   const [check, setCheck] = useState({
@@ -21,6 +26,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.category]);
 
+  //genera un arreglo con los talles seleccionados
   const onSeleccion = (e) => {
     let { name } = e.target;
     let options = [...check.options];
@@ -66,8 +72,17 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
           type='text'
           value={values.color}
         />
+        
+        <input
+          name='stock'
+          onChange={handleInputChange}
+          placeholder='Stock'
+          type='number'
+          value={values.stock}
+        />
+      </div>
 
-        <div className='checkbox-container'>
+      <div className='checkbox-container'>
           {check.options.map((el) => {
             return (
               <div key={el.id} className='checkbox-info'>
@@ -86,14 +101,6 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
             );
           })}
         </div>
-        <input
-          name='stock'
-          onChange={handleInputChange}
-          placeholder='Stock'
-          type='number'
-          value={values.stock}
-        />
-      </div>
 
       <select
         value={values.category}
@@ -102,7 +109,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
         className='select form-select form-select-lg my-3'
         onChange={handleInputChange}
       >
-        <option value="" disabled>
+        <option value='' disabled>
           Selecciona un tipo de producto
         </option>
 
@@ -114,7 +121,7 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
 
       <select
         value={values.subcategory}
-        className='select form-select form-select-lg'      
+        className='select form-select form-select-lg'
         name='subcategory'
         // defaultValue={"DEFAULT"}
         onChange={handleInputChange}
@@ -132,20 +139,59 @@ export const FormRegisterProduct = ({ values, handleInputChange, setSize, handle
             ))
           )}
       </select>
-      <div className='checkbox-info'>
-                <label className='label' htmlFor="check">
-                  Destacado
-                </label>
-                <input
-                  type='checkbox'
-                  value={values.destacados}
-                  checked={values.destacados}
-                  onChange={handleInputCheckbox}
-                  name="destacados"
-                  className='option-input checkbox'
-                  id={check}
-                />
-              </div>
+
+      <div className="checkbox-destacado">
+        <div className='checkbox-info'>
+          <label className='label' htmlFor='check'>
+            Destacado
+          </label>
+          <input
+            type='checkbox'
+            value={values.destacados}
+            checked={values.destacados}
+            onChange={handleInputCheckbox}
+            name='destacados'
+            className='option-input checkbox'
+            id={check}
+          />
+        </div>
+      </div>
+      <div className='radio-container'>
+        <div className='radio-toolbar'>
+          <input
+            type='radio'
+            value='10'
+            name='discount'
+            onChange={handleInputChange}
+            id='ten'
+          />
+          <label htmlFor='ten' className='labelRadio labelRadio__custom'>
+            10%
+          </label>
+
+          <input
+            type='radio'
+            value='20'
+            name='discount'
+            onChange={handleInputChange}
+            id='twenty'
+          />
+          <label htmlFor='twenty' className='labelRadio labelRadio__custom'>
+            20%
+          </label>
+
+          <input
+            type='radio'
+            value='30'
+            name='discount'
+            onChange={handleInputChange}
+            id='thirty'
+          />
+          <label htmlFor='thirty' className='labelRadio labelRadio__custom'>
+            30%
+          </label>
+        </div>
+      </div>
     </form>
   );
 };

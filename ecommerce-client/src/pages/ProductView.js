@@ -6,6 +6,10 @@ import { CartData } from "../cartContext/Cartcontext";
 import { ControlPanel } from "../components/controlPanelKeyUser/ControlPanel";
 import { RegisterProductData } from "../registerProductContext/RegisterProductContext";
 import { UserData } from "../authContext/AuthContext";
+import { off } from "../helpers/percentage";
+
+const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
 
 export const ProductView = () => {
   const navigate = useNavigate();
@@ -19,9 +23,14 @@ export const ProductView = () => {
   const [size, setSize] = useState("");
   const [error, setError] = useState(false);
 
+  //llamada a la api por id
   useEffect(() => {
     async function fetchData() {
       const { data } = await clientAxios.get(`/api/products/${id}`);
+
+      if (data.discount > 0) {
+        Object.assign(data, { offer: off(data.price, data.discount) });
+      }
       setDataProductView(data);
     }
     fetchData();
@@ -33,13 +42,16 @@ export const ProductView = () => {
 
   if (!dataProductView) return null;
 
+  //toma el value del input de cantidad
   const handleChange = (e) => {
     setQuantity(e.target.value);
   };
+  //toma el value de los radio buttons
   const handleChangeSize = (e) => {
     setSize(e.target.value);
   };
 
+  //envia la informacion de la compra
   const handleBuy = () => {
     if (!quantity || quantity <= 0 || size === "") {
       setError(true);
@@ -58,12 +70,14 @@ export const ProductView = () => {
     navigate(-1);
   };
 
+  const { description, discount, img, name, price } = dataProductView;
+
   const talle = dataProductView.talle[0].split(",");
 
   return (
     <div className='productViewContainer container__page'>
       <div className='grid-productView'>
-        {dataProductView.img.map((image) => (
+        {img.map((image) => (
           <img
             src={image.url}
             alt={image._id}
@@ -75,20 +89,47 @@ export const ProductView = () => {
       <div className='productViewInfo'>
         <h2 className='productViewInfo__name'>
           {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.name
+            ? name
             : newProductUpdate.name}
         </h2>
-        <h3 className='productViewInfo__description'>
+        <p className='productViewInfo__description'>
           {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.description
+            ? description
             : newProductUpdate.description}
-        </h3>
-        <h2 className='productViewInfo__price'>
+        </p>
+
+        {dataProductView.discount > 0
+        ? Object.entries(newProductUpdate).length === 0
+        ? off(dataProductView.price, dataProductView.discount)
+        : off(newProductUpdate.price, dataProductView.discount)
+        : null}
+          
+        <div className='productViewInfo__discountFlex'>
+          {dataProductView.discount > 0 ? 
+          <h5
+          className={
+            dataProductView.discount > 0
+              ? "productViewInfo__price priceOFF"
+              : ""
+          }
+        >
           $
           {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.price
+            ? toThousand(dataProductView.price)
             : newProductUpdate.price}
-        </h2>
+        </h5> :
+        <h2>
+          $
+          {Object.entries(newProductUpdate).length === 0
+            ? toThousand(dataProductView.price)
+            : newProductUpdate.price}
+        </h2>}
+          
+          {dataProductView.discount > 0 && (
+            <span>{dataProductView.discount}% OFF</span>
+          )}
+        </div>
+        
         <div className='radio-container'>
           {talle.map((s, i) => (
             <div key={s} className='radio-toolbar'>

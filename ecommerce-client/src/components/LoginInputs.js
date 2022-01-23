@@ -51,7 +51,7 @@ const LoginInputs = () => {
           <input type='checkbox' className='checkbox' />
           <label>Recordar</label>
         </div>
-        <Link to='#'>Olvidaste la contraseña?</Link>
+        <Link to='#'>¿Olvidaste tú contraseña?</Link>
       </div>
       <input type='submit' className='login__inputSubmit' value='ingresar' />
     </form>

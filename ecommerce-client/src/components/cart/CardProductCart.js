@@ -1,8 +1,13 @@
 import React, { useContext } from "react";
 import { CartData } from "./../../cartContext/Cartcontext";
+import { off } from "./../../helpers/percentage";
 
+
+//es la tarjeta de cada producto en el carrito
 export const CardProductCart = ({ product }) => {
   const { deleteProductCart } = useContext(CartData);
+
+  const { img, name, quantity, size, discount, price } = product;
 
   const handleDelete = () => {
     deleteProductCart(product._id);
@@ -10,19 +15,15 @@ export const CardProductCart = ({ product }) => {
 
   return (
     <div className='productCart'>
-      <img
-        className='productCart__img'
-        src={product.img[0].url}
-        alt={product.name}
-      />
+      <img className='productCart__img' src={img[0].url} alt={name} />
       <div className='productCart__info'>
-        <span>{product.name}</span>
-        <span>Cantidad: {product.quantity}</span>
-        <span>Talle: {product.size}</span>
-        <span>Precio: ${product.price}</span>
+        <span>Producto: {name}</span>
+        <span>Cantidad: {quantity}</span>
+        <span>Talle: {size}</span>
+        <span>Precio: {discount > 0 ? off(price, discount) : price}</span>
       </div>
       <button className='productCart__button' onClick={handleDelete}>
-      <i className="far fa-times-circle"></i>
+        <i className='far fa-times-circle'></i>
       </button>
     </div>
   );

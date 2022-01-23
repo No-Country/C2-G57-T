@@ -10,7 +10,6 @@ export const UserData = createContext({
 export const AuthContext = ({ children }) => {
   const user = localStorage.getItem("user");
   // const isA = localStorage.getItem("isA");
-  
 
   const initialState = {
     token: localStorage.getItem("token"),
@@ -73,6 +72,27 @@ export const AuthContext = ({ children }) => {
     }
   };
 
+
+
+  const updateUser = async(id, value)=>{
+
+    console.log('id', id)
+
+    try {
+      const resp = await clientAxios.put(`api/users/${id}`, value);
+      console.log('respupdate', resp)
+      
+    } catch (error) {
+      console.log(error.response.data.msg)
+    }
+
+
+  }
+
+
+
+
+
   //user logout reset state
   const logOut = () => {
     dispatch({
@@ -88,6 +108,7 @@ export const AuthContext = ({ children }) => {
         user,
         userRegister,
         userLogin,
+        updateUser,
         logOut,
       }}
     >
