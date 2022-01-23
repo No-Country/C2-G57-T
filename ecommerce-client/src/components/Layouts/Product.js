@@ -11,9 +11,9 @@ const Product = ({ img, title, price, id, product }) => {
       <div className='detail'>
         <span>{title}</span>
         <div className="price">
-        <h4>
+        <h5>
           {product.discount > 0 ? `$${off(price, product.discount)} ARS` : `$${price} ARS`}
-        </h4>
+        </h5>
         {product.discount !== 0 ? <span>{product.discount}%</span> : null}
         </div>
         

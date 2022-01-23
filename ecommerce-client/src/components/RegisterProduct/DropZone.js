@@ -49,7 +49,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
           isDragActive ? (
             <p>Suelte la imagen aqui</p>
           ) : (
-            <p>
+            <p className="text-dropzone">
               Arrastre la imagen principal aqui, o haga click para
               seleccionar un archivo
             </p>

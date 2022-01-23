@@ -5,6 +5,15 @@
   width: 100%;
   border: 3px dashed rgb(158, 151, 151);
   text-align: center;
+
+  .text-dropzone {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
   
   .icon {
     font-size: 5rem;
@@ -60,7 +69,20 @@
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   width: 100%;
+
+  @media screen and (min-width: 768px) {
+    grid-column: 3/1; // de tres columnas existentes que tome el ancho de todas
+
+    p {
+      width: 500px;
+    }
+
+    button {
+      width: 250px;
+    }
+  }
 }
 
 
