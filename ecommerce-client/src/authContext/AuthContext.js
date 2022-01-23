@@ -15,7 +15,7 @@ export const AuthContext = ({ children }) => {
     token: localStorage.getItem("token"),
     logged: false,
     status: false,
-    isAdmin: localStorage.getItem("isA"),
+    isAdmin: localStorage.getItem(Boolean("isA")),
     user: localStorage.getItem("user"),
     email: null,
   };
