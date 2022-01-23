@@ -6,6 +6,7 @@ export const authReducer = (state, action) => {
       localStorage.setItem("token", action.payload.token);
       localStorage.setItem("user", action.payload.user.name);
       localStorage.setItem("isA", action.payload.user.isAdmin);
+      localStorage.setItem("ID", action.payload.user.uid);
       return {
         ...state,
         token: action.payload.token,

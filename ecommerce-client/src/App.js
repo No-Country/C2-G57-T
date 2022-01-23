@@ -3,6 +3,7 @@ import { Navigation } from "./routes/Navigation";
 import { tokenAuth } from "./config/authTokenHeaders";
 import { RegisterProductContext } from "./registerProductContext/RegisterProductContext";
 import { CartContext } from "./cartContext/Cartcontext";
+import { EndBuyContext } from "./endBuyContext/EndBuyContext";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -14,7 +15,9 @@ function App() {
     <AuthContext>
       <RegisterProductContext>
         <CartContext>
-          <Navigation />
+          <EndBuyContext>
+            <Navigation />
+          </EndBuyContext>
         </CartContext>
       </RegisterProductContext>
     </AuthContext>

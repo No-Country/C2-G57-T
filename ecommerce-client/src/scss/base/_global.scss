@@ -38,6 +38,12 @@ html {
   background-color: v.$danger;
   padding: 0.5rem;
   text-align: center;
+
+  &--end {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+  }
 }
 
 h1 {
@@ -92,7 +98,7 @@ textarea {
 }
 
 .radio-toolbar label {
-  margin-right: .5rem;
+  margin-right: 0.5rem;
   display: inline-block;
   background-color: #000;
   color: v.$color-letter;

@@ -12,6 +12,8 @@ const Sidebar = ({ sidebar }) => {
     clearCart();
   };
 
+  
+
   return (
     <>
       <div className='content-sidebar'>
@@ -22,7 +24,7 @@ const Sidebar = ({ sidebar }) => {
             </div>
             {state.token ? (
               <>
-                <p>{user}</p>{" "}
+                <p>{user}</p>{" "}                
                 <Link to={"/profile"}>
                   <button className='button-profile'>Mi perfil</button>
                 </Link>
