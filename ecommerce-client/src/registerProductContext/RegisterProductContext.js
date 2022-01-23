@@ -9,6 +9,7 @@ export const RegisterProductData = createContext({
 export const RegisterProductContext = ({ children }) => {
   const [newProductUpdate, setNewProductUpdate] = useState({});
   const { sendError, message } = useError();
+  const [success, setSuccess] = useState(false);
 
   const imageInfoProduct = async (images, info, size) => {
     try {
@@ -28,11 +29,13 @@ export const RegisterProductContext = ({ children }) => {
         .post("/api/products", bodyFormData, {
           headers: { "Content-Type": "multipart/form-data" },
         })
-        .then((resp) => {
-          console.log(resp);
+        .then((resp) => {          
+         if(resp){setSuccess(true)}
+          setTimeout(() => {
+            setSuccess(false)            
+          }, 3000);
         });
-    } catch (error) {
-      console.log("error", error.response.data.msg);
+    } catch (error) {      
       sendError();
       message(error.response.data.msg);
     }
@@ -59,6 +62,7 @@ export const RegisterProductContext = ({ children }) => {
     <RegisterProductData.Provider
       value={{
         newProductUpdate,
+        success,
         imageInfoProduct,
         deleteProduct,
         updateProduct,

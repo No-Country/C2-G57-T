@@ -15,7 +15,7 @@ const Footer = () => {
                     </div>
                 </Link>
                 <Link to={'#'} className='bg-redes'>
-                    <img src={redes02} alt="#" />
+                    <img src={redes02} alt="#" className='img-bg-redes' />
                     <div className="icon-redes">
                         <i className="fab fa-facebook"></i>
                     </div>

@@ -7,7 +7,7 @@ import { useForm } from "../hooks/useForm";
 import { RegisterProductData } from "./../registerProductContext/RegisterProductContext";
 
 export const RegisterProducts = () => {
-  const { imageInfoProduct } = useContext(RegisterProductData);
+  const { imageInfoProduct, success } = useContext(RegisterProductData);
   const [fileUpload, setFileUpload] = useState([]);
   const [size, setSize] = useState([]);
   // const [error, setError] = useState(false);
@@ -41,11 +41,13 @@ export const RegisterProducts = () => {
     setFileUpload([]);
     reset();
   };
-
+  
+  
   return (
     <div className='container__page'>
       <h1>Registra un producto nuevo</h1>
       {error ? <p className='banner__error'>{msg}</p> : null}
+      {success ? <p className='banner__success'>Producto ingresado con exito</p> : null}
       <div className='registerProductContainer'>
         <FormRegisterProduct
           values={values}

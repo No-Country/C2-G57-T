@@ -47,7 +47,34 @@ const putUser = async (req, res) => {
     res.json(user);
 };
 
-  
+const changePassword = async(req, res) => {
+
+    const {id} = req.params;
+    const { currentPassword, newPassword } = req.body;
+
+    const user = await User.findById(id);
+        if(!user){
+            return res.status(400).json({
+                msg: "No existe usuario con ese ID"
+            })
+        };
+
+    // Verificar la contraseña
+    const validPassword = await bcrypt.compare(currentPassword, user.password);
+    if(!validPassword){
+        return res.status(400).json({
+            msg: "Contraseña actual incorrecta"
+        })
+    };
+    // Encriptar la contraseña    
+    const salt = bcrypt.genSaltSync(10);
+    const password2 = bcrypt.hashSync(newPassword, salt);
+
+    const updatePassword = await User.findByIdAndUpdate(id, {password: password2}, {new: true})    
+    
+    res.status(200).json(updatePassword);
+};
+
 
 const deleteUser = async (req, res) => {
   const { id } = req.params;
@@ -62,5 +89,6 @@ module.exports = {
     getUserById,
     postUser,
     putUser,
+    changePassword,
     deleteUser
 }

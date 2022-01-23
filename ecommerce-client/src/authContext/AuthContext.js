@@ -15,7 +15,7 @@ export const AuthContext = ({ children }) => {
     token: localStorage.getItem("token"),
     logged: false,
     status: false,
-    isAdmin: localStorage.getItem("isA"),
+    isAdmin: localStorage.getItem(Boolean("isA")),
     user: localStorage.getItem("user"),
     email: null,
   };
@@ -72,26 +72,16 @@ export const AuthContext = ({ children }) => {
     }
   };
 
-
-
-  const updateUser = async(id, value)=>{
-
-    console.log('id', id)
+  const updateUser = async (id, value) => {
+    console.log("id", id);
 
     try {
       const resp = await clientAxios.put(`api/users/${id}`, value);
-      console.log('respupdate', resp)
-      
+      console.log("respupdate", resp);
     } catch (error) {
-      console.log(error.response.data.msg)
+      console.log(error.response.data.msg);
     }
-
-
-  }
-
-
-
-
+  };
 
   //user logout reset state
   const logOut = () => {
