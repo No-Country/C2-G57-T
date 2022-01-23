@@ -46,7 +46,6 @@ export const ControlPanel = ({ dataProductView }) => {
   );
 };
 
-
 //formulario para actualizar producto
 const FormUpdate = ({ dataProductView, setShowFormUpdate }) => {
   const { updateProduct } = useContext(RegisterProductData);
