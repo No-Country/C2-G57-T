@@ -58,23 +58,24 @@ a {
   text-decoration: none;
 }
 
-input:focus {
+input:focus, textarea:focus {
   outline: transparent;
 }
 
 .generalButton {
   padding: 8px 16px;
-  background-color: #ffb344;
+  background-color: #C4C4C4;
   border: none;
   border-radius: 10px;
   transition: all 0.3s ease;
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
 
   &:hover {
     background-color: darken($color: #ffb344, $amount: 10);
   }
 }
 
-.generalInput {
+.generalInput, textarea {
   height: 40px;
   border: none;
   border-bottom: 1px solid v.$primario;
@@ -84,6 +85,10 @@ input:focus {
   -webkit-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
+}
+
+textarea {
+  height: 150px;
 }
 
 .radio-toolbar input[type="radio"] {

@@ -8,9 +8,6 @@ import { RegisterProductData } from "../registerProductContext/RegisterProductCo
 import { UserData } from "../authContext/AuthContext";
 import { off } from "../helpers/percentage";
 
-const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-
 export const ProductView = () => {
   const navigate = useNavigate();
   const { id } = useParams();
@@ -70,7 +67,7 @@ export const ProductView = () => {
     navigate(-1);
   };
 
-  const { description, discount, img, name, price } = dataProductView;
+  const { description, img, name } = dataProductView;
 
   const talle = dataProductView.talle[0].split(",");
 
@@ -100,9 +97,12 @@ export const ProductView = () => {
 
         {dataProductView.discount > 0
         ? Object.entries(newProductUpdate).length === 0
-        ? off(dataProductView.price, dataProductView.discount)
-        : off(newProductUpdate.price, dataProductView.discount)
-        : null}
+        ? 
+        <h2>{`$${off(dataProductView.price, dataProductView.discount)} ARS`}</h2>
+        : 
+        <h2>{`$${off(newProductUpdate.price, dataProductView.discount)} ARS`}</h2>
+        : null
+        }
           
         <div className='productViewInfo__discountFlex'>
           {dataProductView.discount > 0 ? 
@@ -115,13 +115,13 @@ export const ProductView = () => {
         >
           $
           {Object.entries(newProductUpdate).length === 0
-            ? toThousand(dataProductView.price)
+            ? dataProductView.price
             : newProductUpdate.price}
         </h5> :
         <h2>
           $
           {Object.entries(newProductUpdate).length === 0
-            ? toThousand(dataProductView.price)
+            ? dataProductView.price
             : newProductUpdate.price}
         </h2>}
           
@@ -158,14 +158,14 @@ export const ProductView = () => {
           className='productViewInfo__button generalButton'
           onClick={handleBuy}
         >
-          Comprar
+          COMPRAR
         </button>
 
         <button
           className='productViewInfo__button generalButton'
           onClick={handleBack}
         >
-          Volver a la tienda
+          VOLVER A LA TIENDA
         </button>
         {error && (
           <p style={{ color: "red" }}>
