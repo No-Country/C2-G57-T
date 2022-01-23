@@ -1,15 +1,24 @@
 @use "../base/variables" as v;
 
-footer {
+footer .containerfooter{
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
-    height: 200px;
+    align-items: center;
+    height: fit-content;
     color: #fff;
     background: v.$primario;
+    font-size: 0.8em;
 }
-
+.boxfooter{
+    width: 300px;
+    text-align: center;
+    margin: 10px 0px;
+}
+#logo{
+    height: auto;
+    width: 200px;
+}
 .redes-home {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -60,5 +69,19 @@ footer {
                 border-radius: 0 20px 20px 0;
             }
         }
+         
     }
+}
+@media screen and (min-width: 768px){
+footer .containerfooter{
+    display: flex;
+    flex-direction: row;
+    font-size: 1em;
+    height: 250px;
+}
+
+#logo{
+    height: auto;
+    width: 300px;
+}
 }
