@@ -44,6 +44,14 @@
         grid-area: d;
       }
     }
+
+    @media screen and (min-width: 1024px) {
+      grid-template-rows: 250px;
+
+      .image {
+        height: 250px;
+      }
+    }
   }
 }
 
@@ -53,10 +61,6 @@
   flex-direction: column;
   justify-content: center;
   width: 100%;
-
-  .button-dropzone {
- 
-  }
 }
 
 

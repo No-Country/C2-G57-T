@@ -68,7 +68,7 @@ input:focus, textarea:focus {
   }
 }
 
-.generalInput {
+.generalInput, textarea {
   height: 40px;
   border: none;
   border-bottom: 1px solid v.$primario;
@@ -78,6 +78,10 @@ input:focus, textarea:focus {
   -webkit-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
+}
+
+textarea {
+  height: 150px;
 }
 
 .radio-toolbar input[type="radio"] {
