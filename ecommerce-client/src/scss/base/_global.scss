@@ -64,10 +64,11 @@ input:focus, textarea:focus {
 
 .generalButton {
   padding: 8px 16px;
-  background-color: #ffb344;
+  background-color: #C4C4C4;
   border: none;
   border-radius: 10px;
   transition: all 0.3s ease;
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
 
   &:hover {
     background-color: darken($color: #ffb344, $amount: 10);

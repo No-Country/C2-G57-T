@@ -1,17 +1,20 @@
 @use "../base/variables" as v;
 
 
-.dress-products {
-  display: grid;
-  grid-auto-rows: auto;
-  grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+.dress-products { // reveer con grid o alternativas para que se vea columnas centradas y en "flex-start"
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   justify-items: center;
+  align-items: center;
+  justify-content: flex-start;
   gap: 1rem;
   width: 100%;
   margin: 1rem 0;
 
   .card-product {
-    width: 90%;
+    width: fit-content;
+    height: fit-content;
     color: v.$negro;
     border-radius: 20px 20px 0 0;
     box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
@@ -20,9 +23,9 @@
     overflow: hidden;
   
     img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
+      width: fit-content;
+      height: 300px;
+      object-fit: contain;
     }
   
     .detail {

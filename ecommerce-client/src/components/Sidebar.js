@@ -132,6 +132,7 @@ const Sidebar = ({ sidebar }) => {
                 </Link>
               </li>
             )}
+            <br></br>
             <li>
               <Link to={"/login"}>
                 INGRESAR / <span onClick={handleLogOut}>CERRAR SESION</span>

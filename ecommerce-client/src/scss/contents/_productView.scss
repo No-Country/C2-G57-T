@@ -123,7 +123,7 @@
     }
     
     .radio-toolbar input[type="radio"]:checked + label {
-      background-color: #cdcdcd;
+      background-color: v.$color-letter-sec;
       color: v.$negro;
       box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
       -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);

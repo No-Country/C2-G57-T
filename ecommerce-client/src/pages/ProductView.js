@@ -158,14 +158,14 @@ export const ProductView = () => {
           className='productViewInfo__button generalButton'
           onClick={handleBuy}
         >
-          Comprar
+          COMPRAR
         </button>
 
         <button
           className='productViewInfo__button generalButton'
           onClick={handleBack}
         >
-          Volver a la tienda
+          VOLVER A LA TIENDA
         </button>
         {error && (
           <p style={{ color: "red" }}>
