@@ -16,6 +16,10 @@ const userSchema = new Schema({
         type: String,
         required: [true, "La contraseña es obligatoria"]
     },
+    surname: {
+        type: String,
+        default: ""
+    },
     status: {
         type: Boolean,
         default: true
@@ -31,11 +35,7 @@ const userSchema = new Schema({
     address: {
         type: String,
         default: ""
-    },
-    province: {
-        type: String,
-        default: ""
-    },
+    },    
     isAdmin: {
         type: Boolean,
         default: false

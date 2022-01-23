@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { postUser, deleteUser, putUser, getUserById } = require("../controllers/users");
+const { postUser, deleteUser, putUser, getUserById, changePassword } = require("../controllers/users");
 
 const { check } = require("express-validator");
 const { validarJWT } = require("../middlewares/validar-jwt");
@@ -22,11 +22,19 @@ router.post("/", [
     validations  
 ], postUser);
 
+router.put("/password/:id", [
+    validarJWT,
+    check("currentPassword", "Contraseña actual es requerida").notEmpty(),
+    check("newPassword", "nueva contraseña es requerida").notEmpty(),
+    validations
+], changePassword);
+
 router.put("/:id", [
     validarJWT,
     check("id", "ID inválido").isMongoId(),    
     validations
 ], putUser);
+
 
 router.delete("/:id", [
     validarJWT,
