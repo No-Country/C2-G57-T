@@ -152,7 +152,7 @@ export const EndBuy = () => {
               <CardSend product={product} />
             </div>
           ))}
-          <div>Total: $ {total()}</div>
+          <div className="price-total">Total: $ {total()}</div>
         </div>
       </div>
       <button
