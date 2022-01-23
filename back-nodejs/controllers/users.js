@@ -47,7 +47,7 @@ const putUser = async (req, res) => {
     res.json(user);
 };
 
-const changePassword = async(req, res) => {
+const changePassword = async(req, res) => {   
 
     const {id} = req.params;
     const { currentPassword, newPassword } = req.body;

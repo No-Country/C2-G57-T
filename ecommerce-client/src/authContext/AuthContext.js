@@ -29,8 +29,8 @@ export const AuthContext = ({ children }) => {
   //User register return name, email, status, uid
   const userRegister = async (data) => {
     try {
-      const resp = await clientAxios.post("api/users", data);
-      console.log("resp", resp);
+      await clientAxios.post("api/users", data);
+      
     } catch (error) {
       const showMessage = error.response.data.errors.map(
         (message) => message.msg
@@ -53,7 +53,7 @@ export const AuthContext = ({ children }) => {
   const userLogin = async (data) => {
     try {
       const resp = await clientAxios.post("api/auth/login", data);
-      console.log("resp", resp);
+      
       dispatch({
         type: LOGIN_SUCCESS,
         payload: resp.data,
@@ -73,7 +73,7 @@ export const AuthContext = ({ children }) => {
   };
 
   const updateUser = async (id, value) => {
-    console.log("id", id);
+    
 
     try {
       const resp = await clientAxios.put(`api/users/${id}`, value);
@@ -82,6 +82,25 @@ export const AuthContext = ({ children }) => {
       console.log(error.response.data.msg);
     }
   };
+
+  const updatePassword = async (value) => {
+    const ID = localStorage.getItem('ID')
+    try {
+      const resp = await clientAxios.put(`api/users/password/${ID}`, value);
+
+      console.log('resp', resp )
+    } catch (error) {
+      console.log('error', error )
+    }
+
+
+
+
+
+
+  }
+
+
 
   //user logout reset state
   const logOut = () => {
@@ -99,6 +118,7 @@ export const AuthContext = ({ children }) => {
         userRegister,
         userLogin,
         updateUser,
+        updatePassword,
         logOut,
       }}
     >

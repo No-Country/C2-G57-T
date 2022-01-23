@@ -2,7 +2,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const { generarJWT } = require("../helpers/generar-jwt");
 
-const login = async (req, res) => {
+const login = async (req, res) => {  
   const { email, password } = req.body;
 
   try {
