@@ -20,7 +20,7 @@ export const CardProductCart = ({ product }) => {
         <span>Producto: {name}</span>
         <span>Cantidad: {quantity}</span>
         <span>Talle: {size}</span>
-        <span>Precio: {discount > 0 ? off(price, discount) : price}</span>
+        <span>Precio: ${discount > 0 ? off(price, discount) : price} ARS</span>
       </div>
       <button className='productCart__button' onClick={handleDelete}>
         <i className='far fa-times-circle'></i>

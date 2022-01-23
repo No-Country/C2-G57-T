@@ -38,10 +38,10 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
   });
 
   return (
-    <div className='container__page'>
+    <>
       <div
         {...getRootProps()}
-        className='dropzone '
+        className='dropzone'
         style={fileUpload[0] && { border: 0 }}
       >
         <input {...getInputProps()} />
@@ -50,7 +50,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
             <p>Suelte la imagen aqui</p>
           ) : (
             <p>
-              Arrastre la imagen aqui principal aqui, o haga click para
+              Arrastre la imagen principal aqui, o haga click para
               seleccionar un archivo
             </p>
           )
@@ -70,17 +70,21 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
           </>
         )}
       </div>
-      {error && (
-        <p className='banner__error'>No puedes colocar mas de 4 imagenes</p>
-      )}
-      {fileUpload.some((img) => img.type === "image") && (
-        <button
-          className='generalButton buttonDropzone'
-          onClick={() => handleUploadImage(fileUpload)}
-        >
-          Subir a la tienda
-        </button>
-      )}
-    </div>
+
+      <div className="end-dropzone">
+        {error && (
+          <p className='alert alert-danger text-center'>No puedes colocar mas de 4 imagenes</p>
+        )}
+        {fileUpload.some((img) => img.type === "image") && (
+          <button
+            className='generalButton button-dropzone'
+            onClick={() => handleUploadImage(fileUpload)}
+          >
+            Subir a la tienda
+          </button>
+        )}
+      </div>
+      
+    </>
   );
 };

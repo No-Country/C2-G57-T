@@ -42,7 +42,7 @@ export const FormRegisterProduct = ({
   };
 
   return (
-    <form>
+    <form className="form-register-prod">
       <div className='registerProductInputContainer'>
         <input
           name='name'

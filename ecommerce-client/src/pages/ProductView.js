@@ -97,9 +97,12 @@ export const ProductView = () => {
 
         {dataProductView.discount > 0
         ? Object.entries(newProductUpdate).length === 0
-        ? off(dataProductView.price, dataProductView.discount)
-        : off(newProductUpdate.price, dataProductView.discount)
-        : null}
+        ? 
+        <h2>{`$${off(dataProductView.price, dataProductView.discount)} ARS`}</h2>
+        : 
+        <h2>{`$${off(newProductUpdate.price, dataProductView.discount)} ARS`}</h2>
+        : null
+        }
           
         <div className='productViewInfo__discountFlex'>
           {dataProductView.discount > 0 ? 
