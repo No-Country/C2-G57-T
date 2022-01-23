@@ -78,7 +78,7 @@ const FormUpdate = ({ dataProductView, setShowFormUpdate }) => {
         name='name'
       />
       <label>Descripcion</label>
-      <input
+      <textarea
         type='text'
         className='generalInput'
         value={
