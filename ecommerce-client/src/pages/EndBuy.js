@@ -91,7 +91,7 @@ export const EndBuy = () => {
               data-bs-parent='#accordionExample'
             >
               <div className='accordion-body'>
-                <Profile />
+                <Profile type={true}/>
               </div>
             </div>
           </div>
