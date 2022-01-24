@@ -89,7 +89,9 @@ export const AuthContext = ({ children }) => {
     } catch (error) {
       console.log("error", error);
     }
-  };
+
+  }
+
 
   //user logout reset state
   const logOut = () => {
