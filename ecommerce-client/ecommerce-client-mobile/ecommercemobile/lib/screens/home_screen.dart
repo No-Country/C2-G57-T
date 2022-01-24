@@ -28,12 +28,11 @@ class _HomeState extends State<Home> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.purple[200],
         drawer: DrawerPersonalizado(),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.purple[200],
           centerTitle: true,
+          backgroundColor: Colors.blueGrey.shade800,
           title: const Text("Mujeres Reales"),
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
@@ -129,7 +128,7 @@ class ImagenCategoria extends StatelessWidget {
               child: Container(
                   height: 50,
                   width: 150,
-                  color: Colors.white,
+                  color: Colors.yellow.shade900,
                   alignment: Alignment.center,
                   child: Text(
                     categoria,

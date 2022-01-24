@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         title: 'Material App',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Colors.purple,
+          primaryColor: Colors.blueGrey,
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.purple))),

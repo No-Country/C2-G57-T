@@ -21,7 +21,7 @@ class GridScreen extends StatelessWidget {
         drawer: DrawerPersonalizado(),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.purple[200],
+          backgroundColor: Colors.blueGrey.shade800,
           centerTitle: true,
           title: const Text("Logo de la marca\nSlogan"),
           actions: [CarritoCompras(productProvider: productProvider)],

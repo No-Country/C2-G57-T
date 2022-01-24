@@ -21,11 +21,10 @@ class _ShopState extends State<Shop> {
 
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Colors.purple[200],
         drawer: DrawerPersonalizado(),
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.purple[200],
+          backgroundColor: Colors.blueGrey.shade800,
           centerTitle: true,
           title: const Text("Logo de la marca\nSlogan"),
           actions: [CarritoCompras(productProvider: productProvider)],
@@ -33,57 +32,60 @@ class _ShopState extends State<Shop> {
         body: Padding(
           padding: const EdgeInsets.all(15.0),
           child: SafeArea(
-            child: Container(
-              width: 700,
-              height: 550,
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(25.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Container(
-                              color: activar ? Colors.grey : Colors.white,
-                              child: TextButton(
-                                onPressed: () {
-                                  activar = false;
-                                  setState(() {});
-                                },
-                                child: Text(
-                                  "Mi Perfil",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30,
+            child: Card(
+              elevation: 5,
+              child: Container(
+                width: 700,
+                height: 550,
+                color: Colors.grey.shade200,
+                child: Padding(
+                  padding: const EdgeInsets.all(25.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                color: activar ? Colors.grey : Colors.white,
+                                child: TextButton(
+                                  onPressed: () {
+                                    activar = false;
+                                    setState(() {});
+                                  },
+                                  child: Text(
+                                    "Mi Perfil",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              color: activar ? Colors.white : Colors.grey,
-                              child: TextButton(
-                                onPressed: () {
-                                  activar = true;
-                                  setState(() {});
-                                },
-                                child: Text(
-                                  "Carrito",
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 30,
+                            Expanded(
+                              child: Container(
+                                color: activar ? Colors.white : Colors.grey,
+                                child: TextButton(
+                                  onPressed: () {
+                                    activar = true;
+                                    setState(() {});
+                                  },
+                                  child: Text(
+                                    "Carrito",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 30,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                          ),
-                        ],
-                      ),
-                      activar ? Carrito() : DatosPersonales(),
-                    ],
+                          ],
+                        ),
+                        activar ? Carrito() : DatosPersonales(),
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -257,12 +259,6 @@ class _DatosPersonalesState extends State<DatosPersonales> {
               Text("Direccion"),
               Text("Codigo Postal"),
               Text("\n\n\n"),
-              ElevatedButton(
-                  onPressed: () {
-                    print(
-                        "${loginFormProvider.email},${loginFormProvider.password},${loginFormProvider.name},");
-                  },
-                  child: Icon(Icons.add))
             ],
           ),
         ),
