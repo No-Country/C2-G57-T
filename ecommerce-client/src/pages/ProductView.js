@@ -95,41 +95,48 @@ export const ProductView = () => {
             : newProductUpdate.description}
         </p>
 
-        {dataProductView.discount > 0
-        ? Object.entries(newProductUpdate).length === 0
-        ? 
-        <h2>{`$${off(dataProductView.price, dataProductView.discount)} ARS`}</h2>
-        : 
-        <h2>{`$${off(newProductUpdate.price, dataProductView.discount)} ARS`}</h2>
-        : null
-        }
-          
+        {dataProductView.discount > 0 ? (
+          Object.entries(newProductUpdate).length === 0 ? (
+            <h2>{`$${off(
+              dataProductView.price,
+              dataProductView.discount
+            )} ARS`}</h2>
+          ) : (
+            <h2>{`$${off(
+              newProductUpdate.price,
+              dataProductView.discount
+            )} ARS`}</h2>
+          )
+        ) : null}
+
         <div className='productViewInfo__discountFlex'>
-          {dataProductView.discount > 0 ? 
-          <h5
-          className={
-            dataProductView.discount > 0
-              ? "productViewInfo__price priceOFF"
-              : ""
-          }
-        >
-          $
-          {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.price
-            : newProductUpdate.price}
-        </h5> :
-        <h2>
-          $
-          {Object.entries(newProductUpdate).length === 0
-            ? dataProductView.price
-            : newProductUpdate.price}
-        </h2>}
-          
+          {dataProductView.discount > 0 ? (
+            <h5
+              className={
+                dataProductView.discount > 0
+                  ? "productViewInfo__price priceOFF"
+                  : ""
+              }
+            >
+              $
+              {Object.entries(newProductUpdate).length === 0
+                ? dataProductView.price
+                : newProductUpdate.price}
+            </h5>
+          ) : (
+            <h2>
+              $
+              {Object.entries(newProductUpdate).length === 0
+                ? dataProductView.price
+                : newProductUpdate.price}
+            </h2>
+          )}
+
           {dataProductView.discount > 0 && (
             <span>{dataProductView.discount}% OFF</span>
           )}
         </div>
-        
+
         <div className='radio-container'>
           {talle.map((s, i) => (
             <div key={s} className='radio-toolbar'>

@@ -46,6 +46,11 @@ html {
   }
 }
 
+.banner__success{
+  @extend .banner__error;
+  background-color: #59B367;
+}
+
 h1 {
   text-align: center;
 }

@@ -15,7 +15,7 @@ export const AuthContext = ({ children }) => {
     token: localStorage.getItem("token"),
     logged: false,
     status: false,
-    isAdmin: localStorage.getItem("isA"),
+    isAdmin: localStorage.getItem(Boolean("isA")),
     user: localStorage.getItem("user"),
     email: null,
   };
@@ -29,8 +29,8 @@ export const AuthContext = ({ children }) => {
   //User register return name, email, status, uid
   const userRegister = async (data) => {
     try {
-      const resp = await clientAxios.post("api/users", data);
-      console.log("resp", resp);
+      await clientAxios.post("api/users", data);
+      
     } catch (error) {
       const showMessage = error.response.data.errors.map(
         (message) => message.msg
@@ -53,7 +53,7 @@ export const AuthContext = ({ children }) => {
   const userLogin = async (data) => {
     try {
       const resp = await clientAxios.post("api/auth/login", data);
-      console.log("resp", resp);
+      
       dispatch({
         type: LOGIN_SUCCESS,
         payload: resp.data,
@@ -72,24 +72,33 @@ export const AuthContext = ({ children }) => {
     }
   };
 
-
-
-  const updateUser = async(id, value)=>{
-
-    console.log('id', id)
+  const updateUser = async (id, value) => {
+    
 
     try {
       const resp = await clientAxios.put(`api/users/${id}`, value);
-      console.log('respupdate', resp)
-      
+      console.log("respupdate", resp);
     } catch (error) {
-      console.log(error.response.data.msg)
+      console.log(error.response.data.msg);
+    }
+  };
+
+  const updatePassword = async (value) => {
+    const ID = localStorage.getItem('ID')
+    try {
+      const resp = await clientAxios.put(`api/users/password/${ID}`, value);
+
+      console.log('resp', resp )
+    } catch (error) {
+      console.log('error', error )
     }
 
 
+
+
+
+
   }
-
-
 
 
 
@@ -109,6 +118,7 @@ export const AuthContext = ({ children }) => {
         userRegister,
         userLogin,
         updateUser,
+        updatePassword,
         logOut,
       }}
     >

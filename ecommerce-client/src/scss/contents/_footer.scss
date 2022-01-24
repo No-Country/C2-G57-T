@@ -20,58 +20,62 @@ footer .containerfooter{
     width: 200px;
 }
 .redes-home {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: .2rem;
-    margin: 3rem auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.2rem;
+  margin: 3rem auto;
+
+  .bg-redes {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:nth-child(odd) > img {
+      border-radius: 20px 20px 0 0;
+    }
+    &:nth-child(even) > img {
+      border-radius: 0 0 20px 20px;
+    }
+
+    img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      object-position: 50% 20%;
+    }
+
+    .img-bg-redes {
+      object-position: -0px 7%;
+    }
+
+    .icon-redes {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      font-size: 3rem;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 1rem;
+      color: darken($color: v.$blanco, $amount: 20);
+      /* background: rgba($color: #000, $alpha: .5); */
+    }
+  }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
 
     .bg-redes {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:nth-child(odd) > img {
-            border-radius: 20px 20px 0 0;
-        }
-        &:nth-child(even) > img {
-            border-radius: 0 0 20px 20px;
-        }
-    
-        img {
-            width: 100%;
-            height: 90px;
-            object-fit: cover;
-        }
-    
-        .icon-redes {
-            width: 50px;
-            height: 50px;
-            position: absolute;
-            font-size: 3rem;
-            text-align: center;
-            line-height: 50px;
-            border-radius: 1rem;
-            color: v.$blanco;
-            /* background: rgba($color: #000, $alpha: .5); */
-        }
+      &:nth-child(odd) > img {
+        border-radius: 20px 0 0 20px;
+      }
+      &:nth-child(even) > img {
+        border-radius: 0 20px 20px 0;
+      }
     }
-
-    @media screen and (min-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-
-        .bg-redes {
-
-            &:nth-child(odd) > img {
-                border-radius: 20px 0 0 20px;
-            }
-            &:nth-child(even) > img {
-                border-radius: 0 20px 20px 0;
-            }
-        }
+  }
          
     }
-}
+
 @media screen and (min-width: 768px){
 footer .containerfooter{
     display: flex;
@@ -85,3 +89,4 @@ footer .containerfooter{
     width: 300px;
 }
 }
+ 

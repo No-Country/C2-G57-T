@@ -12,8 +12,7 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
         setError(false);
       }, 3000);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fileUpload]);
+  }, [fileUpload, setFileUpload]);
 
   //get image
   const onDrop = useCallback((acceptedFiles) => {
@@ -49,9 +48,9 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
           isDragActive ? (
             <p>Suelte la imagen aqui</p>
           ) : (
-            <p className="text-dropzone">
-              Arrastre la imagen principal aqui, o haga click para
-              seleccionar un archivo
+            <p className='text-dropzone'>
+              Arrastre la imagen principal aqui, o haga click para seleccionar
+              un archivo
             </p>
           )
         ) : null}
@@ -71,9 +70,11 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
         )}
       </div>
 
-      <div className="end-dropzone">
+      <div className='end-dropzone'>
         {error && (
-          <p className='alert alert-danger text-center'>No puedes colocar mas de 4 imagenes</p>
+          <p className='alert alert-danger text-center'>
+            No puedes colocar mas de 4 imagenes
+          </p>
         )}
         {fileUpload.some((img) => img.type === "image") && (
           <button
@@ -84,7 +85,6 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
           </button>
         )}
       </div>
-      
     </>
   );
 };

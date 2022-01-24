@@ -20,6 +20,7 @@ export const authReducer = (state, action) => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
       localStorage.removeItem("isA");
+      localStorage.removeItem("ID");
       return {
         ...state,
         token: null,
