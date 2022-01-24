@@ -93,13 +93,7 @@ export const AuthContext = ({ children }) => {
       console.log('error', error )
     }
 
-
-
-
-
-
   }
-
 
 
   //user logout reset state
