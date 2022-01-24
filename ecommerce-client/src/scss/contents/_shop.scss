@@ -1,13 +1,13 @@
 @use "../base/variables" as v;
 
 
-.dress-products {
+.dress-products { // reveer con grid o alternativas para que se vea columnas centradas y en "flex-start"
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-items: center;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1rem;
   width: 100%;
   margin: 1rem 0;

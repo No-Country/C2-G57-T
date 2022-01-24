@@ -93,13 +93,13 @@
       align-items: flex-end;
 
       a {
-        align-self: start;
+        align-self: center;
 
         img {
           position: relative;
-          bottom: 10px;
-          width: 450px;
-          height: 100px;
+          width: 320px;
+          height: auto;
+          margin-bottom: 30px;
         }
       }
 

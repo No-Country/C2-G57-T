@@ -70,6 +70,13 @@ export const ProductView = () => {
   const { description, img, name } = dataProductView;
 
   const talle = dataProductView.talle[0].split(",");
+  
+  const ImagePreview = (imgs) => { // function img preview
+
+    const arraysImg = document.querySelectorAll('.img-productView');
+
+    arraysImg[0].src = imgs.target.src;
+  }
 
   return (
     <div className='productViewContainer container__page'>
@@ -80,6 +87,7 @@ export const ProductView = () => {
             alt={image._id}
             key={image._id}
             className='img-productView'
+            onClick={ImagePreview}
           />
         ))}
       </div>

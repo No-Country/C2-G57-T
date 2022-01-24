@@ -8,14 +8,15 @@ export const CardSend = ({ product }) => {
   return (
     <>
       <img src={img[0].url} alt={name} className='cardEnd__img' />
-      <div>
-        <p>Producto: {name}</p>
-        <p>Cantidad: {quantity}</p>
-        <p>Talle: {size}</p>
-        <span className={discount > 0 ? "priceOFF" : ""}>
-          <p>$ {price}</p>
-        </span>
-        {discount > 0 && <span>${off(price, discount)} ARS</span>}
+      <div className="info_endbuy">
+        <span>Producto: {name}</span>
+        <span>Cantidad: {quantity}</span>
+        <span>Talle: {size}</span>
+        {discount > 0 ? 
+        <span>${off(price, discount)} ARS</span>
+        :
+        <span>${price} ARS</span>
+        }
       </div>
     </>
   );
