@@ -21,7 +21,7 @@
     border-radius: 10px 10px 0 0;
 
     &--active{
-        background-color: #F2B100;
+      background-color: v.$secundario;
       color: v.$color-letter;
     }
 
@@ -32,7 +32,7 @@
     max-width: 700px;
     display: flex;
     flex-direction: column;
-    background-color: #F2B100;
+    background-color: v.$secundario;
     border-radius: 0 0 20px 20px;
     padding: 2rem;
 
