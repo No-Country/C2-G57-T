@@ -26,8 +26,8 @@ const Footer = () => {
                 <div className='containerfooter'>
                 <div className='boxfooter'> <i className="fab fa-facebook"> </i> Facebook <br></br>
                 <i className="fab fa-instagram"></i> Instagram<br></br>
-                <i class="fab fa-whatsapp"></i>  342596875<br></br>
-                <i class="far fa-envelope"></i> mujeresreales@gmail.com
+                <i className="fab fa-whatsapp"></i>  342596875<br></br>
+                <i className="far fa-envelope"></i> mujeresreales@gmail.com
                <div>Av. Belgrano 1930</div> 
                <div>Córdoba, Arg.</div>
                 </div>
@@ -36,11 +36,11 @@ const Footer = () => {
         </Link>
         </div>
                 <div className='boxfooter'>
-                    <div>Home</div>
-                    <div>Tienda</div>  
-                    <div>Destacados</div>
-                     <div>Ofertas</div>
-                      <div>Ingresar</div>
+                    <div><Link to={'/'}>Home</Link></div>
+                    <div><Link to={'#'}>Tienda</Link></div>  
+                    <div><Link to={'dress/product/destacados'}>Destacados</Link></div>
+                     <div><Link to={'dress/product/discount'}>Ofertas</Link></div>
+                      <div><Link to={'/login'}>Ingresar</Link></div>
                 </div>
                 
                 </div>

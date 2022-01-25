@@ -14,6 +14,10 @@ footer .containerfooter{
   width: 300px;
   text-align: center;
   margin: 10px 0px;
+
+  a {
+    color: v.$color-letter;
+  }
 }
 #logo{
     height: auto;
