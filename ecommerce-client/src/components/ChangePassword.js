@@ -19,7 +19,7 @@ export const ChangePassword = () => {
   };
   
   return (
-    <div>
+    <div className="change-password">
       <form onSubmit={handleSubmit}>
         <input
           placeholder='Contraseña'
@@ -27,6 +27,7 @@ export const ChangePassword = () => {
           value={values.currentPassword}
           name='currentPassword'
           type="password"
+          className="generalInput"
         />
         <input
           placeholder='Nueva Contraseña'
@@ -34,8 +35,9 @@ export const ChangePassword = () => {
           value={values.newPassword}
           name='newPassword'
           type="password"
+          className="generalInput"
         />
-        <input type='submit' value='Cambiar Contraseña' />
+        <input type='submit' value='Cambiar Contraseña' className="generalButton"/>
       </form>
     </div>
   );

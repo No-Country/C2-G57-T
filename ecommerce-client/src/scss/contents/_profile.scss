@@ -42,4 +42,20 @@
   background: #F2B100;
 }
   
+.change-password {
+  width: 80%;
+  margin: 2rem auto;
 
+  form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+
+    input {
+      margin: 0;
+    }
+  }
+}
