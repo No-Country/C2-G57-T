@@ -189,7 +189,9 @@ export const ProductView = () => {
         )}
         {msg && <p style={{ color: "red" }}>{msg}</p>}
         {/* solo lo debe ver el usuario clave */}
-        {state.isAdmin && <ControlPanel dataProductView={dataProductView} />}
+        {state.isAdmin === true || state.isAdmin === "true" ? (
+          <ControlPanel dataProductView={dataProductView} />
+        ) : null}
       </div>
     </div>
   );

@@ -9,13 +9,13 @@ export const UserData = createContext({
 
 export const AuthContext = ({ children }) => {
   const user = localStorage.getItem("user");
-  // const isA = localStorage.getItem("isA");
-
+  let isA = localStorage.getItem("isA");
+  
   const initialState = {
     token: localStorage.getItem("token"),
     logged: false,
     status: false,
-    isAdmin: localStorage.getItem(Boolean("isA")),
+    isAdmin: isA,
     user: localStorage.getItem("user"),
     email: null,
   };
@@ -30,7 +30,6 @@ export const AuthContext = ({ children }) => {
   const userRegister = async (data) => {
     try {
       await clientAxios.post("api/users", data);
-      
     } catch (error) {
       const showMessage = error.response.data.errors.map(
         (message) => message.msg
@@ -53,7 +52,7 @@ export const AuthContext = ({ children }) => {
   const userLogin = async (data) => {
     try {
       const resp = await clientAxios.post("api/auth/login", data);
-      
+      console.log('resp',resp )
       dispatch({
         type: LOGIN_SUCCESS,
         payload: resp.data,
@@ -73,8 +72,6 @@ export const AuthContext = ({ children }) => {
   };
 
   const updateUser = async (id, value) => {
-    
-
     try {
       const resp = await clientAxios.put(`api/users/${id}`, value);
       console.log("respupdate", resp);
@@ -84,13 +81,13 @@ export const AuthContext = ({ children }) => {
   };
 
   const updatePassword = async (value) => {
-    const ID = localStorage.getItem('ID')
+    const ID = localStorage.getItem("ID");
     try {
       const resp = await clientAxios.put(`api/users/password/${ID}`, value);
 
-      console.log('resp', resp )
+      console.log("resp", resp);
     } catch (error) {
-      console.log('error', error )
+      console.log("error", error);
     }
 
   }
