@@ -68,6 +68,7 @@ class _DetailState extends State<Detail> {
 
                           child: Stack(
                             children: [
+                              Container(color: Colors.black),
                               if (aumentar1) Container(color: Colors.red),
                               if (aumentar2) Container(color: Colors.blue),
                               if (aumentar3) Container(color: Colors.green)
