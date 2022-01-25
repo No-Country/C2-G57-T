@@ -11,6 +11,7 @@ import Dress from "./../pages/Dress";
 import { Shop } from "./../pages/Shop";
 import { ProductView } from "./../pages/ProductView";
 import { EndBuy } from "../pages/EndBuy";
+import { PageFinish } from "../pages/PageFinish";
 
 export const Navigation = () => {
   //pedir endpoint para mantener el usuario
@@ -53,6 +54,8 @@ export const Navigation = () => {
 
           <Route path='registerproducts' element={<RegisterProducts />} />
           <Route path='endbuy' element={<EndBuy />} />
+          <Route path='success' element={<PageFinish />} />
+          <Route path='cancel' element={<PageFinish />} />
 
           <Route path='*' element={<Home />} />
         </Route>
