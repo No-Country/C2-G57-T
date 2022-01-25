@@ -13,7 +13,7 @@ export const EndBuy = () => {
   const { error, msg, sendError, message } = useError();
 
   const { state } = useContext(CartData);
-  const { state: endBuyState } = useContext(EndBuyData);
+  const { state: endBuyState, endBuy } = useContext(EndBuyData);
 
   const { products } = state;
 
@@ -64,6 +64,7 @@ export const EndBuy = () => {
     }
 
     console.log("tu compra esta ok");
+    endBuy();
   };
 
   return (

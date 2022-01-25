@@ -19,8 +19,8 @@ const payment = async(req, res) => {
                     quantity: item.quantity 
                 }
             } ) ,
-            success_url: `${process.env.CLIENT_URL}/success.html`,
-            cancel_url: `${process.env.CLIENT_URL}/cancel.html`
+            success_url: `${process.env.CLIENT_URL}/success`,
+            cancel_url: `${process.env.CLIENT_URL}/cancel`
 
         })
         res.json({ url: session.url })

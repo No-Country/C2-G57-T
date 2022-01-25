@@ -1,6 +1,8 @@
 import React, { createContext, useReducer } from "react";
 import { endbuyReducer } from "./EndBuyReduce";
 import { ADD_FORM_SEND, ADD_PRODUCT, DATA_USER } from "./EndBuyType";
+import { loadStripe } from "@stripe/stripe-js";
+import { clientAxios } from "./../config/axios";
 
 export const EndBuyData = createContext();
 
@@ -34,6 +36,29 @@ export const EndBuyContext = ({ children }) => {
     });
   };
 
+  const endBuy = async () => {
+    await loadStripe(
+      "pk_test_51KJgkKLUp5Q6apTBbvB5gybK4L0cTqSJnsXSi5yNiUOW0b10OLM9HGEIWatnBbZZZ4u6RUoQjIZWOJhmryh19Gle002TyDafg6"
+    );
+
+    const items = state.product.map((i) => ({
+      id: i._id,
+      name: i.name,
+      price: i.offer ? i.offer : i.price,
+      quantity: parseInt(i.quantity),
+    }));
+
+    const resp = await clientAxios.post(
+      "api/payment/create-checkout-session",
+      JSON.stringify({ items }),
+      { headers: { "Content-Type": "application/json" } }
+    );
+    const { url } = resp.data;
+    if (url) {
+      window.location = url;
+    }
+  };
+
   return (
     <EndBuyData.Provider
       value={{
@@ -41,6 +66,7 @@ export const EndBuyContext = ({ children }) => {
         addProduct,
         addDataUser,
         addFormSend,
+        endBuy,
       }}
     >
       {children}
