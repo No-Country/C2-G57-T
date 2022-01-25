@@ -13,6 +13,7 @@ class Detail extends StatefulWidget {
 
 class _DetailState extends State<Detail> {
   int cantidad = 0;
+
   bool aumentar = false;
   bool aumentar1 = false;
   bool aumentar2 = false;
@@ -23,6 +24,8 @@ class _DetailState extends State<Detail> {
   bool seleccionar3 = false;
   String talleSeleccionado = "";
   String colorSeleccionado = "";
+  int imagen = 0;
+
   @override
   Widget build(BuildContext context) {
     final Product producto =
@@ -56,12 +59,19 @@ class _DetailState extends State<Detail> {
                           aumentar2 = false;
                           aumentar3 = false;
                         },
-                        child: AnimatedContainer(
-                          height: aumentar ? 500 : 300,
-                          width: aumentar ? 500 : 300,
-                          duration: Duration(milliseconds: 200),
-                          child: ImagenPrincipal(
-                            imagenAssets: producto.imagen,
+                        child: Container(
+                          height: 500,
+                          width: 500,
+                          // child: ImagenPrincipal(
+                          //   imagenAssets: producto.imagen,
+                          // ),
+
+                          child: Stack(
+                            children: [
+                              if (aumentar1) Container(color: Colors.red),
+                              if (aumentar2) Container(color: Colors.blue),
+                              if (aumentar3) Container(color: Colors.green)
+                            ],
                           ),
                         ),
                       ),
@@ -75,16 +85,17 @@ class _DetailState extends State<Detail> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
+                              imagen = 1;
+
                               aumentar1 = !aumentar1;
                               aumentar = false;
                               aumentar2 = false;
                               aumentar3 = false;
                             });
                           },
-                          child: AnimatedContainer(
-                            height: aumentar1 ? 150 : 100,
-                            width: aumentar1 ? 150 : 100,
-                            duration: Duration(milliseconds: 200),
+                          child: Container(
+                            height: 100,
+                            width: 100,
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
                               image: AssetImage(producto.imagen),
@@ -94,16 +105,17 @@ class _DetailState extends State<Detail> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
+                              imagen = 2;
+                              print(imagen);
                               aumentar2 = !aumentar2;
                               aumentar1 = false;
                               aumentar = false;
                               aumentar3 = false;
                             });
                           },
-                          child: AnimatedContainer(
-                            height: aumentar2 ? 150 : 100,
-                            width: aumentar2 ? 150 : 100,
-                            duration: Duration(milliseconds: 200),
+                          child: Container(
+                            height: 100,
+                            width: 100,
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
                               image: AssetImage(producto.imagen),
@@ -113,16 +125,17 @@ class _DetailState extends State<Detail> {
                         GestureDetector(
                           onTap: () {
                             setState(() {
+                              imagen = 3;
+                              print(imagen);
                               aumentar3 = !aumentar3;
                               aumentar1 = false;
                               aumentar2 = false;
                               aumentar = false;
                             });
                           },
-                          child: AnimatedContainer(
-                            height: aumentar3 ? 150 : 100,
-                            width: aumentar3 ? 150 : 100,
-                            duration: Duration(milliseconds: 200),
+                          child: Container(
+                            height: 100,
+                            width: 100,
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
                               image: AssetImage(producto.imagen),
