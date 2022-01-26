@@ -8,6 +8,8 @@ export const Shop = () => {
   const [dataDestacado, setDataDestacado] = useState([]);
   const { pathname } = useLocation();
 
+
+  console.log('data',dataProduct )
   const split = pathname.split("/");
 
   const cat = split[2].toUpperCase();

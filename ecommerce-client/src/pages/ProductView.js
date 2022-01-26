@@ -77,6 +77,7 @@ export const ProductView = () => {
 
     arraysImg[0].src = imgs.target.src;
   }
+  
 
   return (
     <div className='productViewContainer container__page'>
