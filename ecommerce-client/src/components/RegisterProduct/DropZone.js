@@ -14,7 +14,6 @@ export const Dropzone = ({ setFileUpload, fileUpload, handleUploadImage }) => {
     }
   }, [fileUpload, setFileUpload]);
 
-  //get image
   const onDrop = useCallback((acceptedFiles) => {
     acceptedFiles.forEach((file) => {
       setFileUpload((current) =>

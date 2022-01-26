@@ -7,7 +7,6 @@ export const CartDetailModal = ({cartModal}) => {
   const navigate = useNavigate();
   const { state, setShowOpenModalCart } = useContext(CartData);
 
-  //corrobora si hay un usuario logueado
   const handleEndBuy = () => {
     const token = localStorage.getItem("token");
     setShowOpenModalCart(false);

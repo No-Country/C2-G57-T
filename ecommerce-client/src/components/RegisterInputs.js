@@ -8,9 +8,6 @@ const RegisterInputs = () => {
     name: "Pedro",
     password: "123123",
     repeatPassword: "123123",
-    // city: "",
-    // address: "",
-    // cp: "",
   });
 
   const { error, userRegister } = useContext(UserData);
@@ -52,40 +49,7 @@ const RegisterInputs = () => {
         onChange={handleInputChange}
         type='password'
         value={values.repeatPassword}
-      />
-      {/* <input
-        name='city'
-        placeholder='Ciudad'
-        onChange={handleInputChange}
-        type='text'
-        value={values.city}
-      />
-      <input
-        name='address'
-        placeholder='Direccion'
-        onChange={handleInputChange}
-        type='text'
-        value={values.address}
-      />
-      <input
-        name='cp'
-        placeholder='Codigo Postal'
-        onChange={handleInputChange}
-        type='text'
-        value={values.cp}
-      /> */}
-
-      <div className='checkboxContainer--register'>
-        <div className='checkboxContainer__campo'>
-          <input type='checkbox' className='checkbox' />
-          <label>Terminos y Condiciones</label>
-        </div>
-
-        <div className='checkboxContainer__campo'>
-          <input type='checkbox' className='checkbox' />
-          <label>Quiero Recibir Noticias</label>
-        </div>
-      </div>
+      />   
 
       <input type='submit' className='login__inputSubmit' value='Registrarme' />
     </form>

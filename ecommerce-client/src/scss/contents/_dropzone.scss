@@ -74,7 +74,7 @@
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    grid-column: 3/1; // de tres columnas existentes que tome el ancho de todas
+    grid-column: 3/1;
 
     p {
       width: 500px;

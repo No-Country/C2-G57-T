@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import { EndBuyData } from "../endBuyContext/EndBuyContext";
 
-//componente cargado dentro del acordion en el fin de la compra
 export const DataSend = () => {
   const [formSend, setFormSend] = useState({
     formSend: "",

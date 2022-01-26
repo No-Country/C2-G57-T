@@ -6,7 +6,6 @@ import Home from "../pages/Home";
 import Login from "../pages/Login";
 import { Profile } from "../pages/Profile";
 import { RegisterProducts } from "../pages/RegisterProducts";
-// import your route components too
 import Dress from "./../pages/Dress";
 import { Shop } from "./../pages/Shop";
 import { ProductView } from "./../pages/ProductView";
@@ -14,7 +13,6 @@ import { EndBuy } from "../pages/EndBuy";
 import { PageFinish } from "../pages/PageFinish";
 
 export const Navigation = () => {
-  //pedir endpoint para mantener el usuario
 
   const { state } = useContext(UserData);
 

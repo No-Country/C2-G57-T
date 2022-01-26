@@ -36,8 +36,7 @@ const Footer = () => {
         </Link>
         </div>
                 <div className='boxfooter'>
-                    <div><Link to={'/'}>Home</Link></div>
-                    <div><Link to={'#'}>Tienda</Link></div>  
+                    <div><Link to={'/'}>Home</Link></div> 
                     <div><Link to={'dress/product/destacados'}>Destacados</Link></div>
                      <div><Link to={'dress/product/discount'}>Ofertas</Link></div>
                       <div><Link to={'/login'}>Ingresar</Link></div>
