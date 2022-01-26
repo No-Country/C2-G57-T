@@ -14,7 +14,7 @@ const Product = ({ img, title, price, id, product }) => {
         <h5>
           {product.discount > 0 ? `$${off(price, product.discount)} ARS` : `$${price} ARS`}
         </h5>
-        {product.discount !== 0 ? <span>{product.discount}%</span> : null}
+        {product.discount > 0 ? <span>{product.discount}%</span> : null}
         </div>
         
       </div>
