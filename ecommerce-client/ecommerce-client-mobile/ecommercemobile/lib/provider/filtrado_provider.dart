@@ -18,8 +18,6 @@ class FiltradoProducto extends ChangeNotifier {
     filtrarPorTalleEspecial("L", productosTalleLPrueba);
     filtrarPorTalle("XL", productosTalleXL);
     filtrarPorTalle("XXL", productosTalleXXL);
-
-    verProductosPorCategoria();
   }
 
   filtrarPorCategoria(

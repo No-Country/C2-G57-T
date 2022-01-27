@@ -1,4 +1,5 @@
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/models/products_destacados.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
@@ -22,14 +23,14 @@ class _DetailState extends State<Detail> {
   bool seleccionar1 = false;
   bool seleccionar2 = false;
   bool seleccionar3 = false;
-  String talleSeleccionado = "";
+  List<String> talle = [];
   String colorSeleccionado = "";
   int imagen = 0;
 
   @override
   Widget build(BuildContext context) {
-    final Product producto =
-        ModalRoute.of(context)!.settings.arguments as Product;
+    final Producto producto =
+        ModalRoute.of(context)!.settings.arguments as Producto;
     final productProvider = Provider.of<ProductProvider>(context);
 
     return SafeArea(
@@ -39,7 +40,7 @@ class _DetailState extends State<Detail> {
           elevation: 0,
           backgroundColor: Colors.blueGrey.shade800,
           centerTitle: true,
-          title: const Text("Logo de la marca\nSlogan"),
+          title: Image.asset("assets/logo.jpg"),
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: SingleChildScrollView(
@@ -68,10 +69,24 @@ class _DetailState extends State<Detail> {
 
                           child: Stack(
                             children: [
-                              Container(color: Colors.black),
-                              if (aumentar1) Container(color: Colors.red),
-                              if (aumentar2) Container(color: Colors.blue),
-                              if (aumentar3) Container(color: Colors.green)
+                              Container(
+                                child: Image.network("${producto.img![0].url}"),
+                              ),
+                              if (aumentar1)
+                                Container(
+                                  child:
+                                      Image.network("${producto.img![1].url}"),
+                                ),
+                              if (aumentar2)
+                                Container(
+                                  child:
+                                      Image.network("${producto.img![2].url}"),
+                                ),
+                              if (aumentar3)
+                                Container(
+                                  child:
+                                      Image.network("${producto.img![3].url}"),
+                                )
                             ],
                           ),
                         ),
@@ -99,7 +114,7 @@ class _DetailState extends State<Detail> {
                             width: 100,
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
-                              image: AssetImage(producto.imagen),
+                              image: NetworkImage("${producto.img![1].url}"),
                             ),
                           ),
                         ),
@@ -119,7 +134,7 @@ class _DetailState extends State<Detail> {
                             width: 100,
                             child: FadeInImage(
                               placeholder: AssetImage("assets/loading.gif"),
-                              image: AssetImage(producto.imagen),
+                              image: NetworkImage("${producto.img![2].url}"),
                             ),
                           ),
                         ),
@@ -138,134 +153,167 @@ class _DetailState extends State<Detail> {
                             height: 100,
                             width: 100,
                             child: FadeInImage(
-                              placeholder: AssetImage("assets/loading.gif"),
-                              image: AssetImage(producto.imagen),
-                            ),
+                                placeholder: AssetImage("assets/loading.gif"),
+                                image: NetworkImage("${producto.img![3].url}")),
                           ),
                         )
                       ],
                     ),
                     Text(
-                      producto.name,
+                      producto.name ?? "",
                       style: TextStyle(fontSize: 25),
                     ),
-                    Text("Precio: \$${producto.price}",
-                        style: TextStyle(fontSize: 25)),
-                    Text("Colores", style: TextStyle(fontSize: 25)),
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            seleccionar = !seleccionar;
-                            seleccionar1 = false;
-                            setState(() {});
-                          },
-                          child: BotonColorTalle(
-                              color: Colors.black,
-                              color1:
-                                  seleccionar ? Colors.white : Colors.black),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        GestureDetector(
-                            onTap: () {
-                              seleccionar = false;
-                              seleccionar1 = !seleccionar1;
-
-                              setState(() {});
-                            },
-                            child: BotonColorTalle(
-                                color1: seleccionar1
-                                    ? Colors.black
-                                    : Colors.white)),
-                      ],
-                    ),
+                    Text("\$${producto.price}", style: TextStyle(fontSize: 25)),
                     Text("Talles"),
-                    Row(
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            talleSeleccionado = producto.talle1;
-                            seleccionar2 = !seleccionar2;
-                            seleccionar3 = false;
-                            setState(() {});
-                          },
-                          child: BotonColorTalle(
-                              color1:
-                                  seleccionar2 ? Colors.black : Colors.white,
-                              child: Text(
-                                producto.talle1,
-                                style: TextStyle(fontSize: 20),
-                              )),
-                        ),
-                        SizedBox(width: 15),
-                        GestureDetector(
-                          onTap: () {
-                            talleSeleccionado = producto.talle2;
-                            seleccionar3 = !seleccionar3;
-                            seleccionar2 = false;
-                            setState(() {});
-                          },
-                          child: BotonColorTalle(
-                              color1:
-                                  seleccionar3 ? Colors.black : Colors.white,
-                              child: Text(producto.talle2,
-                                  style: TextStyle(fontSize: 20))),
-                        ),
-                        SizedBox(width: 15),
-                      ],
-                    ),
-                    Text("Cantidad"),
                     Container(
-                      width: 120,
-                      decoration: BoxDecoration(
-                          border: Border.all(color: Colors.black)),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
-                        children: [
-                          IconButton(
-                              icon: Icon(
-                                Icons.remove,
-                                size: 20,
-                              ),
-                              onPressed: () {
-                                setState(() {
-                                  if (cantidad == 0) return;
-                                  cantidad--;
-                                });
-                              }),
-                          Text(
-                            "$cantidad",
-                            style: TextStyle(fontSize: 20),
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  cantidad++;
-                                });
+                      width: 200,
+                      height: 50,
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: producto.talle!.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            // print(talleCortado.length);
+                            // print(talleCortado);
+                            // print(talleCortado[0]);
+                            // print(talleCortado[1]);
+                            // print(talleCortado[2]);
+                            print("talle: ${producto.talle}");
+                            print("largo producto:${producto.talle!.length}");
+                            print("talle sin coma: ${producto.talle!}");
+
+                            //print(talleCortado.splitMapJoin(","));
+
+                            // print(talle[0]);
+                            // print(talle[1]);
+                            // print(talle[2]);
+                            // print(talle[3]);
+                            // print(talle[4]);
+                            return GestureDetector(
+                              onTap: () {
+                                seleccionar3 = !seleccionar3;
+                                seleccionar2 = false;
+                                setState(() {});
                               },
-                              icon: Icon(
-                                Icons.add,
-                                size: 20,
-                              )),
-                        ],
+                              child: BotonColorTalle(
+                                color1: seleccionar3
+                                    ? Colors.blue.shade300
+                                    : Colors.white,
+                                child: Text(producto.talle![index],
+                                    style: TextStyle(
+                                        fontSize: 20, color: Colors.white)),
+                              ),
+                            );
+                          }),
+                    ),
+                    // // Row(
+                    // //   children: [
+                    // //     GestureDetector(
+                    // //       onTap: () {
+                    // //         seleccionar3 = !seleccionar3;
+                    // //         seleccionar2 = false;
+                    // //         setState(() {});
+                    // //       },
+                    // //       child: BotonColorTalle(
+                    // //         color1: seleccionar3
+                    // //             ? Colors.blue.shade300
+                    // //             : Colors.white,
+                    // //         child: Text(producto.talle![0],
+                    // //             style: TextStyle(
+                    // //                 fontSize: 20, color: Colors.white)),
+                    // //       ),
+                    // //     ),
+                    //     // GestureDetector(
+                    //     //   onTap: () {
+                    //     //     //talleSeleccionado = producto.talle2;
+                    //     //     seleccionar3 = !seleccionar3;
+                    //     //     seleccionar2 = false;
+                    //     //     setState(() {});
+                    //     //   },
+                    //     //   child: BotonColorTalle(
+                    //     //     color1: seleccionar3
+                    //     //         ? Colors.blue.shade300
+                    //     //         : Colors.white,
+                    //     //     child: Text(producto.talle![1],
+                    //     //         style: TextStyle(
+                    //     //             fontSize: 20, color: Colors.white)),
+                    //     //   ),
+                    //     // ),
+                    //     SizedBox(width: 15),
+                    //   ],
+                    // ),
+                    Text("Cantidad"),
+                    ClipRRect(
+                      child: Card(
+                        elevation: 12.0,
+                        child: Container(
+                          width: 150,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              IconButton(
+                                  icon: Icon(
+                                    Icons.remove,
+                                    size: 20,
+                                  ),
+                                  onPressed: () {
+                                    setState(() {
+                                      if (cantidad == 0) return;
+                                      cantidad--;
+                                    });
+                                  }),
+                              Text(
+                                "$cantidad",
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      cantidad++;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    Icons.add,
+                                    size: 20,
+                                  )),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 120.0),
-                      child: ElevatedButton.icon(
-                          style: ButtonStyle(
-                            backgroundColor:
-                                MaterialStateProperty.all(Colors.pink),
-                          ),
-                          onPressed: () {
-                            setState(() {});
-                            mostradDialogoCompra(
-                                context, producto, cantidad, talleSeleccionado);
-                          },
-                          icon: Icon(Icons.shopping_cart_outlined),
-                          label: Text("COMPRAR")),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.pink),
+                      ),
+                      onPressed: () {
+                        setState(() {});
+                        mostradDialogoCompra(
+                          context,
+                          producto,
+                          cantidad,
+                        );
+                      },
+                      child: Container(
+                          width: 128,
+                          height: 40,
+                          alignment: Alignment.center,
+                          child: Text("Comprar")),
+                    ),
+                    ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.pink),
+                      ),
+                      onPressed: () {
+                        setState(() {});
+                        Navigator.pushNamed(context, "home");
+                      },
+                      child: Container(
+                          width: 128,
+                          height: 40,
+                          alignment: Alignment.center,
+                          child: Text("Volver a la tienda")),
                     ),
                   ],
                 ),
@@ -287,8 +335,12 @@ class _DetailState extends State<Detail> {
     );
   }
 
-  Future<dynamic> mostradDialogoCompra(BuildContext context, Product producto,
-      int cantidad, String talleSeleccionado) {
+  Future<dynamic> mostradDialogoCompra(
+    BuildContext context,
+    Producto producto,
+    int cantidad,
+  ) {
+    // String talleSeleccionado) {
     return showDialog(
       barrierDismissible: true,
       context: context,
@@ -323,7 +375,7 @@ class _DetailState extends State<Detail> {
                         color: Colors.grey,
                         child: FadeInImage(
                             placeholder: AssetImage("assets/loading.gif"),
-                            image: AssetImage(producto.imagen)),
+                            image: NetworkImage(producto.img![0].url)),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -332,10 +384,10 @@ class _DetailState extends State<Detail> {
                             "${producto.name}",
                             style: TextStyle(fontSize: 15.0),
                           ),
-                          Text("${producto.color1}"),
+                          // Text("${producto.color}"),
                           Text("\$${producto.price}"),
                           Text("Cantidad: ${cantidad}"),
-                          Text("Talle: ${talleSeleccionado}")
+                          //Text("Talle: ${talleSeleccionado}")
                         ],
                       )
                     ],
@@ -350,10 +402,10 @@ class _DetailState extends State<Detail> {
                           productProvider.carritoItem++;
                           productProvider.productsList.add(producto);
                           productProvider.cantidadProducto.add(cantidad);
-                          productProvider.talleSeleccionado
-                              .add(talleSeleccionado);
+                          // productProvider.talleSeleccionado
+                          //     .add(talleSeleccionado);
                           productProvider.pagoTotal +=
-                              producto.price * cantidad;
+                              producto.price! * cantidad;
                         });
                       },
                       icon: Icon(Icons.shopping_cart_outlined),
@@ -376,12 +428,10 @@ class _DetailState extends State<Detail> {
 class BotonColorTalle extends StatelessWidget {
   const BotonColorTalle({
     Key? key,
-    this.color = Colors.white,
     this.child,
     this.color1 = Colors.black,
   }) : super(key: key);
 
-  final Color color;
   final Color color1;
   final Widget? child;
   @override
@@ -390,7 +440,7 @@ class BotonColorTalle extends StatelessWidget {
       height: 40,
       width: 40,
       decoration: BoxDecoration(
-          color: color,
+          color: Colors.black,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(color: color1, width: 2.0)),
       child: Center(child: child),

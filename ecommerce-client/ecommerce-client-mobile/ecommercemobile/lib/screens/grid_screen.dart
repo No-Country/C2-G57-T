@@ -1,4 +1,5 @@
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/models/products_destacados.dart';
 import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
@@ -14,7 +15,7 @@ class GridScreen extends StatelessWidget {
     final productProvider = Provider.of<ProductProvider>(context);
 
     final productos =
-        ModalRoute.of(context)!.settings.arguments as List<Product>;
+        ModalRoute.of(context)!.settings.arguments as List<Producto>;
 
     return SafeArea(
       child: Scaffold(
@@ -23,7 +24,7 @@ class GridScreen extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.blueGrey.shade800,
           centerTitle: true,
-          title: const Text("Logo de la marca\nSlogan"),
+          title: Image.asset("assets/logo.jpg"),
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: GridView.builder(
@@ -55,7 +56,7 @@ class GridScreen extends StatelessWidget {
                       width: double.infinity,
                       child: FadeInImage(
                         placeholder: AssetImage("assets/loading.gif"),
-                        image: AssetImage("${producto.imagen}"),
+                        image: NetworkImage("${producto.img![0].url}"),
                       ),
                     ),
                     Padding(
@@ -63,7 +64,7 @@ class GridScreen extends StatelessWidget {
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(producto.name),
+                            Text(producto.name!),
                             Text("${producto.price}")
                           ]),
                     ),

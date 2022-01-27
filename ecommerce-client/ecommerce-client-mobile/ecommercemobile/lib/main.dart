@@ -1,9 +1,12 @@
 import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/login_provider.dart';
+
 import 'package:ecommercemobile/provider/product_provider.dart';
+import 'package:ecommercemobile/provider/prueba_http.dart';
 import 'package:ecommercemobile/screens/screens.dart';
 
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
@@ -13,15 +16,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => LoginFormProvider(),
-          lazy: false,
-        ),
+        ChangeNotifierProvider(create: (_) => HttpPeticiones(), lazy: false),
+        ChangeNotifierProvider(create: (_) => LoginFormProvider(), lazy: false),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
-        ChangeNotifierProvider(
-          create: (_) => FiltradoProducto(),
-          lazy: false,
-        )
+        ChangeNotifierProvider(create: (_) => FiltradoProducto(), lazy: false)
       ],
       child: MaterialApp(
         title: 'Material App',
@@ -30,7 +28,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.blueGrey,
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.purple))),
+                  backgroundColor: MaterialStateProperty.all(Colors.grey))),
         ),
         initialRoute: "home",
         routes: {

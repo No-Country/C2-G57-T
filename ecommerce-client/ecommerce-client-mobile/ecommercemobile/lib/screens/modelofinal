@@ -1,0 +1,11 @@
+https://epic-leakey-989ab6.netlify.app/login
+
+ await loadStripe(
+      "pk_test_51KJgkKLUp5Q6apTBbvB5gybK4L0cTqSJnsXSi5yNiUOW0b10OLM9HGEIWatnBbZZZ4u6RUoQjIZWOJhmryh19Gle002TyDafg6"
+    );
+    const items = state.product.map((i) => ({
+      id: i._id,
+      name: i.name,
+      price: i.offer ? i.offer : i.price,
+      quantity: parseInt(i.quantity),
+    }));

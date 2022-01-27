@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:ecommercemobile/models/products.dart';
 import 'package:ecommercemobile/provider/filtrado_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
+import 'package:ecommercemobile/provider/prueba_http.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -25,6 +26,7 @@ class _HomeState extends State<Home> {
     final height = MediaQuery.of(context).size.height;
     final productProvider = Provider.of<ProductProvider>(context);
     final filtradoProducto = Provider.of<FiltradoProducto>(context);
+    final httpPeticiones = Provider.of<HttpPeticiones>(context);
 
     return SafeArea(
       child: Scaffold(
@@ -33,7 +35,7 @@ class _HomeState extends State<Home> {
           elevation: 0,
           centerTitle: true,
           backgroundColor: Colors.blueGrey.shade800,
-          title: const Text("Mujeres Reales"),
+          title: Image.asset("assets/logo.jpg"),
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: SingleChildScrollView(
@@ -62,7 +64,7 @@ class _HomeState extends State<Home> {
               GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed("grid",
-                        arguments: filtradoProducto.productosPantalon);
+                        arguments: httpPeticiones.productosDestacados);
                   },
                   child: ImagenCategoria(
                       categoria: 'Pantalon', imagenAssets: '14')),
@@ -70,15 +72,15 @@ class _HomeState extends State<Home> {
               GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed("grid",
-                        arguments: filtradoProducto.productosFalda);
+                        arguments: httpPeticiones.productosDestacados);
                   },
-                  child:
-                      ImagenCategoria(categoria: "Faldas", imagenAssets: "16")),
+                  child: ImagenCategoria(
+                      categoria: "Destacados", imagenAssets: "16")),
               SizedBox(height: height * 0.01),
               GestureDetector(
                   onTap: () {
                     Navigator.of(context).pushNamed("grid",
-                        arguments: filtradoProducto.productosRemera);
+                        arguments: httpPeticiones.productosDestacados);
                   },
                   child: ImagenCategoria(
                       categoria: "Remeras", imagenAssets: "15")),

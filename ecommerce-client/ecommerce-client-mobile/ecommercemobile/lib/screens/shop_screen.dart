@@ -1,4 +1,5 @@
 import 'package:ecommercemobile/models/products.dart';
+import 'package:ecommercemobile/models/products_destacados.dart';
 import 'package:ecommercemobile/provider/login_provider.dart';
 import 'package:ecommercemobile/provider/product_provider.dart';
 import 'package:ecommercemobile/widgets/widget.dart';
@@ -26,7 +27,7 @@ class _ShopState extends State<Shop> {
           elevation: 0,
           backgroundColor: Colors.blueGrey.shade800,
           centerTitle: true,
-          title: const Text("Logo de la marca\nSlogan"),
+          title: Image.asset("assets/logo.jpg"),
           actions: [CarritoCompras(productProvider: productProvider)],
         ),
         body: Padding(
@@ -136,28 +137,27 @@ class _CarritoState extends State<Carrito> {
                       child: ListView.builder(
                         itemCount: productProvider.productsList.length,
                         itemBuilder: (context, index) {
-                          final Product producto =
+                          final Producto producto =
                               productProvider.productsList[index];
                           final int cantidad =
                               productProvider.cantidadProducto[index];
-                          final String talleSeleccionado =
-                              productProvider.talleSeleccionado[index];
+                          // final String talleSeleccionado =
+                          //     productProvider.talleSeleccionado[index];
 
                           return Dismissible(
                             background: Container(
                               color: Colors.blueGrey.shade700,
                             ),
-                            key: ValueKey<Product>(producto),
+                            key: ValueKey<Producto>(producto),
                             onDismissed: (DismissDirection direction) {
                               setState(() {
                                 productProvider.productsList.removeAt(index);
                                 productProvider.cantidadProducto
                                     .removeAt(index);
                                 productProvider.carritoItem--;
-                                productProvider.talleSeleccionado
-                                    .removeAt(index);
+
                                 productProvider.pagoTotal -=
-                                    producto.price * cantidad;
+                                    producto.price! * cantidad;
                               });
                             },
                             child: Column(
@@ -165,12 +165,13 @@ class _CarritoState extends State<Carrito> {
                                 ListTile(
                                   leading: Container(
                                     child: FadeInImage(
-                                        placeholder:
-                                            AssetImage("assets/loading.gif"),
-                                        image: AssetImage(producto.imagen)),
+                                      placeholder:
+                                          AssetImage("assets/loading.gif"),
+                                      image: NetworkImage(producto.img![0].url),
+                                    ),
                                   ),
                                   title: Text(
-                                    producto.name,
+                                    producto.name ?? "",
                                     style: TextStyle(fontSize: 18),
                                   ),
                                   subtitle: Column(
@@ -178,7 +179,7 @@ class _CarritoState extends State<Carrito> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text("Cantidad: ${cantidad}"),
-                                      Text("Talle: ${talleSeleccionado}")
+                                      // Text("Talle: ${talleSeleccionado}")
                                     ],
                                   ),
                                   trailing: Text("\$${producto.price}"),
@@ -200,7 +201,10 @@ class _CarritoState extends State<Carrito> {
                       child: Text("Total: \$${productProvider.pagoTotal}"),
                     ),
                     ElevatedButton(
-                        onPressed: () {}, child: Text("Finalizar compra"))
+                        onPressed: () {
+                          Navigator.pushNamed(context, "pay");
+                        },
+                        child: Text("Finalizar compra"))
                   ],
                 ),
         ),
