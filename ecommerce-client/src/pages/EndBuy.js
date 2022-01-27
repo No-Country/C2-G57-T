@@ -156,6 +156,7 @@ export const EndBuy = () => {
           <div className="price-total">Total: $ {total()}</div>
         </div>
       </div>
+      {error ? <p className='alert alert-danger text-center mt-3'>{msg}</p> : null}
       <button
         onClick={handleEndBuy}
         className='profile__inputSubmit'
@@ -163,7 +164,7 @@ export const EndBuy = () => {
       >
         Finalizar Compra
       </button>
-      {error ? <p className='banner__error banner__error--end'>{msg}</p> : null}
+      
     </div>
   );
 };

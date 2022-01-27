@@ -5,14 +5,14 @@ export const PageFinish = () => {
   const { pathname } = useLocation();
 
   return (
-    <div>
-      {pathname === "/cancel" ? (
-        <p>Cancelaste tu compra</p>
-      ) : (
-        <p>Gracias por tu compra!</p>
-      )}
+    <div className="containerfinish">
+      {pathname === "/cancel" ? 
+      
+      ( <div className="cancell"> <h1 className="bounce-top">CANCELASTE TU COMPRA</h1> </div> ) 
+      :
+       ( <div className="cancell"> <h1 className="bounce-top">¡GRACIAS POR TU COMPRA!</h1> </div>) }
       <Link to='/'>
-        <button>Volver a la tienda</button>
+        <button className="generalButton">Volver a la tienda</button>
       </Link>
     </div>
   );
