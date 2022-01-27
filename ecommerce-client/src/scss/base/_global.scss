@@ -1,0 +1,125 @@
+@use "mixins" as m;
+@use "variables" as v;
+
+html {
+  box-sizing: border-box;
+  font-family: v.$fuente_principal;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.container {
+  padding: 2rem;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.container__page {
+  max-width: 540px;
+  width: 95%;
+  margin: 0 auto;
+
+  @include m.tablet {
+    max-width: 720px;
+  }
+
+  @include m.desktop {
+    max-width: 960px;
+  }
+  @include m.bigDesktop {
+    max-width: 1140px;
+  }
+}
+
+.banner__error {
+  background-color: v.$danger;
+  padding: 0.5rem;
+  text-align: center;
+
+  &--end {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+  }
+}
+
+.banner__success{
+  @extend .banner__error;
+  background-color: #59B367;
+}
+
+h1 {
+  text-align: center;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input:focus, textarea:focus {
+  outline: transparent;
+}
+
+.generalButton {
+  padding: 8px 16px;
+  background-color: #C4C4C4;
+  border: none;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
+
+  &:hover {
+    background-color: darken($color: #ffb344, $amount: 10);
+  }
+}
+
+.generalInput, textarea {
+  height: 40px;
+  border: none;
+  border-bottom: 1px solid v.$primario;
+  padding-left: 20px;
+  border-radius: 10px;
+  box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 1px 2px 5px 0px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+textarea {
+  height: 150px;
+}
+
+.radio-toolbar input[type="radio"] {
+  display: none;
+}
+.radio-container {
+  display: flex;
+}
+
+.radio-toolbar label {
+  margin-right: 0.5rem;
+  display: inline-block;
+  background-color: #000;
+  color: v.$color-letter;
+  padding: 4px 11px;
+  font-family: Arial;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.radio-toolbar input[type="radio"]:checked + label {
+  background-color: v.$primario;
+  color: v.$color-letter;
+}

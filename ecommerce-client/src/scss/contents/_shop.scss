@@ -1,0 +1,52 @@
+@use "../base/variables" as v;
+
+
+.dress-products { 
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+
+  .card-product {
+    width: 100%;
+    color: v.$negro;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.5);
+    overflow: hidden;
+  
+    img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+    }
+  
+    .detail {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+      font-size: 0.9rem;
+      padding: 10px 20px;
+  
+      span {
+        text-transform: capitalize;
+      }
+
+      .price {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 10px;
+
+        span {
+          background: v.$color-discount;
+          color: v.$color-letter;
+          padding: 2px 8px;
+          border-radius: 20px;
+        }
+      }
+    }
+  }
+}
+
+

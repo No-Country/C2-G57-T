@@ -1,0 +1,14 @@
+.controlPanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.formUpdate {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: .2rem;
+}
+
