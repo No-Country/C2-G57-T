@@ -2,8 +2,6 @@ import React, { useContext } from "react";
 import { CartData } from "./../../cartContext/Cartcontext";
 import { off } from "./../../helpers/percentage";
 
-
-//es la tarjeta de cada producto en el carrito
 export const CardProductCart = ({ product }) => {
   const { deleteProductCart } = useContext(CartData);
 

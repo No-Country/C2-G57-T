@@ -46,13 +46,7 @@ const LoginInputs = () => {
         type='password'
         value={values.password}
       />
-      <div className='login__forgotPass'>
-        <div className='checkboxContainer'>
-          <input type='checkbox' className='checkbox' />
-          <label>Recordar</label>
-        </div>
-        <Link to='#'>¿Olvidaste tú contraseña?</Link>
-      </div>
+      
       <input type='submit' className='login__inputSubmit' value='ingresar' />
     </form>
   );

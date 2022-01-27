@@ -26,7 +26,6 @@ export const FormRegisterProduct = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [values.category]);
 
-  //genera un arreglo con los talles seleccionados
   const onSeleccion = (e) => {
     let { name } = e.target;
     let options = [...check.options];
@@ -105,7 +104,6 @@ export const FormRegisterProduct = ({
       <select
         value={values.category}
         name='category'
-        // defaultValue={values.category}
         className='select form-select form-select-lg my-3'
         onChange={handleInputChange}
       >
@@ -123,7 +121,6 @@ export const FormRegisterProduct = ({
         value={values.subcategory}
         className='select form-select form-select-lg'
         name='subcategory'
-        // defaultValue={"DEFAULT"}
         onChange={handleInputChange}
       >
         <option value='' disabled>

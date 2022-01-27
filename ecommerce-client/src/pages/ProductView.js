@@ -20,7 +20,6 @@ export const ProductView = () => {
   const [size, setSize] = useState("");
   const [error, setError] = useState(false);
 
-  //llamada a la api por id
   useEffect(() => {
     async function fetchData() {
       const { data } = await clientAxios.get(`/api/products/${id}`);
@@ -39,16 +38,14 @@ export const ProductView = () => {
 
   if (!dataProductView) return null;
 
-  //toma el value del input de cantidad
   const handleChange = (e) => {
     setQuantity(e.target.value);
   };
-  //toma el value de los radio buttons
+
   const handleChangeSize = (e) => {
     setSize(e.target.value);
   };
 
-  //envia la informacion de la compra
   const handleBuy = () => {
     if (!quantity || quantity <= 0 || size === "") {
       setError(true);
@@ -71,7 +68,7 @@ export const ProductView = () => {
 
   const talle = dataProductView.talle[0].split(",");
   
-  const ImagePreview = (imgs) => { // function img preview
+  const ImagePreview = (imgs) => {
 
     const arraysImg = document.querySelectorAll('.img-productView');
 
@@ -189,7 +186,7 @@ export const ProductView = () => {
           </p>
         )}
         {msg && <p style={{ color: "red" }}>{msg}</p>}
-        {/* solo lo debe ver el usuario clave */}
+        
         {state.isAdmin === true || state.isAdmin === "true" ? (
           <ControlPanel dataProductView={dataProductView} />
         ) : null}

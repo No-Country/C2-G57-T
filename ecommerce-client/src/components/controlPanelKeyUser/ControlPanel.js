@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { RegisterProductData } from "./../../registerProductContext/RegisterProductContext";
 import { useForm } from "./../../hooks/useForm";
 
-//panel de control para borrar o actualizar un producto
 export const ControlPanel = ({ dataProductView }) => {
   const navigate = useNavigate();
   const [showFormUpdate, setShowFormUpdate] = useState(false);

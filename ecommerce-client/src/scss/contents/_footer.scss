@@ -1,27 +1,27 @@
 @use "../base/variables" as v;
 
 footer .containerfooter{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;
-    color: #fff;
-    background: v.$primario;
-    font-size: 0.8em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  color: #fff;
+  background: v.$primario;
+  font-size: 0.8em;
 }
 .boxfooter{
   width: 300px;
   text-align: center;
   margin: 10px 0px;
-
+  
   a {
     color: v.$color-letter;
   }
 }
 #logo{
-    height: auto;
-    width: 200px;
+  height: auto;
+  width: 200px;
 }
 .redes-home {
   display: grid;
@@ -61,8 +61,7 @@ footer .containerfooter{
       text-align: center;
       line-height: 50px;
       border-radius: 1rem;
-      color: darken($color: v.$blanco, $amount: 20);
-      /* background: rgba($color: #000, $alpha: .5); */
+      color: white;
     }
   }
   @media screen and (min-width: 768px) {
@@ -77,8 +76,8 @@ footer .containerfooter{
       }
     }
   }
-         
-    }
+  
+}
 
 @media screen and (min-width: 768px){
   footer .containerfooter{
@@ -94,4 +93,4 @@ footer .containerfooter{
   }
 }
 
- 
+

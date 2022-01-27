@@ -10,7 +10,6 @@ export const RegisterProducts = () => {
   const { imageInfoProduct, success } = useContext(RegisterProductData);
   const [fileUpload, setFileUpload] = useState([]);
   const [size, setSize] = useState([]);
-  // const [error, setError] = useState(false);
 
   const { error, msg, sendError, message } = useError();
 
@@ -26,7 +25,6 @@ export const RegisterProducts = () => {
     discount: "",
   });
 
-  //envia los datos al back de imagenes y valores de inputs
   const handleUploadImage = () => {
     const validation = validationProduct(values, size, fileUpload);
 

@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { off } from "../../helpers/percentage";
 
-//si el producto esta en oferta mostrara el precio oferta
 const Product = ({ img, title, price, id, product }) => {
 
   return (
