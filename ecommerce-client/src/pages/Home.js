@@ -1,10 +1,8 @@
 import React from "react";
 
-// components
 import Carousel from "../components/Carousel";
 import CardHome from "../components/CardHome";
 
-// images
 import section01 from "../images/sections/section01.jpg";
 import section02 from "../images/sections/section02.jpg";
 import { tokenAuth } from "./../config/authTokenHeaders";

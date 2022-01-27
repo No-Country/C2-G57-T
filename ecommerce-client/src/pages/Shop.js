@@ -15,18 +15,17 @@ export const Shop = () => {
   sub = sub.replace("%20", " ");
 
   useEffect(() => {
-    //llamada api destacados
+    
     async function fetchDataDestacado() {
       const { data } = await clientAxios.get(`/api/products/${sub}`);
       setDataDestacado(data);
     }
-    //llamada api oferta
+    
     async function fetchDataoff() {
       const { data } = await clientAxios.get(`/api/products/${sub}`);
       setDataDestacado(data);
     }
 
-    //llamada api por filtro
     async function fetchData() {
       const { data } = await clientAxios.get(`/api/products/`, {
         params: {

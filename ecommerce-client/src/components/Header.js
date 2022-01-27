@@ -1,10 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-// components
 import Sidebar from "./Sidebar";
 
-// images
 import logo from "../images/logo.png";
 import { CartDetailModal } from "./cart/CartDetailModal";
 import { CartData } from "../cartContext/Cartcontext";

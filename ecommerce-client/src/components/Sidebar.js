@@ -122,9 +122,6 @@ const Sidebar = ({ sidebar }) => {
             <li>
               <Link to={"dress/product/discount"}>OFERTAS</Link>
             </li>
-            <li>
-              <Link to={"#"}>CONTACTO</Link>
-            </li>
             {state.isAdmin && (
               <li>
                 <Link to={"/registerproducts"}>

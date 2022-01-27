@@ -3,7 +3,7 @@ import LoginInputs from "../components/LoginInputs";
 import RegisterInputs from "../components/RegisterInputs";
 
 const Login = () => {
-  //selector de solapa
+
   const [selectFlap, setSelectFlap] = useState("login");
 
   return (

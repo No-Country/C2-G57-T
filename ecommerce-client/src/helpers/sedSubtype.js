@@ -1,5 +1,4 @@
 
-//Cambia el select hijo segun la opcion del padre
 export const sendSubtype = (values) => {
     switch (values.category) {
       case "t-shirt":

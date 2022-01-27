@@ -26,7 +26,6 @@ export const AuthContext = ({ children }) => {
     msg: "",
   });
 
-  //User register return name, email, status, uid
   const userRegister = async (data) => {
     try {
       await clientAxios.post("api/users", data);
@@ -48,7 +47,6 @@ export const AuthContext = ({ children }) => {
     }
   };
 
-  //User login return token + data user
   const userLogin = async (data) => {
     try {
       const resp = await clientAxios.post("api/auth/login", data);
@@ -92,8 +90,6 @@ export const AuthContext = ({ children }) => {
 
   }
 
-
-  //user logout reset state
   const logOut = () => {
     dispatch({
       type: LOGOUT_SUCCESS,

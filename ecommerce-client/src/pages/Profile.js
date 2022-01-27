@@ -30,7 +30,6 @@ export const Profile = ({ type }) => {
   return (
     <>
       <Formik
-        // validationSchema={validationSchema}
         enableReinitialize
         initialValues={dataUser}
         onSubmit={async (values) => {
@@ -70,13 +69,6 @@ export const Profile = ({ type }) => {
                         placeholder='Nombre'
                         value={props.values.name}
                       />
-                      {/* <input
-                name='surname'
-                onChange={props.handleChange}
-                placeholder='Apellido'
-                type='text'
-                value={props.values.surname}
-              /> */}
                       <input
                         name='city'
                         onChange={props.handleChange}
@@ -99,16 +91,6 @@ export const Profile = ({ type }) => {
                         onChange={props.handleChange}
                       />
                     </div>
-                    {/* <div className='profile__fieldContainer'>
-              <p>Medios de pago</p>
-              <input
-                placeholder='Tarjeta de Credito'
-                name='pay'
-                value={props.values.pay}
-                type='number'
-                onChange={props.handleChange}
-              />
-            </div> */}
                     <input
                       type='submit'
                       className='profile__inputSubmit'
