@@ -21,8 +21,7 @@ const postUser = async(req, res) => {
     // Encriptar la contraseña    
     const salt = bcrypt.genSaltSync(10);
     user.password = bcrypt.hashSync(password, salt);
-    ///envia email
-    mail.sendMail(name, email);
+    
     // Guardar en BD
     await user.save();
 
